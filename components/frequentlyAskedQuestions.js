@@ -4,12 +4,12 @@ import { Text, View } from "react-native";
 
 export default function FrequentlyAsked({Question, Answer}){
     return(
-        <View style={{flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#FFFFFF0D', padding: '2%', borderRadius: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'rgba(255, 255, 255, 0.14);', padding: '2%', borderRadius: 20, marginBottom: '2%'}}>
             <View>
-                <Text>{Question}</Text>
+                <Text style={{fontSize: 24, fontWeight: 400, color: "#FFFFFF",}}>{Question}</Text>
                 <Text style={{display: 'none'}}>{Answer}</Text>
             </View>
-            <Text>+</Text>
+            <Text style={{fontSize: 24, fontWeight: 400, color: "#FFFFFF",}}>+</Text>
         </View>
     )
 }

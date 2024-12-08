@@ -1,27 +1,28 @@
 import React from "react";
-import { Touchable, View } from "react-native";
+import { TouchableOpacity, View , Text} from "react-native";
+import styles from "../screens/styles";
 
 export default function Navbar(){
     return(
-        <View style={{borderRadius: 24, borderWidth: 2, borderColor: '#FFFFFF1A', backgroundColor: '#FFFFFF0D', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+        <View style={{borderRadius: 24, borderWidth: 2, borderColor: '#FFFFFF1A', backgroundColor: '#FFFFFF0D', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: '0.5%', paddingHorizontal: '3%', marginVertical: '2%', marginHorizontal: '4%'}}>
             <View>
-                <Text>LOGO</Text>
+                <Text style={{color: '#FFFFFF', fontSize: 32, fontWeight: 700, }}>LOGO</Text>
             </View>
-            <View style={{flexDirection: 'row'}}>
-                <Touchable>
-                    <Text>Home</Text>
-                </Touchable>
-                <Touchable>
-                    <Text>Products</Text>
-                </Touchable>
-                <Touchable>
-                    <Text>For Startup</Text>
-                </Touchable>
-                <Touchable>
-                    <Text>For Investor</Text>
-                </Touchable>
+            <View style={{flexDirection: 'row', width: '30%', justifyContent: 'space-between'}}>
+                <TouchableOpacity>
+                    <Text style={styles.smallText}>Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.smallText}>Products</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.smallText}>For Startup</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.smallText}>For Investor</Text>
+                </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.buttonSecondary}>
+            <TouchableOpacity style={[styles.buttonSecondary,{ width: '16%'}]}>
                 <Text style={styles.buttonText2}>Connect Us</Text>
             </TouchableOpacity>
         </View>

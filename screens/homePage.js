@@ -8,6 +8,8 @@ import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGr
 import UserFeedback from '../components/userFeedback';
 import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 // import { ScrollView } from "react-native-web";
 
 export default function Home(){
@@ -16,21 +18,25 @@ export default function Home(){
         <ScrollView style={styles.container}>
             <View style={styles.homeSection1}>
                 <ImageBackground source={require("../assets/images/background.png")} style={[styles.backgroundImage, { width, height }]}>
-                    <ExpoLinearGradient colors={["rgba(114, 206, 99, 0.8)" ,"rgba(44, 165, 96, 0.8)","transparent", "transparent", "transparent"]} style={[styles.overlay]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0  }}>
-                        <Text style={styles.title}>
-                            Empowering Startups, {'\n'}Investors, and Businesses {'\n'}to Scale New Heights.
-                        </Text>
-                        <Text style={styles.subtitle}>
-                            Your Gateway to Debt, Equity, M&A, and Acceleration Services—Simplified and Smarter.
-                        </Text>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.buttonPrimary}>
-                                <Text style={styles.buttonText1}>Find Funding</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.buttonSecondary}>
-                                <Text style={styles.buttonText2}>Join as Investor</Text>
-                            </TouchableOpacity>
+                    <ExpoLinearGradient colors={["rgba(114, 206, 99, 0.8)" ,"rgba(44, 165, 96, 0.8)","transparent", "transparent", "transparent"]} style={{flex: 1}} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0  }}>
+                        <Navbar style={{ marginTop: '4%'}}></Navbar>
+                        <View style={[styles.overlay]} >
+                            <Text style={styles.title}>
+                                Empowering Startups, {'\n'}Investors, and Businesses {'\n'}to Scale New Heights.
+                            </Text>
+                            <Text style={styles.subtitle}>
+                                Your Gateway to Debt, Equity, M&A, and Acceleration Services—Simplified and Smarter.
+                            </Text>
+                            <View style={styles.buttonContainer}>
+                                <TouchableOpacity style={styles.buttonPrimary}>
+                                    <Text style={styles.buttonText1}>Find Funding</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.buttonSecondary}>
+                                    <Text style={styles.buttonText2}>Join as Investor</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
+                        
                     </ExpoLinearGradient>
                 </ImageBackground>
             </View>
@@ -288,7 +294,7 @@ export default function Home(){
                     </View>
                 </View>
             </View> 
-            <View>
+            <View style={{padding: '6% '}}>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%'}}>
                     <Defs>
                         <RadialGradient id="grad1" cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
@@ -301,14 +307,14 @@ export default function Home(){
                     <Ellipse cx={0} cy={height / 2} rx={'80%'} ry={"70%"} fill="url(#grad1)" />
                 </Svg>
                 <View style={{flexDirection: 'row', padding: "5%"}}>
-                    <View style={{flex: 1}}>
+                    <View style={{flex: 1, marginRight: '4%'}}>
                         <Text style={styles.headingText}>Experiences Shared by Our Clients</Text>
                         <Text style={[styles.smallText, {textAlign: 'start'}]}>The team at WDK AI ToolKit provided unparalleled support throughout our project. Their expertise and dedication were evident from day one.</Text>
                     </View>
-                    <UserFeedback feedback="As a long-time user of WDK AI ToolKit, I can confidently say that their solutions have revolutionised the way we operate. From the outset, the team provided exceptional support and demonstrated a deep understanding." userName="Artemisia Udinese" userOccupation='Marketing Specialist'></UserFeedback>
+                    <UserFeedback style={{marginLeft: '4%'}} feedback="As a long-time user of WDK AI ToolKit, I can confidently say that their solutions have revolutionised the way we operate. From the outset, the team provided exceptional support and demonstrated a deep understanding." userName="Artemisia Udinese" userOccupation='Marketing Specialist'></UserFeedback>
                 </View>    
                 <View style={{padding: "5%"}}>
-                    <Text style={styles.headingText}>Frequently Asked Questions</Text>
+                    <Text style={[styles.headingText, {marginBottom: '4%',}]}>Frequently Asked Questions</Text>
                     <FrequentlyAsked Question='What is a Bounce?' Answer={''}></FrequentlyAsked>
                     <FrequentlyAsked Question='What is the difference between the Free and Paid versions?' Answer={'Magna nec, porttitor purus vulputate. Enim accumsan non, auctor posuere tristique aliquam tempus maecenas orci. Risus egestas sapien tincidunt nunc est malesuada magna. Fringilla porta nunc consectetur amet aliquam. Dolor tellus augue in ridiculus vulputate.'}></FrequentlyAsked>
                     <FrequentlyAsked Question='What if I decide to change a plan from monthly to annually and back?' Answer={''}></FrequentlyAsked>
@@ -318,6 +324,7 @@ export default function Home(){
                 </View>
             </View>
             <StartFunding></StartFunding>
+            <Footer></Footer>
         </ScrollView>
     );
 };
