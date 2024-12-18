@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, TouchableOpacity, Image, TextInput } from "react-native";
 import styles from "../screens/styles";
 
-export default function Footer(){
+export default function Footer({navigation}){
     return(
         <View style={{backgroundColor: '#0E0E0E', paddingHorizontal: '8%', paddingTop: '7%'}}>
             <Image source={require('../assets/images/Logo.png')} style={{marginBottom: '4%'}}></Image>
@@ -30,7 +30,7 @@ export default function Footer(){
                     </TouchableOpacity>
                 </View>
                 <View style={{marginTop: '4%'}}>
-                    <TouchableOpacity style={{marginBottom: '8%'}}>
+                    <TouchableOpacity style={{marginBottom: '8%'}} onPress={() => navigation.navigate("AboutUs")}>
                         <Text style={[styles.smallText, {color: '#808080', textAlign: 'start',}]}>About Us</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{marginBottom: '8%'}}>

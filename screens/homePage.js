@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image } from "react-native";
+// import { Image } from 'react-native-expo-image-cache';
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Counts from "../components/counts";
@@ -12,14 +13,14 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 // import { ScrollView } from "react-native-web";
 
-export default function Home(){
+export default function Home({navigation}){
     const { width, height } = useWindowDimensions();
     return (
         <ScrollView style={styles.container}>
             <View style={styles.homeSection1}>
                 <ImageBackground source={require("../assets/images/background.png")} style={[styles.backgroundImage, { width, height }]}>
                     <ExpoLinearGradient colors={["rgba(114, 206, 99, 0.8)" ,"rgba(44, 165, 96, 0.8)","transparent", "transparent", "transparent"]} style={{flex: 1}} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0  }}>
-                        <Navbar style={{ marginTop: '4%'}}></Navbar>
+                        <Navbar style={{ marginTop: '4%'}} navigation={navigation}></Navbar>
                         <View style={[styles.overlay]} >
                             <Text style={styles.title}>
                                 Empowering Startups, {'\n'}Investors, and Businesses {'\n'}to Scale New Heights.
@@ -91,7 +92,7 @@ export default function Home(){
                             </View>
                         </View>
                         <View style={styles.fundingInfoView}>
-                            <Image source={require("../assets/images/mergers.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
+                            <Image  source={require("../assets/images/mergers.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
                             <View style={{gap: 10, marginTop: "5%"}}>
                                 <Text style={styles.fundingInfoTitle}>Mergers & Acquisitions</Text>
                                 <View style={styles.fundingInfo}>
@@ -113,7 +114,7 @@ export default function Home(){
                             </View>
                         </View>
                         <View style={styles.fundingInfoView}>
-                            <Image source={require("../assets/images/acceleration.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
+                            <Image  source={require("../assets/images/acceleration.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
                             <View style={{gap: 10, marginTop: "5%"}}>
                                 <Text style={styles.fundingInfoTitle}>Acceleration Programs</Text>
                                 <View style={styles.fundingInfo}>
@@ -155,16 +156,16 @@ export default function Home(){
                         <Text style={{color: '#FFFFFF', fontWeight: 400, fontSize: 16, marginTop: '4%'}}>
                             The Catalyst Tree offers investors access to a wide range of {'\n'} opportunities across industries and business stages. Whether you're {'\n'} seeking debt investments with steady returns or equity stakes with {'\n'} high-growth potential, we have investment opportunities to match your {'\n'} strategy and risk appetite.
                         </Text>
-                        <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '50%'}]}>
+                        <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '50%'}]} onPress={() => navigation.navigate("Investor")}>
                             <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Start Investing Now</Text>
                         </TouchableOpacity>
                     </View>
-                    <Image source={require("../assets/images/investors.png")} style={{width: '40%', height: '100%', borderRadius: 20, marginLeft: '6%'}}></Image>
+                    <Image  source={require("../assets/images/investors.png")} style={{width: '40%', height: '100%', borderRadius: 20, marginLeft: '6%'}}></Image>
                 </ExpoLinearGradient>
             </View>    
             <View>
                 <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: 'row', justifyContent: 'center'}]} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0  }}>
-                    <Image source={require("../assets/images/Business.png")} style={{width: '40%', height: '100%', borderRadius: 20, marginRight: '6%'}}></Image>
+                    <Image  source={require("../assets/images/Business.png")} style={{width: '40%', height: '100%', borderRadius: 20, marginRight: '6%'}}></Image>
                     <View>
                         <View style={{backgroundColor: '#FFFFFF1A', padding: '2%',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%', width: '76%', alignItems: 'center'}}>
                             <Text style={{ color: '#FFFFFF'}}>For Business Owners (Startups & Existing Businesses)</Text>
@@ -175,7 +176,7 @@ export default function Home(){
                         <Text style={{color: '#FFFFFF', fontWeight: 400, fontSize: 16, marginTop: '4%'}}>
                             Whether you're a startup with a big idea or an existing business ready {'\n'}to scale, we're here to help.
                         </Text>
-                        <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '60%'}]}>
+                        <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '60%'}]} onPress={() => navigation.navigate("Startup")}>
                             <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Apply For Funding Now</Text>
                         </TouchableOpacity>
                     </View>
@@ -323,8 +324,8 @@ export default function Home(){
                     <FrequentlyAsked Question='Do you plan on adding more features in the future?' Answer={''}></FrequentlyAsked>
                 </View>
             </View>
-            <StartFunding></StartFunding>
-            <Footer></Footer>
+            <StartFunding navigation={navigation}></StartFunding>
+            <Footer navigation={navigation}></Footer>
         </ScrollView>
     );
 };

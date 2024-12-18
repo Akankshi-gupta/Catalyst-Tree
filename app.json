@@ -23,6 +23,7 @@
     },
     "web": {
       "favicon": "./assets/images/background.png"
-    }
+    },
+    "platforms": ["ios", "android", "web"]
   }
 }

@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import styles from "../screens/styles";
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
 
-export default function StartFunding(){
+export default function StartFunding({navigation}){
     return(
         <View style={{backgroundColor: '#2CA560', paddingHorizontal: '7%', paddingVertical: '9%'}}>
             <Text style={{color: '#FFFFFF', fontWeight: 500, fontSize: 50}}>Global thinking. {'\n'}Global growth. </Text>
@@ -19,7 +19,7 @@ export default function StartFunding(){
                     Let's go.
                 </SvgText>
             </Svg>
-            <TouchableOpacity style={[styles.buttonPrimary, {paddingHorizontal: '2%', paddingVertical: '1%', width: '14%', marginBottom: '8%'}]}>
+            <TouchableOpacity style={[styles.buttonPrimary, {paddingHorizontal: '2%', paddingVertical: '1%', width: '14%', marginBottom: '8%'}]} onPress={() => navigation.navigate("Startup")}>
                 <Text style={styles.buttonText1}>Start Funding</Text>
             </TouchableOpacity>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '60%'}}>
