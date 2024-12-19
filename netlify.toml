@@ -1,3 +1,9 @@
 [build]
-  command = "expo build:web"
+  command = "npm install && expo build:web"
   publish = "web-build"
+  environment = { NODE_VERSION = "18.20.5" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
