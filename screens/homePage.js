@@ -4,7 +4,8 @@ import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDim
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Counts from "../components/counts";
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import { FaCheckCircle} from 'react-icons/fa';
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
 import UserFeedback from '../components/userFeedback';
 import FrequentlyAsked from "../components/frequentlyAskedQuestions";
@@ -56,19 +57,19 @@ export default function Home({navigation}){
                             <View style={{gap: 10, marginTop: "5%"}}>
                                 <Text style={styles.fundingInfoTitle}>Debt Funding</Text>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Keep full ownership of your business.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Flexible repayment terms.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Fixed interest rates and predictable cash flow.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Ideal for businesses that need capital without diluting equity.</Text>
                                 </View>
                             </View>
@@ -78,15 +79,15 @@ export default function Home({navigation}){
                             <View style={{gap: 10, marginTop: "5%"}}>
                                 <Text style={styles.fundingInfoTitle}>Equity Funding</Text>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Raise capital by offering ownership in your business.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Attract long-term investors who are invested in your success.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Ideal for businesses looking to scale quickly and share the risk and reward.</Text>
                                 </View>
                             </View>
@@ -96,19 +97,19 @@ export default function Home({navigation}){
                             <View style={{gap: 10, marginTop: "5%"}}>
                                 <Text style={styles.fundingInfoTitle}>Mergers & Acquisitions</Text>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Find the perfect partner with AI-driven matchmaking.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Get expert guidance for valuation and deal structuring.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Streamline due diligence with integrated tools.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Maximize value with tailored exit strategies.</Text>
                                 </View>
                             </View>
@@ -118,19 +119,19 @@ export default function Home({navigation}){
                             <View style={{gap: 10, marginTop: "5%"}}>
                                 <Text style={styles.fundingInfoTitle}>Acceleration Programs</Text>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Access mentorship from industry leaders.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Learn from exclusive workshops and webinars.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Leverage discounted tools and services to scale faster.</Text>
                                 </View>
                                 <View style={styles.fundingInfo}>
-                                    <Icon name="check-circle" size={30} color="white" />
+                                    <FaCheckCircle name="check-circle" size={30} color="white" />
                                     <Text style={styles.fundingInfoText}>Gain exposure to top-tier investors through demo days.</Text>
                                 </View>
                             </View>

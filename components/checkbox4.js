@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; // Ensure the icon library is imported
+// import Icon from "react-native-vector-icons/FontAwesome"; // Ensure the icon library is imported
+import { FaCheckCircle} from 'react-icons/fa';
 
 const CheckBox4 = ({title}) => {
     const features = [
@@ -50,7 +51,7 @@ const CheckBox4 = ({title}) => {
 const FeatureBox = ({ title, description }) => (
     <View style={styles.featureBox}>
         <Text style={styles.featureTitle}>
-            <Icon name="check-circle" size={30} color="#72CE63" /> {title}
+            <FaCheckCircle name="check-circle" size={30} color="#72CE63" /> {title}
         </Text>
         <Text style={[styles.smallText, { textAlign: "start" }]}>{description}</Text>
     </View>

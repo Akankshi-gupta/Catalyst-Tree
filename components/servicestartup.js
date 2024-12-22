@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet,Image } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FaCheckCircle} from 'react-icons/fa';
 // import styles from "../screens/styles";
 
 const StartupServices = ({services,title}) => {
@@ -27,7 +28,7 @@ const StartupServices = ({services,title}) => {
 // Box component for individual boxes
 const Box = ({ no, text }) => (
     <View style={styles.box}>
-        <Icon name={"check-circle"} size={30} style={{color:"#72CE63"}}></Icon>
+        <FaCheckCircle name={"check-circle"} size={30} style={{color:"#72CE63"}}></FaCheckCircle>
         <Text style={styles.boxText}>{text}</Text>
     </View>
 );

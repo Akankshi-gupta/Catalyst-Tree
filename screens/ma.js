@@ -80,7 +80,7 @@ export default function MergersAcquisitions({navigation}) {
             </View>
 
             <View
-                style={{ justifyContent: "center", alignContent: "center", margin: 15 }}
+                style={{ justifyContent: "center", alignContent: "center", margin: 15, marginBottom: '5%' }}
             >
                 <Text style={[styles.title, { textAlign: "center", marginBottom: 25 }]}>
                     What we Offer
@@ -104,16 +104,20 @@ export default function MergersAcquisitions({navigation}) {
                 </View>
             </View>
 
-            <View style={{flexDirection:"row",marginVertical:25,marginHorizontal:"15%"}}>
+            <View style={{flexDirection:"row",marginVertical:25,marginHorizontal:"5%"}}>
                 <View style={{flex:1,justifyContent:"center"}}>
                     <Text style={styles.headingText}>Process</Text>
-                    <Image source={require("../assets/images/ma-process.png")} style={{width:543,height:436}}></Image>
+                    <Image source={require("../assets/images/ma-process.png")} style={{width:'100%',height:'80%', borderRadius: 20}}></Image>
                 </View>
-                <View style={{flexWrap:"wrap",flexDirection:"row",flex:1,}}>
-                    <Box no={'Define Goals'} text={"Tell us your M&A objectives."} imageSource={require("../assets/images/ma-process1.png")}></Box>
-                    <Box no={"Matchmaking"} text={"Find the right business partner."} imageSource={require("../assets/images/ma-process2.png")}></Box>
-                    <Box no={"Due Diligence"} text={"Leverage our tools for a thorough evaluation."} imageSource={require("../assets/images/ma-process3.png")}></Box>
-                    <Box no={"Closure"} text={"Expertly negotiate and finalize the deal."} imageSource={require("../assets/images/ma-process4.png")}></Box>
+                <View style={{flex:1}}>
+                    <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center', marginBottom: '5%'}}>
+                        <Box no={'Define Goals'} text={"Tell us your M&A objectives."} imageSource={require("../assets/images/ma-process1.png")}></Box>
+                        <Box no={"Matchmaking"} text={"Find the right business partner."} imageSource={require("../assets/images/ma-process2.png")}></Box>
+                    </View>
+                    <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center'}}>
+                        <Box no={"Due Diligence"} text={"Leverage our tools for a thorough evaluation."} imageSource={require("../assets/images/ma-process3.png")}></Box>
+                        <Box no={"Closure"} text={"Expertly negotiate and finalize the deal."} imageSource={require("../assets/images/ma-process4.png")}></Box>
+                    </View>
                 </View>
             </View>
             <FounderMessage message={'The Catalyst Tree helped us acquire a company perfectly aligned with our vision.'} companyName={'AgriCorp'} designation={'CEO'}></FounderMessage>   
@@ -146,14 +150,13 @@ const Box = ({ no, text ,imageSource}) => (
 
 const style= ({
     box: {
-        height: 250,
-        width: 300,
+        flex: 1,
         borderRadius: 20,
         borderColor: "#72CE63",
         borderWidth: 1,
         justifyContent: "space-around",
         padding: 15,
-        margin: 15,
+        marginLeft: '5%',
     },
     boxNumber: {
         color:"white",

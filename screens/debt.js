@@ -54,10 +54,10 @@ export default function Debt({navigation}){
                     <ProductExplanation why={'Why Debt Funding?'} img1={require("../assets/images/explanation1.png")} img2={require("../assets/images/explanation2.png")} img3={require("../assets/images/explanation3.png")} reason1={'Retain full ownership of your business.'} reason2={'Predictable repayments tailored to your cash flow.'} reason3={'Perfect for scaling operations or bridging working capital gaps.'}></ProductExplanation>
                 </View>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%', alignItems: 'center'}}>
-                    <Text style={styles.headingText}>
+                    <Text style={[styles.headingText,{ marginBottom: '5%'}]}>
                         How it <Text style={{color: '#2CA560'}}>Works</Text>
                     </Text>
-                    <View style={{flexDirection: 'row', flex: 1}}>
+                    <View style={{flexDirection: 'row', width: '100%'}}>
                         <View style={{flex: 1, justifyContent: 'center'}}>
                             <View style={{flexDirection: 'row', marginBottom: '12%'}}>
                                 <Text style={{color: '#2CA560', fontSize: 32, fontWeight: 400, marginRight: '3%'}}>01</Text>

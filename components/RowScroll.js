@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MdArrowBack , MdArrowForward } from 'react-icons/md';;
 import styles from '../screens/styles';
 import { useWindowDimensions } from 'react-native-web';
 const InvestorProcessScreen = ({ items ,title}) => {
@@ -41,7 +42,7 @@ const InvestorProcessScreen = ({ items ,title}) => {
                     }}
                     onPress={() => handleScroll('left')} // Scroll left on button press
                 >
-                    <Icon name={'arrow-back'} color='white' />
+                    <MdArrowBack  name={'arrow-back'} color='white' />
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -58,7 +59,7 @@ const InvestorProcessScreen = ({ items ,title}) => {
                     }}
                     onPress={() => handleScroll('right')} // Scroll right on button press
                 >
-                    <Icon name={'arrow-forward'} color='white' />
+                    <MdArrowForward name={'arrow-forward'} color='white' />
                 </TouchableOpacity>
             </View>
 

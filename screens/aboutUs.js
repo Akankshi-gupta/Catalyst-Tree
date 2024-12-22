@@ -3,7 +3,8 @@ import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDim
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Counts from "../components/counts";
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import { FaCheckCircle, FaAngleDown } from 'react-icons/fa';
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
 import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
@@ -58,21 +59,21 @@ export default function AboutUs({navigation}){
                             <View style={{borderBottomColor: '#D6D6D6', borderBottomWidth: 1, marginBottom: '4%'}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '2%', alignItems: "center"}}>
                                     <Text style={{color: 'white', fontSize: 24, fontWeight: 500}}>Who we are?</Text>
-                                    <Icon name="angle-down" size={24} color="white" />
+                                    <FaAngleDown name="angle-down" size={24} color="white" />
                                 </View>
                                 <Text style={[styles.smallText, {marginBottom: '3%', textAlign: 'left'}]}>Our founders Dustin Moskovitz and Justin lorem Rosenstein met while leading Engineering teams at Facebook quesi.</Text>
                             </View>
                             <View style={{borderBottomColor: '#D6D6D6', borderBottomWidth: 1, marginBottom: '4%'}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '2%', alignItems: "center"}}>
                                     <Text style={{color: 'white', fontSize: 24, fontWeight: 500}}>Our Mission</Text>
-                                    <Icon name="angle-down" size={24} color="white" />
+                                    <FaAngleDown name="angle-down" size={24} color="white" />
                                 </View>
                                 <Text style={[styles.smallText, {display: 'none', marginBottom: '3%', textAlign: 'left'}]}>Our founders Dustin Moskovitz and Justin lorem Rosenstein met while leading Engineering teams at Facebook quesi.</Text>
                             </View>
                             <View style={{borderBottomColor: '#D6D6D6', borderBottomWidth: 1, marginBottom: '4%'}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '2%', alignItems: "center"}}>
                                     <Text style={{color: 'white', fontSize: 24, fontWeight: 500}}>Our Vision</Text>
-                                    <Icon name="angle-down" size={24} color="white" />
+                                    <FaAngleDown name="angle-down" size={24} color="white" />
                                 </View>
                                 <Text style={[styles.smallText, {display: 'none', marginBottom: '3%', textAlign: 'left'}]}>Our founders Dustin Moskovitz and Justin lorem Rosenstein met while leading Engineering teams at Facebook quesi.</Text>
                             </View>
@@ -102,21 +103,21 @@ export default function AboutUs({navigation}){
                 </View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{backgroundColor: '#FFFFFF0D', borderRadius: 20, borderColor: '#D6D6D6', borderWidth: 1, flex: 1, paddingHorizontal: '3%', paddingVertical: '4%', margin: '2%'}}>
-                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><Icon name="check-circle" size={30} color="white" /> Tailore Funding Solutions</Text>
+                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><FaCheckCircle name="check-circle" size={30} color="white" /> Tailore Funding Solutions</Text>
                         <Text style={[styles.smallText,{ textAlign: 'start'}]}>Choose the financing option that fits your goals, whether it's debt for predictable cash flow or equity to bring on investors who can add value beyond just capital.</Text>
                     </View>
                     <View style={{backgroundColor: '#FFFFFF0D', borderRadius: 20, borderColor: '#D6D6D6', borderWidth: 1, flex: 1, paddingHorizontal: '3%', paddingVertical: '4%', margin: '2%'}}>
-                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><Icon name="check-circle" size={30} color="white" /> Diverse Investment Opportunities</Text>
+                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><FaCheckCircle name="check-circle" size={30} color="white" /> Diverse Investment Opportunities</Text>
                         <Text style={[styles.smallText,{ textAlign: 'start'}]}>From startups looking to disrupt industries to established businesses seeking to scale, our platform offers investors access to a wide variety of opportunities.</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{backgroundColor: '#FFFFFF0D', borderRadius: 20, borderColor: '#D6D6D6', borderWidth: 1, flex: 1, paddingHorizontal: '3%', paddingVertical: '4%', margin: '2%'}}>
-                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><Icon name="check-circle" size={30} color="white" /> Investor-Ready Startups</Text>
+                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><FaCheckCircle name="check-circle" size={30} color="white" /> Investor-Ready Startups</Text>
                         <Text style={[styles.smallText,{ textAlign: 'start'}]}>We carefully vet each business and ensure that they are ready for investment, providing investors with high-quality opportunities to invest in.</Text>
                     </View>
                     <View style={{backgroundColor: '#FFFFFF0D', borderRadius: 20, borderColor: '#D6D6D6', borderWidth: 1, flex: 1, paddingHorizontal: '3%', paddingVertical: '4%', margin: '2%'}}>
-                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><Icon name="check-circle" size={30} color="white" /> Global Network, Local Impact</Text>
+                        <Text style={{fontWeight: 400, fontSize: 24, color: '#FFFFFF', letterSpacing: 1, marginBottom: '2%'}}><FaCheckCircle name="check-circle" size={30} color="white" /> Global Network, Local Impact</Text>
                         <Text style={[styles.smallText,{ textAlign: 'start'}]}>With an expansive network of investors and businesses, The Catalyst Tree facilitates connections that can drive both local success and global impact.</Text>
                     </View>
                 </View>
@@ -136,7 +137,7 @@ export default function AboutUs({navigation}){
                         </TouchableOpacity>
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-                        <TouchableOpacity style={{flex: 1, margin: '2%'}} onPress={() => navigation.navigate("MergersAcquisitions")}>
+                        <TouchableOpacity style={{flex: 1, margin: '2%'}} onPress={() => navigation.navigate("Mergers & Acquisition")}>
                             <Image source={require('../assets/images/Mergers2.png')} style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}></Image>
                         </TouchableOpacity>
                         <TouchableOpacity style={{flex: 1, margin: '2%' }} onPress={() => navigation.navigate("Acceleration")}>
