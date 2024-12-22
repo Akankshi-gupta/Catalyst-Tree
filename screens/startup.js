@@ -53,7 +53,7 @@ export default function Startup({navigation}) {
             <Navbar navigation={navigation}></Navbar>
             <ExpoLinearGradient colors={["#002F1C", "#0C4931", "#2CA5601A"]} style={{ position: "absolute", top: 0, right: 0, zIndex: -1, height: height * 0.9, width: width * 0.3, }} />
             <View style={{ position: "absolute", top: 0, right: 0, height: height * 0.9, width: width * 0.3,}}></View>
-            <Header  buttonText={"Signup for free"} description={"Whether you're raising debt, equity, or exploring M&A and acceleration opportunities, we’ve got you covered."} title={"Fuel Your Growth with the Right Funding Partners"} imageSource={require("../assets/images/startup.png")}></Header>
+            <Header  buttonText={"Signup for free"} description={"Whether you're raising debt, equity, or exploring M&A and acceleration opportunities, we’ve got you covered."} title={"Fuel Your Growth with the Right Funding Partners"} imageSource={require("../assets/images/startup.png")}  onButtonPress={()=> navigation.navigate("StartupSignUp")}></Header>
             <InvestorServices services={services} title={"Why Choose \nThe Catalyst Tree?"}></InvestorServices>
             <InvestorProcessScreen items={items} title={"Our Process \nStartup"} />
             
@@ -80,8 +80,8 @@ export default function Startup({navigation}) {
                 </View> 
                 <UserFeedback feedback={"As a long-time user of WDK AI ToolKit, I can confidently say that their solutions have evolutionised the way we operate. From the outset, the team provided exceptional support and demonstrated a understanding."} userName={"Artemisia Udinese"} userOccupation={"Marketing Specialist"}/>
             </View>
-            <StartFunding />
-            <Footer />
+            <StartFunding navigation={navigation}/>
+            <Footer navigation={navigation}/>
         </ScrollView>
     );
 }

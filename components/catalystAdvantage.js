@@ -16,16 +16,16 @@ const CatalystAdvantages = () => {
     ];
 
     return (
-        <View style={{ marginVertical: 20 }}>
+        <View style={{ marginVertical: '8%', padding: '5%' }}>
             <View>
-                <Text style={[styles.title, { textAlign: 'center' }]}>
+                <Text style={[styles.title, { textAlign: 'left' }]}>
                     Why Choose the {"\n"}Catalyst ?
                 </Text>
             </View>
             <View
                 style={{
-                    justifyContent: 'center',
-                    marginHorizontal: width * 0.15,
+                    justifyContent: 'flex-start',
+                    // marginRight: width * 0.10,
                     marginTop: 50,
                 }}
             >
@@ -46,7 +46,7 @@ const Col = ({ no, text }) => {
                 <Text
                     style={{
                         color: "grey",
-                        fontSize: 25,
+                        fontSize: 42,
                         fontWeight: "bold",
                         alignContent: "center",
                         paddingLeft: 10,
@@ -57,9 +57,9 @@ const Col = ({ no, text }) => {
                 <Text
                     style={{
                         color: "white",
-                        fontSize: 20,
+                        fontSize: 32,
                         fontWeight: "400",
-                        width: width * 0.3,
+                        width: width * 0.5,
                     }}
                 >
                     {text}
@@ -68,7 +68,7 @@ const Col = ({ no, text }) => {
             <View
                 style={{
                     height: 5,
-                    width: width * 0.7,
+                    // width: width * 0.5,
                     backgroundColor: "grey",
                     marginVertical: 10,
                 }}

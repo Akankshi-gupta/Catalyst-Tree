@@ -46,9 +46,9 @@ export default function Investor({navigation}) {
     return (
         <ScrollView style={styles.container}>
             <Navbar navigation={navigation}></Navbar>
-            <ExpoLinearGradient colors={["#002F1C", "#0C4931", "#2CA5601A"]} style={{ position: "absolute", top: 0, right: 0, zIndex: -1, height: height * 0.9, width: width * 0.3, }} />
+            <ExpoLinearGradient colors={["#002F1C", "#0C4931", "#2CA5601A"]} style={{ position: "absolute", top: 0, right: 0, zIndex: -1, height:'15%', width: '41%', borderBottomLeftRadius: 12}} />
             <View style={{ position: "absolute", top: 0, right: 0, height: height * 0.9, width: width * 0.3,}}></View>
-            <Header  buttonText={"Signup for free"} description={"Invest smarter with detailed startup insights, risk scores, and seamless deal-making tools."} title={"Discover the Next Big Opportunity"} imageSource={require("../assets/images/investor1.png")}></Header>
+            <Header  buttonText={"Signup for free"} description={"Invest smarter with detailed startup insights, risk scores, and seamless deal-making tools."} title={"Discover the Next Big Opportunity"} imageSource={require("../assets/images/investor1.png")} onButtonPress={()=>navigation.navigate("InvestorSignUp")}></Header>
             <CatalystAdvantages> </CatalystAdvantages>
             <InvestorProcessScreen items={items} />
             <InvestorServices services={services}></InvestorServices>

@@ -4,7 +4,8 @@ import styles from "../screens/styles";
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
 import { useNavigation } from "@react-navigation/native";
 
-export default function StartFunding({navigation}){
+export default function StartFunding(){
+    const navigation =useNavigation();
     return(
         <View style={{paddingHorizontal: '7%', paddingVertical: '5%',borderColor:"rgba(113, 206, 99, 0.7)",borderWidth:2,borderRadius:20}}>
             <Text style={{color: '#FFFFFF', fontWeight: 500, fontSize: 50}}>Global thinking. {'\n'}Global growth. </Text>

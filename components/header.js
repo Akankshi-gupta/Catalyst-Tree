@@ -7,8 +7,8 @@ const Header = ({ title, description, buttonText, imageSource, onButtonPress }) 
 
     return (
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-            <View style={{ width: width * 0.5, padding: 100 }}>
-                <Text style={styles.title}>{title}</Text>
+            <View style={{ width: width * 0.5, paddingLeft: '4%', justifyContent: 'center' }}>
+                <Text style={[styles.title, {fontSize: 80}]}>{title}</Text>
                 <Text
                     style={{
                         fontSize: 18,

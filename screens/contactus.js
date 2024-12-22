@@ -35,18 +35,18 @@ export default function Contact_Us({navigation}) {
             style={styles.container}
         >
             <View style={{ flex: 1 }}>
+                <Svg style={{position: "absolute",zIndex: -1,top: 0,left: 0,width: "100%",height: "100%"}}> 
+                    <Defs>     
+                        <RadialGradient id="grad1" cx="30%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">         
+                            <Stop offset="10%" stopColor="rgba(44, 165, 96, 0.56)" stopOpacity="1"/>         
+                            <Stop offset="100%" stopColor="black" stopOpacity="1" />     
+                        </RadialGradient> 
+                    </Defs> 
+                    {/* Apply Radial Gradient to an Ellipse (Oval Shape) */} 
+                    <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill="url(#grad1)" />
+                </Svg>
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{backgroundColor: "#33333399",height: height ,margin: 100,borderRadius: 24,paddingVertical: 40,paddingHorizontal: 100,}}>
-                    <Svg style={{position: "absolute",zIndex: -1,top: 0,left: 0,width: "100%",height: "100%"}}> 
-                                            <Defs>     
-                                                <RadialGradient id="grad1" cx="30%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">         
-                                                    <Stop offset="10%" stopColor="rgba(44, 165, 96, 0.56)" stopOpacity="1"/>         
-                                                    <Stop offset="100%" stopColor="black" stopOpacity="1" />     
-                                                </RadialGradient> 
-                                            </Defs> 
-                                            {/* Apply Radial Gradient to an Ellipse (Oval Shape) */} 
-                                            <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill="url(#grad1)" />
-                                        </Svg>
                     <View style={{flexDirection: "row",justifyContent: "space-between",borderBottomColor: "white",borderBottomWidth: 1,paddingBottom: 20,}}>
                         <Text style={{ color: "white", fontSize: 48, fontWeight: 500 }}>Contact Us</Text>
                         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
@@ -101,16 +101,16 @@ export default function Contact_Us({navigation}) {
                                 </View>
                             </View>
                         </View>
-                        <View style={{paddingHorizontal:15}}> 
-                            <View style={{padding:5,flexDirection:"row",}}>
-                                <View style={{width: 313,height: 80,justifyContent: "space-around",paddingRight:15}}>
+                        <View style={{paddingHorizontal:15, flex:1}}> 
+                            <View style={{padding:5,flexDirection:"row",flex: 1}}>
+                                <View style={{width: '50%',justifyContent: "space-around",paddingRight:15, flex:1}}>
                                     <Text style={{ color: "white", fontSize: 16 }}>
                                         First Name
                                     </Text>
                                     <TextInput placeholder="First name" placeholderTextColor={"#808080"} keyboardType="name-phone-pad" style={{paddingHorizontal: 12,borderRadius: 8,borderWidth: 1,borderColor: "white",fontSize: 14,paddingVertical: 10,color: "white",height: 48,}}
                                     ></TextInput>
                                 </View>
-                                <View style={{width: 313,height: 80,justifyContent: "space-around",paddingRight:15}}>
+                                <View style={{width: '50%',justifyContent: "space-around",paddingRight:15, flex:1}}>
                                     <Text style={{ color: "white", fontSize: 16 }}>
                                         Last Name
                                     </Text>
@@ -119,16 +119,16 @@ export default function Contact_Us({navigation}) {
                                 </View>
                             </View>
                         <View style={{padding:5}}></View>
-                        <View style={{flexDirection:"row"}}>
-                            <View style={{padding:5,flexDirection:"row",justifyContent:"space-around"}}>
-                                <View style={{width: 313,height: 80,justifyContent: "space-around",paddingRight:15}}>
+                        <View style={{flexDirection:"row", flex: 1}}>
+                            <View style={{padding:5,flexDirection:"row",justifyContent:"space-around", flex:1}}>
+                                <View style={{width: '50%',justifyContent: "space-around",paddingRight:15, flex:1}}>
                                     <Text style={{ color: "white", fontSize: 16 }}>
                                         Email
                                     </Text>
                                     <TextInput placeholder="Enter your Email" placeholderTextColor={"#808080"} keyboardType="email-address" style={{paddingHorizontal: 12,borderRadius: 8,borderWidth: 1,borderColor: "white",fontSize: 14,paddingVertical: 10,color: "white",height: 48,}} 
                                     ></TextInput>
                                 </View>
-                                <View style={{width: 313,height: 80,justifyContent: "space-around",paddingRight:15}}>
+                                <View style={{width: '50%',justifyContent: "space-around",paddingRight:15, flex:1}}>
                                     <Text style={{ color: "white", fontSize: 16 }}>
                                         Phone Number
                                     </Text>
