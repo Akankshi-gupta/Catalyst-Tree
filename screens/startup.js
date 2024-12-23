@@ -8,7 +8,7 @@ import UserFeedback from "../components/userFeedback";
 import { LinearGradient as ExpoLinearGradient } from "expo-linear-gradient";
 import InvestorProcessScreen from "../components/RowScroll";
 import CatalystAdvantages from "../components/catalystAdvantage";
-import InvestorServices from "../components/ServiesBoxes";
+import InvestorServices from "../components/InvestorServiesBoxes";
 import CheckBox4 from "../components/checkbox4";
 import Header from "../components/header";
 import StartupServices from "../components/servicestartup";
@@ -48,6 +48,7 @@ export default function Startup({navigation}) {
         {no: "08",text: "Improve your pitch and business performance with AI-driven insights.",},
     ];
     const { width, height } = useWindowDimensions();
+    const minWidth = width<600;
     return (
         <ScrollView style={styles.container}>
             <Navbar navigation={navigation}></Navbar>
@@ -58,17 +59,15 @@ export default function Startup({navigation}) {
             <InvestorProcessScreen items={items} title={"Our Process \nStartup"} />
             
             
-            <View style={{flexDirection:"row",margin:35,marginTop:50}}>
-                <View style={{flex:1}}><Text style={[styles.headingText,{textAlign:"right",marginTop:55}]}>Service for {"\n"}Startups</Text></View>
-                <View style={{flex:3}}>
+            <View style={{flexDirection:minWidth?"column":"row",margin:35,marginTop:50}}>
+                <View style={{flex:1}}><Text style={[styles.headingText,{fontSize:minWidth?40:46,textAlign:minWidth?"center":"right",marginTop:minWidth?15:55}]}>Service for {"\n"}Startups</Text></View>
+                <View style={{flex:minWidth?6 :3}}>
                 <StartupServices services={startupServices} ></StartupServices>
                 </View>
             </View>
-
-
             <View
-                style={{flexDirection: "row",marginHorizontal: "12%",marginVertical: 50,}} >
-                <View style={{ flex: 1, marginRight: 10 ,marginTop:20}}>
+                style={{flexDirection: minWidth?"column":"row",marginHorizontal:minWidth?"8%":"12%",marginVertical:minWidth?70:50,flex:2}} >
+                <View style={{ flex: 1, marginRight: 10 ,marginTop:minWidth?10:20}}>
                     <Text style={[styles.headingText]}>
                         Startups That Thrived With Us
                     </Text>
@@ -78,7 +77,9 @@ export default function Startup({navigation}) {
                         one.
                     </Text>
                 </View> 
+                <View style={{flex:1}}>
                 <UserFeedback feedback={"As a long-time user of WDK AI ToolKit, I can confidently say that their solutions have evolutionised the way we operate. From the outset, the team provided exceptional support and demonstrated a understanding."} userName={"Artemisia Udinese"} userOccupation={"Marketing Specialist"}/>
+                </View>
             </View>
             <StartFunding navigation={navigation}/>
             <Footer navigation={navigation}/>

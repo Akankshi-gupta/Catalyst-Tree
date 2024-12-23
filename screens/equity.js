@@ -14,6 +14,7 @@ import FounderMessage from "../components/founderMessage";
 
 export default function Equity({navigation}){
     const { width, height } = useWindowDimensions();
+    const minWidth = width<600;
     return(
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
             <View style={{flex: 1}}>
@@ -42,7 +43,7 @@ export default function Equity({navigation}){
                         <View style={{backgroundColor: '#FFFFFF1A', paddingVertical: '0.5%', paddingHorizontal: '2%', borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%', alignItems: 'center', marginBottom: '1%'}}>
                             <Text style={{ color: '#FFFFFF'}}>Unlock Growth with Smart Equity Funding</Text>
                         </View>
-                        <Text style={[styles.title, {lineHeight: 78, textAlign: 'center', fontSize: 70}]}>Connect with{'\n'} Investors Who Believe{'\n'} in Your Vision</Text>
+                        <Text style={[styles.title, {lineHeight:minWidth?40: 78, textAlign: 'center', fontSize:minWidth? 35:70}]}>Connect with{'\n'} Investors Who Believe{'\n'} in Your Vision</Text>
                         <Text style={[styles.subtitle, {marginBottom: '5%', color: '#FFFFFFCC'}]}>Tailored equity funding for startups looking to scale</Text>
                         <TouchableOpacity style={styles.buttonPrimary}>
                             <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Start Your Equity Journey</Text>
@@ -60,34 +61,34 @@ export default function Equity({navigation}){
                     <Text style={[styles.headingText, {marginBottom: '5%'}]}>
                         How it <Text style={{color: '#2CA560'}}>Works</Text>
                     </Text>
-                    <View style={{flexDirection: 'row', flex: 1}}>
+                    <View style={{flexDirection:minWidth?"column": 'row', flex: 1}}>
                         {/* <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row'}}> */}
-                            <View style={{marginLeft: '2%', flex: 1}}>
-                                <Text style={{color: '#2CA560', fontSize: 32, fontWeight: 400, marginRight: '3%'}}>01</Text>
+                            <View style={{marginLeft: '2%', flex: 1,flexDirection:minWidth?"row":"column",paddingRight:minWidth?"5%":0,width:minWidth?"70%":"auto"}}>
+                                <Text style={{color: '#2CA560', fontSize:minWidth?16 :32, fontWeight: 400, marginRight: '3%'}}>01</Text>
                                 <View>
-                                    <Text style={{color: '#FFFFFF', fontSize: 32, fontWeight: 600}}>Apply</Text>
-                                    <Text style={[styles.smallText, {textAlign: 'left'}]}>Submit your application with basic business details.</Text>
+                                    <Text style={{color: '#FFFFFF', fontSize:minWidth?16: 32, fontWeight: 600}}>Apply</Text>
+                                    <Text style={[styles.smallText, {textAlign: 'left',width:minWidth?"75%":"auto"}]}>Submit your application with basic business details.</Text>
                                 </View>
                             </View>
-                            <View style={{marginLeft: '2%', flex: 1}}>
-                                <Text style={{color: '#2CA560', fontSize: 32, fontWeight: 400, marginRight: '3%'}}>02</Text>
+                            <View style={{marginLeft: '2%', flex: 1,flexDirection:minWidth?"row":"column",paddingRight:minWidth?"5%":0,width:minWidth?"70%":"auto"}}>
+                                <Text style={{color: '#2CA560', fontSize:minWidth?16: 32, fontWeight: 400, marginRight: '3%'}}>02</Text>
                                 <View>
-                                    <Text style={{color: '#FFFFFF', fontSize: 32, fontWeight: 600}}>Risk Scoring</Text>
-                                    <Text style={[styles.smallText, {textAlign: 'left'}]}>Our advanced analytics assess your eligibility and suggest funding options.</Text>
+                                    <Text style={{color: '#FFFFFF', fontSize:minWidth?16: 32, fontWeight: 600}}>Risk Scoring</Text>
+                                    <Text style={[styles.smallText, {textAlign: 'left',width:minWidth?"75%":"auto"}]}>Our advanced analytics assess your eligibility and suggest funding options.</Text>
                                 </View>
                             </View>
-                            <View style={{marginLeft: '2%', flex: 1}}>
-                                <Text style={{color: '#2CA560', fontSize: 32, fontWeight: 400, marginRight: '3%'}}>03</Text>
+                            <View style={{marginLeft: '2%', flex: 1,flexDirection:minWidth?"row":"column",paddingRight:minWidth?"5%":0,width:minWidth?"70%":"auto"}}>
+                                <Text style={{color: '#2CA560', fontSize:minWidth?16: 32, fontWeight: 400, marginRight: '3%'}}>03</Text>
                                 <View>
-                                    <Text style={{color: '#FFFFFF', fontSize: 32, fontWeight: 600}}>Matchmaking</Text>
-                                    <Text style={[styles.smallText, {textAlign: 'left'}]}>Connect with our network of pre-vetted lenders.</Text>
+                                    <Text style={{color: '#FFFFFF', fontSize:minWidth?16: 32, fontWeight: 600}}>Matchmaking</Text>
+                                    <Text style={[styles.smallText, {textAlign: 'left',width:minWidth?"75%":"auto"}]}>Connect with our network of pre-vetted lenders.</Text>
                                 </View>
                             </View>
-                            <View style={{marginLeft: '2%', flex: 1}}>
-                                <Text style={{color: '#2CA560', fontSize: 32, fontWeight: 400, marginRight: '3%'}}>04</Text>
+                            <View style={{marginLeft: '2%', flex: 1,flexDirection:minWidth?"row":"column",paddingRight:minWidth?"5%":0,width:minWidth?"70%":"auto"}}>
+                                <Text style={{color: '#2CA560', fontSize:minWidth?16: 32, fontWeight: 400, marginRight: '3%'}}>04</Text>
                                 <View>
-                                    <Text style={{color: '#FFFFFF', fontSize: 32, fontWeight: 600}}>Funding Secured</Text>
-                                    <Text style={[styles.smallText, {textAlign: 'left'}]}>Get funds in a matter of weeks.</Text>
+                                    <Text style={{color: '#FFFFFF', fontSize:minWidth?16: 32, fontWeight: 600}}>Funding Secured</Text>
+                                    <Text style={[styles.smallText, {textAlign: 'left',width:minWidth?"75%":"auto"}]}>Get funds in a matter of weeks.</Text>
                                 </View>
                             </View>
                         {/* </View> */}
@@ -95,18 +96,18 @@ export default function Equity({navigation}){
                 </View>
                 <View style={{flex: 1, padding: '8%', backgroundColor: 'rgba(51 51 51 / 0.64)', borderRadius: 24, alignItems: 'center',}}>
                     <Text style={[styles.headingText, {flex: 1, marginBottom: '4%'}]}>Key Features</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <View style={{justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: '5%'}}>
+                    <View style={{flexDirection: minWidth?"column":'row'}}>
+                        <View style={{justifyContent: minWidth?"flex-start":'center', alignItems: 'center', flex: 1, marginRight: '5%',flexDirection:minWidth?"row":"column"}}>
                             <Image source={require("../assets/images/explanation3.png")}></Image>
-                            <Text style={{ color:'rgba(255, 255, 255, 1)', fontSize: 24, fontWeight: 500, textAlign: 'center'}}>Access to global investors.</Text>
+                            <Text style={{ color:'rgba(255, 255, 255, 1)', fontSize: minWidth?15:24, fontWeight: 500, textAlign:minWidth? "left":'center'}}>Access to global investors.</Text>
                         </View>
-                        <View style={{justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: '5%'}}>
+                        <View style={{justifyContent: minWidth?"flex-start":'center', alignItems: 'center', flex: 1, marginRight: '5%',flexDirection:minWidth?"row":"column"}}>
                             <Image source={require("../assets/images/explanation3.png")}></Image>
-                            <Text style={{ color:'rgba(255, 255, 255, 1)', fontSize: 24, fontWeight: 500, textAlign: 'center'}}>Non-circumvention policies to protect fairness.</Text>
+                            <Text style={{ color:'rgba(255, 255, 255, 1)', fontSize: minWidth?15: 24, fontWeight: 500, textAlign:minWidth? "left":'center'}}>Non-circumvention policies to protect fairness.</Text>
                         </View>
-                        <View style={{justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: '5%'}}>
+                        <View style={{justifyContent: minWidth?"flex-start":'center', alignItems: 'center', flex: 1, marginRight: '5%',flexDirection:minWidth?"row":"column"}}>
                             <Image source={require("../assets/images/explanation3.png")}></Image>
-                            <Text style={{ color:'rgba(255, 255, 255, 1)', fontSize: 24, fontWeight: 500, textAlign: 'center'}}>Real-time tracking of your fundraising progress.</Text>
+                            <Text style={{ color:'rgba(255, 255, 255, 1)', fontSize: minWidth?15:24, fontWeight: 500, textAlign:minWidth? "left":'center'}}>Real-time tracking of your fundraising progress.</Text>
                         </View>
                     </View>
                 </View>  

@@ -1,14 +1,16 @@
 import React from "react";
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image, useWindowDimensions } from "react-native";
 import styles from "../screens/styles";
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
 import { useNavigation } from "@react-navigation/native";
 
 export default function StartFunding(){
+    const {height,width} = useWindowDimensions();
+    const minWidth = width<600;
     const navigation =useNavigation();
     return(
-        <View style={{paddingHorizontal: '7%', paddingVertical: '5%',borderColor:"rgba(113, 206, 99, 0.7)",borderWidth:2,borderRadius:20}}>
-            <Text style={{color: '#FFFFFF', fontWeight: 500, fontSize: 50}}>Global thinking. {'\n'}Global growth. </Text>
+        <View style={{paddingHorizontal: minWidth?"3%":'7%',marginHorizontal:minWidth?"5%":0, paddingVertical: '5%',borderColor:"rgba(113, 206, 99, 0.7)",borderWidth:2,borderRadius:20}}>
+            <Text style={{color: '#FFFFFF', fontWeight: 500, fontSize:minWidth?32: 50}}>Global thinking. {'\n'}Global growth. </Text>
             <Svg height={70} style={{marginTop: '2%'}}>
                 <Defs>
                     <RadialGradient id="grad1" cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
@@ -28,25 +30,25 @@ export default function StartFunding(){
                     Let's go.
                 </SvgText>
             </Svg>
-            <TouchableOpacity style={[styles.buttonPrimary, {paddingHorizontal: '2%', paddingVertical: '1%', width: '14%', marginBottom: '8%'}]} onPress={() => navigation.navigate("Startup")}>
+            <TouchableOpacity style={[styles.buttonPrimary, {paddingHorizontal: '2%', paddingVertical: '1%', width: minWidth?"40%":'14%', marginBottom: '8%'}]} onPress={() => navigation.navigate("Startup")}>
                 <Text style={styles.buttonText1}>Start Funding</Text>
             </TouchableOpacity>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '60%'}}>
-                <View>
-                    <Text style={[styles.headingText, {textAlign: 'center'}]}>180+</Text>
-                    <Text style={styles.smallText}>countries available</Text>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', width:minWidth?"100%": '60%'}}>
+                <View style={{justifyContent:"center"}}>
+                    <Text style={[styles.headingText, {textAlign: 'center',fontSize:minWidth?15:46}]}>180+</Text>
+                    <Text style={[styles.smallText,{fontSize:minWidth?12:16}]}>countries{minWidth?"\n":""} available</Text>
                 </View>
-                <View>
-                    <Text style={[styles.headingText, {textAlign: 'center'}]}>99%</Text>
-                    <Text style={styles.smallText}>payroll accuracy</Text>
+                <View style={{justifyContent:"center"}}>
+                    <Text style={[styles.headingText, {textAlign: 'center',fontSize:minWidth?15:46}]}>99%</Text>
+                    <Text style={[styles.smallText,{fontSize:minWidth?12:16}]}>payroll{minWidth?"\n":""} accuracy</Text>
                 </View>
-                <View>
-                    <Text style={[styles.headingText, {textAlign: 'center'}]}>500+</Text>
-                    <Text style={styles.smallText}>global partners</Text>
+                <View style={{justifyContent:"center"}}>
+                    <Text style={[styles.headingText, {textAlign: 'center',fontSize:minWidth?15:46}]}>500+</Text>
+                    <Text style={[styles.smallText,{fontSize:minWidth?12:16}]}>global{minWidth?"\n":""} partners</Text>
                 </View>
-                <View>
-                    <Text style={[styles.headingText, {textAlign: 'center'}]}>96%</Text>
-                    <Text style={styles.smallText}>customer satisfaction</Text>
+                <View style={{justifyContent:"center"}}>
+                    <Text style={[styles.headingText, {textAlign: 'center',fontSize:minWidth?15:46}]}>96%</Text>
+                    <Text style={[styles.smallText,{fontSize:minWidth?12:16}]}>customer{minWidth?"\n":""} satisfaction</Text>
                 </View>
             </View>
             <Image source={require('../assets/images/Div [h-full].png')} style={{position:'absolute', bottom: '0%', right: '16%'}}></Image>

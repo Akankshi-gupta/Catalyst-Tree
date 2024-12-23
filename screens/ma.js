@@ -14,6 +14,7 @@ import FounderMessage from "../components/founderMessage";
 
 export default function MergersAcquisitions({navigation}) {
     const { width, height } = useWindowDimensions();
+    const minWidth = width<600;
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
             <View style={{ flex: 1 }}>
@@ -37,7 +38,7 @@ export default function MergersAcquisitions({navigation}) {
                                 Navigate M&A with Confidence
                             </Text>
                         </View>
-                        <Text style={[styles.title, { lineHeight: 78, textAlign: "center", fontSize: 70 }, ]}>
+                        <Text style={[styles.title, { lineHeight: minWidth? 40:78, textAlign: "center", fontSize:minWidth? 35: 70 }, ]}>
                             Strategic Partnerships {"\n"}Made Simple.
                         </Text>
                         <Text
@@ -82,14 +83,14 @@ export default function MergersAcquisitions({navigation}) {
             <View
                 style={{ justifyContent: "center", alignContent: "center", margin: 15, marginBottom: '5%' }}
             >
-                <Text style={[styles.title, { textAlign: "center", marginBottom: 25 }]}>
+                <Text style={[styles.title, {fontSize:minWidth?42:72, textAlign: "center", marginBottom: 25 }]}>
                     What we Offer
                 </Text>
                 <View
                     style={{
-                        flexDirection: "row",
+                        flexDirection: minWidth?"column":"row",
                         justifyContent: "space-evenly",
-                        marginVertical: 50,
+                        marginVertical:minWidth? 20:50,
                     }}
                 >
                     <InfoCard
@@ -104,12 +105,12 @@ export default function MergersAcquisitions({navigation}) {
                 </View>
             </View>
 
-            <View style={{flexDirection:"row",marginVertical:25,marginHorizontal:"5%"}}>
-                <View style={{flex:1,justifyContent:"center"}}>
+            <View style={{flexDirection:minWidth?"column":"row",marginVertical:25,marginHorizontal:"5%"}}>
+                <View style={{flex:minWidth?"auto":1,justifyContent:"center"}}>
                     <Text style={styles.headingText}>Process</Text>
                     <Image source={require("../assets/images/ma-process.png")} style={{width:'100%',height:'80%', borderRadius: 20}}></Image>
                 </View>
-                <View style={{flex:1}}>
+                <View style={{flex:minWidth?"auto":1}}>
                     <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center', marginBottom: '5%'}}>
                         <Box no={'Define Goals'} text={"Tell us your M&A objectives."} imageSource={require("../assets/images/ma-process1.png")}></Box>
                         <Box no={"Matchmaking"} text={"Find the right business partner."} imageSource={require("../assets/images/ma-process2.png")}></Box>
@@ -128,25 +129,33 @@ export default function MergersAcquisitions({navigation}) {
 }
 
 const InfoCard = ({ title, description }) => {
+    const { width, height } = useWindowDimensions();
+    const minWidth = width<600;
     return (
-        <View style={{justifyContent: "flex-start",alignContent: "space-between",width: 352,height: 151,}}>
-            <Image source={require("../assets/images/tickma.png")} style={{ height: 44, width: 44 }}/>
-            <Text style={[styles.headingText,{fontSize: 24, textAlign: "left", paddingVertical: 15 },]}>
+        <View style={{justifyContent: "flex-start",alignContent: "space-between",width:minWidth?"auto": 352,height:minWidth?"50%": 151,}}>
+            <View style={{flexDirection:minWidth?"row":"column",justifyContent:minWidth?"flex-start":"flex-start"}}>
+            <Image source={require("../assets/images/tickma.png")} style={{ height: minWidth?22:44, width:minWidth?22: 44 }}/>
+            <Text style={[styles.headingText,{fontSize: minWidth?18:24, textAlign: "left", paddingVertical:minWidth?0: 15,paddingHorizontal:minWidth?10:0 },]}>
                 {title}
             </Text>
+            </View>
             <Text style={[ styles.smallText,{ textAlign: "left", color: "#898989", fontSize: 18 },]}>
                 {description}
             </Text>
         </View>
 );};
 
-const Box = ({ no, text ,imageSource}) => (
-    <View style={style.box}>
-        <Image source={imageSource} style={{height:60,width:60}}></Image>
-        <Text style={style.boxNumber}>{no}</Text>
-        <Text style={style.boxText}>{text}</Text>
+const Box = ({ no, text ,imageSource}) => {
+    const {height,width} = useWindowDimensions();
+    const minWidth = width<600;
+    return(<View style={[style.box,{height:"auto",width:"auto"}]}>
+        <View style={{flexDirection:minWidth?"row":"column"}}>
+        <Image source={imageSource} style={{height:minWidth?30:60,width:minWidth?30:60}}></Image>
+        <Text style={[style.boxNumber,{fontSize:minWidth?18:24}]}>{no}</Text>
+        </View>
+        <Text style={[style.boxText,{fontSize:minWidth?15:20}]}>{text}</Text>
     </View>
-);
+);}
 
 const style= ({
     box: {

@@ -16,7 +16,7 @@ import UserFeedback from "../components/userFeedback";
 import { LinearGradient as ExpoLinearGradient } from "expo-linear-gradient";
 import InvestorProcessScreen from "../components/RowScroll";
 import CatalystAdvantages from "../components/catalystAdvantage";
-import InvestorServices from "../components/ServiesBoxes";
+import InvestorServices from "../components/InvestorServiesBoxes";
 import CheckBox4 from "../components/checkbox4";
 import Header from "../components/header";
 
@@ -54,7 +54,7 @@ export default function Investor({navigation}) {
             <InvestorServices services={services}></InvestorServices>
             <CheckBox4 title={"Tools for Investor"}></CheckBox4>
             <View
-                style={{flexDirection: "row",marginHorizontal: "12%",marginVertical: 50,}} >
+                style={{flexDirection:width<600?"column": "row",marginHorizontal:width<600?"8%":"12%",marginVertical:width<600?70:50,flex:2}} >
                 <View style={{ flex: 1, marginRight: 10 }}>
                     <Text style={[styles.headingText]}>
                         Startups That Thrived With Us
@@ -65,7 +65,10 @@ export default function Investor({navigation}) {
                         one.
                     </Text>
                 </View>
+                <View style={{flex:1}}>
+
                 <UserFeedback feedback={"As a long-time user of WDK AI ToolKit, I can confidently say that their solutions have evolutionised the way we operate. From the outset, the team provided exceptional support and demonstrated a understanding."} userName={"Artemisia Udinese"} userOccupation={"Marketing Specialist"}/>
+                </View>
             </View>
             <StartFunding navigation={navigation}></StartFunding>
             <Footer navigation={navigation}></Footer>

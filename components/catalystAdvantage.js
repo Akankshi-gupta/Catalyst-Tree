@@ -3,7 +3,9 @@ import { View, Text, useWindowDimensions,Image } from 'react-native';
 import styles from '../screens/styles';
 
 const CatalystAdvantages = () => {
-    const { width } = useWindowDimensions();
+    // const {height,width} =useWindowDimensions();
+    const {height, width } = useWindowDimensions();
+    const minWidth = width<600;
     const advantages = [
         { no: "01", text: "Curated Startup Opportunities" },
         { no: "02", text: "Access startup across industries, geographies and stages with verified profiles" },
@@ -18,7 +20,7 @@ const CatalystAdvantages = () => {
     return (
         <View style={{ marginVertical: '8%', padding: '5%' }}>
             <View>
-                <Text style={[styles.title, { textAlign: 'left' }]}>
+                <Text style={[styles.title, { textAlign: minWidth?"center":'left' }]}>
                     Why Choose the {"\n"}Catalyst ?
                 </Text>
             </View>
@@ -39,14 +41,15 @@ const CatalystAdvantages = () => {
 };
 
 const Col = ({ no, text }) => {
-    const { width } = useWindowDimensions();
+    const {height, width } = useWindowDimensions();
+    const minWidth = width<600;
     return (
         <View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <Text
                     style={{
                         color: "grey",
-                        fontSize: 42,
+                        fontSize:minWidth?22: 42,
                         fontWeight: "bold",
                         alignContent: "center",
                         paddingLeft: 10,
@@ -57,7 +60,7 @@ const Col = ({ no, text }) => {
                 <Text
                     style={{
                         color: "white",
-                        fontSize: 32,
+                        fontSize:minWidth?18: 32,
                         fontWeight: "400",
                         width: width * 0.5,
                     }}

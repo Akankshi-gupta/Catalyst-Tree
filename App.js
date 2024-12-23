@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView, Platform } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createStackNavigator } from '@react-navigation/stack';
-
 import Home from "./screens/homePage";
 import AboutUs from "./screens/aboutUs";
 import Debt from "./screens/debt";

@@ -16,15 +16,16 @@ import Navbar from "../components/navbar";
 
 export default function Home({navigation}){
     const { width, height } = useWindowDimensions();
+    const minWidth = width<600;
     return (
         <ScrollView style={styles.container}>
             <View style={styles.homeSection1}>
                 <ImageBackground source={require("../assets/images/background.png")} style={[styles.backgroundImage, { width, height }]}>
                     <ExpoLinearGradient colors={["rgba(114, 206, 99, 0.8)" ,"rgba(44, 165, 96, 0.8)","transparent", "transparent", "transparent"]} style={{flex: 1}} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0  }}>
                         <Navbar style={{ marginTop: '4%'}} navigation={navigation}></Navbar>
-                        <View style={[styles.overlay]} >
-                            <Text style={styles.title}>
-                                Empowering Startups, {'\n'}Investors, and Businesses {'\n'}to Scale New Heights.
+                        <View style={[styles.overlay,{justifyContent:"flex-end",alignContent:"flex-start"}]} >
+                            <Text style={[styles.title,{fontSize:minWidth?50:62}]}>
+                                Empowering {minWidth?'\n':""}Startups,{'\n'}Investors, and {minWidth?'\n':""}Businesses {'\n'}to Scale  New Heights.
                             </Text>
                             <Text style={styles.subtitle}>
                                 Your Gateway to Debt, Equity, M&A, and Acceleration Services—Simplified and Smarter.
@@ -33,7 +34,7 @@ export default function Home({navigation}){
                                 <TouchableOpacity style={styles.buttonPrimary} onPress={() => navigation.navigate("Startup")}>
                                     <Text style={styles.buttonText1}>Find Funding</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.buttonSecondary} onPress={() => navigation.navigate("Investor")}>
+                                <TouchableOpacity style={[styles.buttonSecondary,{paddingHorizontal:width*0.07}]} onPress={() => navigation.navigate("Investor")}>
                                     <Text style={styles.buttonText2}>Join as Investor</Text>
                                 </TouchableOpacity>
                             </View>
@@ -48,8 +49,8 @@ export default function Home({navigation}){
             {/* <View>
                 <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}>
                     <View style={{flexDirection: 'row', justifyContent: "space-between", width: "100%", alignItems: 'center'}}>
-                        <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {'\n'}for Your Business. </Text>
-                        <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {'\n'}your business? Let us guide you through the decision. </Text>
+                        <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {minWidth?" ":'\n'}for Your Business. </Text>
+                        <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {minWidth?" ":'\n'}your business? Let us guide you through the decision. </Text>
                     </View>
                     <View style={{flexDirection: "row", flex: 1, gap: 6, width: "100%", marginTop: '5%'}}>
                         <View style={styles.fundingInfoView}>
@@ -145,37 +146,37 @@ export default function Home({navigation}){
                     </View>
                 </ExpoLinearGradient>   
             </View> */}
-            <View>
-                <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: 'row', justifyContent: 'center'}]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0  }}>
+            <View style={{height:width<600?"85vh":"auto"}}>
+                <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column-reverse':'row', justifyContent: 'center',alignContent:"flex-start",marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 1, y: 0  }}>
                     <View>
-                        <View style={{backgroundColor: '#FFFFFF1A', padding: '2%',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%', width: '66%', alignItems: 'center'}}>
+                        <View style={{backgroundColor: '#FFFFFF1A',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%', width:minWidth?"90%" :'66%', alignItems: 'center'}}>
                             <Text style={{ color: '#FFFFFF'}}>For Investors (HNIs, Angels, VCs, Family Offices)</Text>
                         </View>
-                        <Text style={[styles.headingText, {lineHeight: 58, marginTop: '4%'}]}>
-                            Invest in the Future. {'\n'}Make Your Money Work {'\n'}Smarter.
+                        <Text style={[styles.headingText, {lineHeight:minWidth? "auto":58, marginTop: '4%'}]}>
+                            Invest in the Future.{minWidth?" ":'\n'}Make Your Money Work {minWidth?" ":'\n'}Smarter.
                         </Text>
                         <Text style={{color: '#FFFFFF', fontWeight: 400, fontSize: 16, marginTop: '4%'}}>
-                            The Catalyst Tree offers investors access to a wide range of {'\n'} opportunities across industries and business stages. Whether you're {'\n'} seeking debt investments with steady returns or equity stakes with {'\n'} high-growth potential, we have investment opportunities to match your {'\n'} strategy and risk appetite.
+                            The Catalyst Tree offers investors access to a wide range of {minWidth?" ":'\n'} opportunities across industries and business stages. Whether you're {minWidth?" ":'\n'} seeking debt investments with steady returns or equity stakes with {minWidth?" ":'\n'} high-growth potential, we have investment opportunities to match your {minWidth?" ":'\n'} strategy and risk appetite.
                         </Text>
                         <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '50%'}]} onPress={() => navigation.navigate("Investor")}>
                             <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Start Investing Now</Text>
                         </TouchableOpacity>
                     </View>
-                    <Image  source={require("../assets/images/investors.png")} style={{width: '40%', height: '100%', borderRadius: 20, marginLeft: '6%'}}></Image>
+                    <Image  source={require("../assets/images/investors.png")} style={{width: minWidth?"60%":'40%', height:minWidth?"30%":'100%', borderRadius: 20, marginLeft: '6%',alignSelf:minWidth?"center":"auto",marginBottom:minWidth?20:"auto"}}></Image>
                 </ExpoLinearGradient>
             </View>    
-            <View>
-                <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: 'row', justifyContent: 'center'}]} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0  }}>
-                    <Image  source={require("../assets/images/Business.png")} style={{width: '40%', height: '100%', borderRadius: 20, marginRight: '6%'}}></Image>
+            <View style={{height:width<600?"70vh":"auto",justifyContent:minWidth?"flex-start":"flex-start"}}>
+                <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column':'row', justifyContent: 'center',marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0  }}>
+                    <Image  source={require("../assets/images/Business.png")} style={{width: minWidth?"60%":'40%', height:minWidth?"30%": '100%', borderRadius: 20, marginRight: '6%',marginBottom:minWidth?20:"auto"}}></Image>
                     <View>
-                        <View style={{backgroundColor: '#FFFFFF1A', padding: '2%',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%', width: '76%', alignItems: 'center'}}>
-                            <Text style={{ color: '#FFFFFF'}}>For Business Owners (Startups & Existing Businesses)</Text>
+                        <View style={{backgroundColor: '#FFFFFF1A', padding: '2%',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%',width:minWidth?"90%" :'75%', alignItems: 'center'}}>
+                            <Text style={{ color: '#FFFFFF',textAlign:"center"}}>For Business Owners (Startups & Existing Businesses)</Text>
                         </View>
-                        <Text style={[styles.headingText, {lineHeight: 58, marginTop: '4%'}]}>
-                            Ready to Take Your {'\n'}Business to the Next {'\n'}Level?
+                        <Text style={[styles.headingText, {lineHeight:minWidth? "auto":58, marginTop: '4%'}]}>
+                            Ready to Take Your {minWidth?" ":'\n'}Business to the Next {minWidth?" ":'\n'}Level?
                         </Text>
                         <Text style={{color: '#FFFFFF', fontWeight: 400, fontSize: 16, marginTop: '4%'}}>
-                            Whether you're a startup with a big idea or an existing business ready {'\n'}to scale, we're here to help.
+                            Whether you're a startup with a big idea or an existing business ready {minWidth?" ":'\n'}to scale, we're here to help.
                         </Text>
                         <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '60%'}]} onPress={() => navigation.navigate("Startup")}>
                             <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Apply For Funding Now</Text>
@@ -185,11 +186,11 @@ export default function Home({navigation}){
             </View>   
             <View>
                 <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}>
-                    <View style={{flexDirection: 'row', justifyContent: "space-between", width: "100%", alignItems: 'center'}}>
-                        <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {'\n'}for Your Business. </Text>
-                        <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {'\n'}your business? Let us guide you through the decision. </Text>
+                    <View style={{flexDirection:minWidth?"column": 'row', justifyContent: "space-between", width: "100%", alignItems: 'center'}}>
+                        <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {minWidth?" ":'\n'}for Your Business. </Text>
+                        <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {minWidth?" ":'\n'}your business? Let us guide you through the decision. </Text>
                     </View>
-                    <View style={{flexDirection: "row", flex: 1, gap: 6, width: "100%", marginTop: '5%'}}>
+                    <View style={{flexDirection:minWidth? "column":"row", flex: 1, gap: 6, width: "100%", marginTop: '5%'}}>
                         <View style={styles.fundingInfoView}>
                             <Image source={require("../assets/images/debt funding.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
                             <View style={{gap: 10, marginTop: "5%"}}>
@@ -275,14 +276,15 @@ export default function Home({navigation}){
                             </View>
                         </View>
                     </View>
-                    <View style={{flexDirection: "row", width: "100%", marginTop: '5%', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <Text style={[styles.fundingInfoTitle, {fontSize: 26}]}>Let us help you decide which option aligns best with your business goals.</Text>
+                    <View style={{flexDirection:minWidth?"column":"row", width: "100%", marginTop: '5%', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <Text style={[styles.fundingInfoTitle, {fontSize:minWidth?18: 26,marginBottom:minWidth?30:"auto"}]}>Let us help you decide which option aligns best with your business goals.</Text>
                         <TouchableOpacity style={styles.buttonPrimary}  onPress={() => navigation.navigate("ContactUs")}>
                             <Text style={styles.buttonText1}>Get In Touch With Us</Text>
                         </TouchableOpacity>
                     </View>
                 </ExpoLinearGradient>   
             </View>
+        <View style={{paddingVertical:minWidth?"5%":"auto",}}> 
             <View>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%'}}>
                     <Defs>
@@ -296,14 +298,14 @@ export default function Home({navigation}){
                     <Ellipse cx={width / 2} cy={height / 2} rx={'80%'} ry={"70%"} fill="url(#grad1)" />
                 </Svg>
                 <View style={{backgroundColor: 'rgba(51 51 51 / 0.29)', borderRadius: 24, alignItems: 'center', paddingVertical: "4%", paddingHorizontal: "6%"}}>
-                    <View style={{justifyContent: 'center', alignItems: "center", borderRadius: 50, borderColor: '#FFFFFF', borderWidth: 1, width: '15%', padding: '1%', marginBottom: '1%'}}>
+                    <View style={{justifyContent: 'center', alignItems: "center", borderRadius: 50, borderColor: '#FFFFFF', borderWidth: 1, width: minWidth?"60%":'30%', padding: '1%', marginBottom: '1%'}}>
                         <Text style={{color: '#FFFFFF', fontWeight: 500, }}>How It Works Section</Text>
                     </View>
                     <Text style={[styles.headingText, {marginBottom: '1%'}]}>Simple, Transparent, Powerful.</Text>
-                    <Text style={[{width: '36%', marginBottom: '4%'}, styles.smallText]}>Getting started with The Catalyst Tree is easy. Here's how we connect business owners with investors:</Text>
-                    <View>
-                        <Text style={[styles.headingText, {marginBottom: '1%'}]}>For Business Owners</Text>
-                        <View style={{backgroundColor: '#282B27', borderRadius: 24, flexDirection: 'row', paddingVertical: "4%" , paddingHorizontal: "6%", borderColor: '#FFFFFF00', borderWidth: 1, marginBottom: '4%'}}>
+                    <Text style={[{width:minWidth?"80%" :'36%', marginBottom: '4%'}, styles.smallText]}>Getting started with The Catalyst Tree is easy. Here's how we connect business owners with investors:</Text>
+
+                        <Text style={[styles.headingText, {marginBottom: minWidth?"5%":'1%'}]}>For Business Owners</Text>
+                        <View style={{backgroundColor: '#282B27', borderRadius: 24, flexDirection:minWidth?"column": 'row', paddingVertical: "4%" , paddingHorizontal: "6%", borderColor: '#FFFFFF00', borderWidth: 1, marginBottom: '4%'}}>
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center', marginRight: '5%'}}>
                                 <Svg height={70}>
                                     <Defs>
@@ -348,8 +350,8 @@ export default function Home({navigation}){
                             </View>
                         </View>
 
-                        <Text style={[styles.headingText, {marginBottom: '1%'}]}>For Investors</Text>
-                        <View style={{backgroundColor: '#282B27', borderRadius: 24, flexDirection: 'row', paddingVertical: "4%" , paddingHorizontal: "6%", borderColor: '#FFFFFF00', borderWidth: 1}}>
+                        <Text style={[styles.headingText, {marginBottom:minWidth?"5%": '1%'}]}>For Investors</Text>
+                        <View style={{backgroundColor: '#282B27', borderRadius: 24, flexDirection:minWidth?"column": 'row', paddingVertical: "4%" , paddingHorizontal: "6%", borderColor: '#FFFFFF00', borderWidth: 1}}>
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center', marginRight: '5%'}}>
                                 <Svg height={70}>
                                     <Defs>
