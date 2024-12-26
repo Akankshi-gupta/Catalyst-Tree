@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { v4 as uuidv4 } from 'uuid'; 
 import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image } from "react-native";
 // import { Image } from 'react-native-expo-image-cache';
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
@@ -17,6 +18,11 @@ import Navbar from "../components/navbar";
 export default function Home({navigation}){
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
+    const [id, setId] = useState('');
+    
+    useEffect(() => {
+        setId(uuidv4().toString());
+    }, []);
     return (
         <ScrollView style={styles.container}>
             <View style={styles.homeSection1}>
@@ -39,113 +45,12 @@ export default function Home({navigation}){
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        
                     </ExpoLinearGradient>
                 </ImageBackground>
             </View>
             <View style={{alignItems: "center"}}>
                 <Counts></Counts>
             </View>
-            {/* <View>
-                <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}>
-                    <View style={{flexDirection: 'row', justifyContent: "space-between", width: "100%", alignItems: 'center'}}>
-                        <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {minWidth?" ":'\n'}for Your Business. </Text>
-                        <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {minWidth?" ":'\n'}your business? Let us guide you through the decision. </Text>
-                    </View>
-                    <View style={{flexDirection: "row", flex: 1, gap: 6, width: "100%", marginTop: '5%'}}>
-                        <View style={styles.fundingInfoView}>
-                            <Image source={require("../assets/images/debt funding.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
-                            <View style={{gap: 10, marginTop: "5%"}}>
-                                <Text style={styles.fundingInfoTitle}>Debt Funding</Text>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Keep full ownership of your business.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Flexible repayment terms.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Fixed interest rates and predictable cash flow.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Ideal for businesses that need capital without diluting equity.</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.fundingInfoView}>
-                            <Image source={require("../assets/images/equity funding.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
-                            <View style={{gap: 10, marginTop: "5%"}}>
-                                <Text style={styles.fundingInfoTitle}>Equity Funding</Text>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Raise capital by offering ownership in your business.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Attract long-term investors who are invested in your success.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Ideal for businesses looking to scale quickly and share the risk and reward.</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.fundingInfoView}>
-                            <Image  source={require("../assets/images/mergers.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
-                            <View style={{gap: 10, marginTop: "5%"}}>
-                                <Text style={styles.fundingInfoTitle}>Mergers & Acquisitions</Text>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Find the perfect partner with AI-driven matchmaking.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Get expert guidance for valuation and deal structuring.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Streamline due diligence with integrated tools.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Maximize value with tailored exit strategies.</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.fundingInfoView}>
-                            <Image  source={require("../assets/images/acceleration.png")} style={{borderRadius: 12, height: 138, width: '100%'}}></Image>
-                            <View style={{gap: 10, marginTop: "5%"}}>
-                                <Text style={styles.fundingInfoTitle}>Acceleration Programs</Text>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Access mentorship from industry leaders.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Learn from exclusive workshops and webinars.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Leverage discounted tools and services to scale faster.</Text>
-                                </View>
-                                <View style={styles.fundingInfo}>
-                                    <FaCheckCircle name="check-circle" size={30} color="white" />
-                                    <Text style={styles.fundingInfoText}>Gain exposure to top-tier investors through demo days.</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={{flexDirection: "row", width: "100%", marginTop: '5%', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <Text style={[styles.fundingInfoTitle, {fontSize: 26}]}>Let us help you decide which option aligns best with your business goals.</Text>
-                        <TouchableOpacity style={styles.buttonPrimary}>
-                            <Text style={styles.buttonText1}>Get In Touch With Us</Text>
-                        </TouchableOpacity>
-                    </View>
-                </ExpoLinearGradient>   
-            </View> */}
             <View style={{height:width<600?"85vh":"auto"}}>
                 <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column-reverse':'row', justifyContent: 'center',alignContent:"flex-start",marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 1, y: 0  }}>
                     <View>
@@ -288,14 +193,14 @@ export default function Home({navigation}){
             <View>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%'}}>
                     <Defs>
-                        <RadialGradient id="grad1" cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
                             <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
                             <Stop offset="100%" stopColor="black" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
                     {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
-                    <Ellipse cx={width / 2} cy={height / 2} rx={'80%'} ry={"70%"} fill="url(#grad1)" />
+                    <Ellipse cx={width / 2} cy={height / 2} rx={'80%'} ry={"70%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
                 <View style={{backgroundColor: 'rgba(51 51 51 / 0.29)', borderRadius: 24, alignItems: 'center', paddingVertical: "4%", paddingHorizontal: "6%"}}>
                     <View style={{justifyContent: 'center', alignItems: "center", borderRadius: 50, borderColor: '#FFFFFF', borderWidth: 1, width: minWidth?"60%":'30%', padding: '1%', marginBottom: '1%'}}>

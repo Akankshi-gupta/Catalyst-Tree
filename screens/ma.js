@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { v4 as uuidv4 } from 'uuid'; 
 import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image,} from "react-native";
 import { LinearGradient as ExpoLinearGradient } from "expo-linear-gradient";
 import styles from "./styles";
@@ -15,19 +16,24 @@ import FounderMessage from "../components/founderMessage";
 export default function MergersAcquisitions({navigation}) {
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
+    const [id, setId] = useState('');
+        
+    useEffect(() => {
+        setId(uuidv4().toString());
+    }, []);
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
             <View style={{ flex: 1 }}>
                 <Svg style={{position: "absolute", zIndex: -1, top: 0, left: 0, width: "100%", height: "100%", }}>
                     <Defs>
-                        <RadialGradient id="grad1" cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
                             <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1"/>
                             <Stop offset="100%" stopColor="black" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
                     {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
-                    <Ellipse cx={0} cy={"45%"} rx={"50%"} ry={"15%"} fill="url(#grad1)" />
+                    <Ellipse cx={0} cy={"45%"} rx={"50%"} ry={"15%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: "5%", paddingTop: "3%", paddingBottom: "5%", alignItems: "center",}}>
@@ -41,12 +47,7 @@ export default function MergersAcquisitions({navigation}) {
                         <Text style={[styles.title, { lineHeight: minWidth? 40:78, textAlign: "center", fontSize:minWidth? 35: 70 }, ]}>
                             Strategic Partnerships {"\n"}Made Simple.
                         </Text>
-                        <Text
-                            style={[
-                                styles.subtitle,
-                                { marginBottom: "5%", color: "#FFFFFFCC" },
-                            ]}
-                        >
+                        <Text style={[ styles.subtitle, { marginBottom: "5%", color: "#FFFFFFCC" }]}>
                             Explore mergers, acquisitions, and partnerships with data-driven
                             precision.
                         </Text>
@@ -58,14 +59,7 @@ export default function MergersAcquisitions({navigation}) {
                         {/* </ExpoLinearGradient> */}
                     </ImageBackground>
                 </View>
-                <View
-                    style={{
-                        paddingHorizontal: "5%",
-                        paddingTop: "3%",
-                        paddingBottom: "5%",
-                        alignItems: "center",
-                    }}
-                >
+                <View style={{ paddingHorizontal: "5%", paddingTop: "3%", paddingBottom: "5%", alignItems: "center"}}>
                     <ProductExplanation
                         why={"Why Choose M&A?"}
                         img1={require("../assets/images/ma1.png")}
@@ -80,19 +74,11 @@ export default function MergersAcquisitions({navigation}) {
                 </View>
             </View>
 
-            <View
-                style={{ justifyContent: "center", alignContent: "center", margin: 15, marginBottom: '5%' }}
-            >
+            <View style={{ justifyContent: "center", alignContent: "center", margin: 15, marginBottom: '5%' }}>
                 <Text style={[styles.title, {fontSize:minWidth?42:72, textAlign: "center", marginBottom: 25 }]}>
                     What we Offer
                 </Text>
-                <View
-                    style={{
-                        flexDirection: minWidth?"column":"row",
-                        justifyContent: "space-evenly",
-                        marginVertical:minWidth? 20:50,
-                    }}
-                >
+                <View style={{ flexDirection: minWidth?"column":"row", justifyContent: "space-evenly", marginVertical:minWidth? 20:50 }}>
                     <InfoCard
                         description={"We match businesses based on synergy and growth potential."}
                         title={"Deal Discovery"}></InfoCard>

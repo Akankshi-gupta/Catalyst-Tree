@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { v4 as uuidv4 } from 'uuid'; 
 import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image } from "react-native";
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
@@ -15,26 +16,31 @@ import FounderMessage from "../components/founderMessage";
 export default function Equity({navigation}){
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
+    const [id, setId] = useState('');
+        
+    useEffect(() => {
+        setId(uuidv4().toString());
+    }, []);
     return(
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
             <View style={{flex: 1}}>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
                     <Defs>
-                        <RadialGradient id="grad1" cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
                             <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
                             <Stop offset="100%" stopColor="black" stopOpacity="1" />
                         </RadialGradient>
 
-                        <RadialGradient id="grad2" cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
                             <Stop offset="0%" stopColor="  rgba(114, 206, 99, 0.2)" stopOpacity="1" />
                             <Stop offset="100%" stopColor="black" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
                     {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
-                    <Ellipse cx={0} cy={'45%'} rx={'50%'} ry={"15%"} fill="url(#grad1)" />
+                    <Ellipse cx={0} cy={'45%'} rx={'50%'} ry={"15%"} fill={`url(#radial-gradient-${id})`} />
 
-                    <Ellipse cx={'50%'} cy={'90%'} rx={'40%'} ry={"10%"} fill="url(#grad2)" />
+                    <Ellipse cx={'50%'} cy={'90%'} rx={'40%'} ry={"10%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%'}}>

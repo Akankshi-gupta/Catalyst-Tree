@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Modal,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {Modal, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { FaBriefcase, FaUser  } from 'react-icons/fa';  
 import { useNavigation } from '@react-navigation/native';
@@ -14,12 +8,7 @@ const CustomPopup = ({ visible, title, message, onClose }) => {
   const navigation = useNavigation(); // Access navigation
 
   return (
-    <Modal
-      animationType="none"
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}
-    >
+    <Modal animationType="none" transparent={true} visible={visible} onRequestClose={onClose}>
       <View style={styles.overlay}>
         <View style={styles.popup}>
           <Text style={styles.title}>
@@ -27,23 +16,11 @@ const CustomPopup = ({ visible, title, message, onClose }) => {
           </Text>
           <Text style={styles.message}>Select the option that best describes your need.</Text>
           <View style={styles.optionsContainer}>
-          <TouchableOpacity
-              style={styles.optionButton}
-              onPress={() => {
-                onClose();
-                navigation.navigate('Startup');
-              }}
-            >
+            <TouchableOpacity style={styles.optionButton} onPress={() => {onClose(); navigation.navigate('Startup');}}>
               <FaBriefcase name="briefcase" size={40} color="rgba(114, 206, 99, 1)" />
               <Text style={styles.optionText}>I'm a Startup</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.optionButton}
-              onPress={() => {
-                onClose();
-                navigation.navigate('Investor');
-              }}
-            >
+            <TouchableOpacity style={styles.optionButton} onPress={() => { onClose(); navigation.navigate('Investor');}}>
               <FaUser  name="user" size={40} color="rgba(114, 206, 99, 1)" />
               <Text style={styles.optionText}>I'm an Investor</Text>
             </TouchableOpacity>

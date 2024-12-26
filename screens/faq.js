@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { v4 as uuidv4 } from 'uuid'; 
 import { View,ScrollView, TouchableOpacity,Text, } from "react-native";
 import styles from "./styles";
 import Navbar from "../components/navbar";
@@ -10,30 +11,35 @@ import Svg, {Defs,RadialGradient,Stop,Ellipse,LinearGradient as SvgLinearGradien
 
 
 export default function FAQ() {
+    const [id, setId] = useState('');
+        
+    useEffect(() => {
+        setId(uuidv4().toString());
+    }, []);
   return (
     <ScrollView>
         <View style={styles.container}>
             <Navbar></Navbar>
             <View style={{padding:"5%"}}>
-            <ExpoLinearGradient colors={["#26976B" ,"#72CE63"]} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center'}} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1  }}>
-                        <Text style={[styles.title, {lineHeight: 78, textAlign: 'center', fontSize: 70}]}>Frequently Asked {"\n"} Question</Text>
-                        <TouchableOpacity style={styles.buttonPrimary}>
-                            <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Get Started</Text>
-                        </TouchableOpacity>
+                <ExpoLinearGradient colors={["#26976B" ,"#72CE63"]} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center'}} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1  }}>
+                    <Text style={[styles.title, {lineHeight: 78, textAlign: 'center', fontSize: 70}]}>Frequently Asked {"\n"} Question</Text>
+                    <TouchableOpacity style={styles.buttonPrimary}>
+                        <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Get Started</Text>
+                    </TouchableOpacity>
                 </ExpoLinearGradient>
             </View>
-                <View style={{marginBottom:"5%"}}>
-                    <Svg style={{position: "absolute",zIndex: -1,top: 0,left: 0,width: "100%",height: "100%"}}> 
-                        <Defs>     
-                            <RadialGradient id="grad1" cx="30%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">         
-                                <Stop offset="10%" stopColor="rgba(44, 165, 96, 0.56)" stopOpacity="1"/>         
-                                <Stop offset="100%" stopColor="black" stopOpacity="1" />     
-                            </RadialGradient> 
-                        </Defs> 
-                        {/* Apply Radial Gradient to an Ellipse (Oval Shape) */} 
-                        <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill="url(#grad1)" />
-                    </Svg>
-                    <View style={{padding: "5%"}}>
+            <View style={{marginBottom:"5%"}}>
+                <Svg style={{position: "absolute",zIndex: -1,top: 0,left: 0,width: "100%",height: "100%"}}> 
+                    <Defs>     
+                        <RadialGradient id={`radial-gradient-${id}`} cx="30%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">         
+                            <Stop offset="10%" stopColor="rgba(44, 165, 96, 0.56)" stopOpacity="1"/>         
+                            <Stop offset="100%" stopColor="black" stopOpacity="1" />     
+                        </RadialGradient> 
+                    </Defs> 
+                    {/* Apply Radial Gradient to an Ellipse (Oval Shape) */} 
+                    <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill={`url(#radial-gradient-${id})`} />
+                </Svg>
+                <View style={{padding: "5%"}}>
                     <Text style={[styles.headingText, {marginBottom: '4%',}]}>Frequently Asked Questions</Text>
                     <View style={{flexDirection:"row"}}> 
                             <TouchableOpacity>
@@ -52,20 +58,19 @@ export default function FAQ() {
                         </View>
                             </TouchableOpacity>
                     </View>
-                    </View>
-                    <View style={{paddingHorizontal:"5%"}}>
+                </View>
+                <View style={{paddingHorizontal:"5%"}}>
                     <FrequentlyAsked Question='What is a Bounce?' Answer={''}></FrequentlyAsked>
                     <FrequentlyAsked Question='What is the difference between the Free and Paid versions?' Answer={'Magna nec, porttitor purus vulputate. Enim accumsan non, auctor posuere tristique aliquam tempus maecenas orci. Risus egestas sapien tincidunt nunc est malesuada magna. Fringilla porta nunc consectetur amet aliquam. Dolor tellus augue in ridiculus vulputate.'}></FrequentlyAsked>
                     <FrequentlyAsked Question='What if I decide to change a plan from monthly to annually and back?' Answer={''}></FrequentlyAsked>
                     <FrequentlyAsked Question='How do I add personalised data to messages?' Answer={''}></FrequentlyAsked>
                     <FrequentlyAsked Question='How do I re-subscribe a contact who opted out or was accidentally removed?' Answer={''}></FrequentlyAsked>
                     <FrequentlyAsked Question='Do you plan on adding more features in the future?' Answer={''}></FrequentlyAsked>
-                    </View>
-                    </View>
-                
-                <StartFunding></StartFunding>
-                <Footer></Footer>
                 </View>
+            </View>
+            <StartFunding></StartFunding>
+            <Footer></Footer>
+        </View>
     </ScrollView>
     
   );

@@ -1,27 +1,12 @@
-import React from "react";
-import {
-    Text,
-    View,
-    TouchableOpacity,
-    ImageBackground,
-    ScrollView,
-    useWindowDimensions,
-    Image,
-    TextInput,
-} from "react-native";
+import React, {useState, useEffect}  from "react";
+import { v4 as uuidv4 } from 'uuid'; 
+import {Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image, TextInput} from "react-native";
 import { LinearGradient as ExpoLinearGradient } from "expo-linear-gradient";
 import styles from "./styles";
 import Counts from "../components/counts";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { FaEnvelope, FaPhone, FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import Svg, {
-    Defs,
-    RadialGradient,
-    Stop,
-    Ellipse,
-    LinearGradient as SvgLinearGradient,
-    Text as SvgText,
-} from "react-native-svg";
+import Svg, {Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient, Text as SvgText} from "react-native-svg";
 import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
 import Navbar from "../components/navbar";
@@ -29,21 +14,23 @@ import Footer from "../components/footer";
 
 export default function Contact_Us({navigation}) {
     const { width, height } = useWindowDimensions();
+    const [id, setId] = useState('');
+        
+    useEffect(() => {
+        setId(uuidv4().toString());
+    }, []);
     return (
-        <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
-            style={styles.container}
-        >
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={styles.container}>
             <View style={{ flex: 1 }}>
                 <Svg style={{position: "absolute",zIndex: -1,top: 0,left: 0,width: "100%",height: "100%"}}> 
                     <Defs>     
-                        <RadialGradient id="grad1" cx="30%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">         
+                        <RadialGradient id={`radial-gradient-${id}`} cx="30%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">         
                             <Stop offset="10%" stopColor="rgba(44, 165, 96, 0.56)" stopOpacity="1"/>         
                             <Stop offset="100%" stopColor="black" stopOpacity="1" />     
                         </RadialGradient> 
                     </Defs> 
                     {/* Apply Radial Gradient to an Ellipse (Oval Shape) */} 
-                    <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill="url(#grad1)" />
+                    <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{backgroundColor: "#33333399",height: height ,margin: 100,borderRadius: 24,paddingVertical: 40,paddingHorizontal: 100,}}>
