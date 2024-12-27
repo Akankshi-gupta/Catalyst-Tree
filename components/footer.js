@@ -57,7 +57,7 @@ export default function Footer({navigation}){
                 <View style={{width: '45%'}}>
                     <Text style={[styles.headingText, {fontSize: minWidth?14:20, marginBottom: '4%'}]}>Subscribe Our Newsletter.</Text>
                     <View style={{flexDirection:minWidth?"column" :'row', justifyContent: 'space-between'}}>
-                        <TextInput  style={{backgroundColor: '#FFFFFF', width: '62%', paddingVertical: '2%', borderRadius:minWidth?5: 8,paddingHorizontal:"2%",marginBottom:minWidth?5:"auto",fontSize:minWidth?10:15}}  placeholder="Email address"></TextInput>
+                        <TextInput  style={{backgroundColor: '#FFFFFF', width: '62%', paddingVertical: '2%', borderRadius:minWidth?5: 8,paddingHorizontal:"2%",marginBottom:minWidth?5:"auto",fontSize:minWidth?10:15}}></TextInput>
                         <TouchableOpacity style={{backgroundColor: '#FFFFFF', borderRadius: minWidth?5:8,  width: minWidth?'50%':"30%", alignItems: 'center', justifyContent: 'center'}} >
                             <Text style={[footerStyles.smallText, {color: '#0E0E0E' , paddingVertical: '2%'}]}>Book a Demo</Text>
                         </TouchableOpacity>

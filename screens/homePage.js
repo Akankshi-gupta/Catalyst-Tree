@@ -25,6 +25,28 @@ export default function Home({navigation}){
     }, []);
     return (
         <ScrollView style={styles.container}>
+            <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
+                <Defs>
+                    <RadialGradient id={`radial-gradient-${id}-1`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                    </RadialGradient>
+
+                    <RadialGradient id={`radial-gradient-${id}-2`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                    </RadialGradient>
+
+                    <RadialGradient id={`radial-gradient-${id}-3`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                    </RadialGradient>
+                </Defs>
+
+                <Ellipse cx={'50%'} cy={'26%'} rx={'85%'} ry={"7%"} fill={`url(#radial-gradient-${id}-1)`} />
+                <Ellipse cx={'100%'} cy={'42%'} rx={'51%'} ry={"8%"} fill={`url(#radial-gradient-${id}-2)`} />
+                <Ellipse cx={0} cy={'50%'} rx={'51%'} ry={"8%"} fill={`url(#radial-gradient-${id}-3)`} />
+            </Svg>
             <View style={styles.homeSection1}>
                 <ImageBackground source={require("../assets/images/background.png")} style={[styles.backgroundImage, { width, height }]}>
                     <ExpoLinearGradient colors={["rgba(114, 206, 99, 0.8)" ,"rgba(44, 165, 96, 0.8)","transparent", "transparent", "transparent"]} style={{flex: 1}} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0  }}>
@@ -52,7 +74,8 @@ export default function Home({navigation}){
                 <Counts></Counts>
             </View>
             <View style={{height:width<600?"85vh":"auto"}}>
-                <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column-reverse':'row', justifyContent: 'center',alignContent:"flex-start",marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 1, y: 0  }}>
+                <View style={[styles.overlay, {flexDirection: minWidth?'column-reverse':'row', justifyContent: 'center',alignContent:"flex-start", marginBottom: '4%'}]}>
+                {/* <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column-reverse':'row', justifyContent: 'center',alignContent:"flex-start",marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 1, y: 0  }}> */}
                     <View>
                         <View style={{backgroundColor: '#FFFFFF1A',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%', width:minWidth?"90%" :'66%', alignItems: 'center'}}>
                             <Text style={{ color: '#FFFFFF'}}>For Investors (HNIs, Angels, VCs, Family Offices)</Text>
@@ -68,10 +91,12 @@ export default function Home({navigation}){
                         </TouchableOpacity>
                     </View>
                     <Image  source={require("../assets/images/investors.png")} style={{width: minWidth?"60%":'40%', height:minWidth?"30%":'100%', borderRadius: 20, marginLeft: '6%',alignSelf:minWidth?"center":"auto",marginBottom:minWidth?20:"auto"}}></Image>
-                </ExpoLinearGradient>
+                {/* </ExpoLinearGradient> */}
+                </View>
             </View>    
             <View style={{height:width<600?"70vh":"auto",justifyContent:minWidth?"flex-start":"flex-start"}}>
-                <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column':'row', justifyContent: 'center',marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0  }}>
+                <View style={[styles.overlay, {flexDirection: minWidth?'column':'row', justifyContent: 'center',marginTop:minWidth?0:0}]}>
+                {/* <ExpoLinearGradient colors={["transparent", "transparent", "transparent", "rgba(44, 165, 96, 0.8)"]} style={[styles.overlay, {flexDirection: minWidth?'column':'row', justifyContent: 'center',marginTop:minWidth?0:0}]} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0  }}> */}
                     <Image  source={require("../assets/images/Business.png")} style={{width: minWidth?"60%":'40%', height:minWidth?"30%": '100%', borderRadius: 20, marginRight: '6%',marginBottom:minWidth?20:"auto"}}></Image>
                     <View>
                         <View style={{backgroundColor: '#FFFFFF1A', padding: '2%',borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, padding: '2%',width:minWidth?"90%" :'75%', alignItems: 'center'}}>
@@ -87,10 +112,12 @@ export default function Home({navigation}){
                             <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Apply For Funding Now</Text>
                         </TouchableOpacity>
                     </View>
-                </ExpoLinearGradient>
+                {/* </ExpoLinearGradient> */}
+                </View>
             </View>   
             <View>
-                <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}>
+                <View style={[styles.overlay,{paddingHorizontal: "6%"}]}>
+                {/* <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}> */}
                     <View style={{flexDirection:minWidth?"column": 'row', justifyContent: "space-between", width: "100%", alignItems: 'center'}}>
                         <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {minWidth?" ":'\n'}for Your Business. </Text>
                         <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {minWidth?" ":'\n'}your business? Let us guide you through the decision. </Text>
@@ -187,7 +214,8 @@ export default function Home({navigation}){
                             <Text style={styles.buttonText1}>Get In Touch With Us</Text>
                         </TouchableOpacity>
                     </View>
-                </ExpoLinearGradient>   
+                {/* </ExpoLinearGradient>    */}
+                </View>
             </View>
         <View style={{paddingVertical:minWidth?"5%":"auto",}}> 
             <View>
@@ -204,7 +232,7 @@ export default function Home({navigation}){
                 </Svg>
                 <View style={{backgroundColor: 'rgba(51 51 51 / 0.29)', borderRadius: 24, alignItems: 'center', paddingVertical: "4%", paddingHorizontal: "6%"}}>
                     <View style={{justifyContent: 'center', alignItems: "center", borderRadius: 50, borderColor: '#FFFFFF', borderWidth: 1, width: minWidth?"60%":'30%', padding: '1%', marginBottom: '1%'}}>
-                        <Text style={{color: '#FFFFFF', fontWeight: 500, }}>How It Works Section</Text>
+                        <Text style={{color: '#FFFFFF', fontWeight: 500, }}>How It Works</Text>
                     </View>
                     <Text style={[styles.headingText, {marginBottom: '1%'}]}>Simple, Transparent, Powerful.</Text>
                     <Text style={[{width:minWidth?"80%" :'36%', marginBottom: '4%'}, styles.smallText]}>Getting started with The Catalyst Tree is easy. Here's how we connect business owners with investors:</Text>
