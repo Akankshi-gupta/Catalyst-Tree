@@ -9,18 +9,18 @@ const CustomPopup = ({ visible, title, message, onClose }) => {
 
   return (
     <Modal animationType="none" transparent={true} visible={visible} onRequestClose={onClose}>
-      <View style={styles.overlay}>
-        <View style={styles.popup}>
+      <View style={[styles.overlay, {borderRadius: 20}]}>
+        <View style={[styles.popup, {width: '45%'}]}>
           <Text style={styles.title}>
             Investors & Startups Platform{'\n'}to Fund & Raise Capital
           </Text>
           <Text style={styles.message}>Select the option that best describes your need.</Text>
           <View style={styles.optionsContainer}>
-            <TouchableOpacity style={styles.optionButton} onPress={() => {onClose(); navigation.navigate('Startup');}}>
+            <TouchableOpacity style={[styles.optionButton,{marginRight: '4%'}]} onPress={() => {onClose(); navigation.navigate('Startup');}}>
               <FaBriefcase name="briefcase" size={40} color="rgba(114, 206, 99, 1)" />
               <Text style={styles.optionText}>I'm a Startup</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.optionButton} onPress={() => { onClose(); navigation.navigate('Investor');}}>
+            <TouchableOpacity style={[styles.optionButton, {marginLeft: '4%'}]} onPress={() => { onClose(); navigation.navigate('Investor');}}>
               <FaUser  name="user" size={40} color="rgba(114, 206, 99, 1)" />
               <Text style={styles.optionText}>I'm an Investor</Text>
             </TouchableOpacity>
@@ -63,11 +63,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 20,
-    color: 'white',
+    color: 'rgba(255, 255, 255, 1)',
+    fontWeight: 400
   },
   optionsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     width: '100%',
     marginBottom: 20,
   },

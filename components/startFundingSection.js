@@ -16,14 +16,14 @@ export default function StartFunding(){
     }, []);
     return(
         <View style={{paddingHorizontal: minWidth?"3%":'7%',marginHorizontal:minWidth?"5%":0, paddingVertical: '5%',borderColor:"rgba(113, 206, 99, 0.7)",borderWidth:2,borderRadius:20}}>
-            <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
+            <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%', borderRadius:20}}>
                 <Defs>
                     <RadialGradient id={`radial-gradient-${id}-1`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.6)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                     </RadialGradient>
                 </Defs>
-                <Ellipse cx={0} cy={'50%'} rx={'50%'} ry={"50%"} fill={`url(#radial-gradient-${id}-1)`} />
+                <Ellipse cx={0} cy={'50%'} rx={'66%'} ry={"80%"} fill={`url(#radial-gradient-${id}-1)`} />
             </Svg>
             <Text style={{color: '#FFFFFF', fontWeight: 500, fontSize:minWidth?32: 50}}>Global thinking. {'\n'}Global growth. </Text>
             <Svg height={70} style={{marginTop: '2%'}}>
@@ -41,7 +41,7 @@ export default function StartFunding(){
             <TouchableOpacity style={[styles.buttonPrimary, {paddingHorizontal: '2%', paddingVertical: '1%', width: minWidth?"40%":'16%', marginBottom: '8%'}]} onPress={() => navigation.navigate("Startup")}>
                 <Text style={styles.buttonText1}>Start Funding</Text>
             </TouchableOpacity>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'start', width:minWidth?"100%": '60%'}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'start', width:'60%'}}>
                 <View style={{justifyContent:"center"}}>
                     <Text style={[styles.headingText, {textAlign: 'center',fontSize:minWidth?15:46}]}>180+</Text>
                     <Text style={[styles.smallText,{fontSize:minWidth?12:16}]}>countries{minWidth?"\n":""} available</Text>

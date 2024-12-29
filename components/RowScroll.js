@@ -21,53 +21,23 @@ const InvestorProcessScreen = ({ items ,title}) => {
 
    
     return (
-        <View style={{ marginTop: 50, marginHorizontal: 25 }}>
-            <Text style={[styles.title, { textAlign: 'center' }]}>
+        <View style={{ margin: '2%'}}>
+            <Text style={[styles.title, { textAlign: 'center' , fontSize: 48, fontWeight: 500}]}>
                 {title}
             </Text>
 
             {/* Scroll buttons */}
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                <TouchableOpacity
-                    style={{
-                        width: 25,
-                        alignItems: 'center',
-                        height: 25,
-                        borderRadius: 13,
-                        marginRight: 30,
-                        borderColor: 'white',
-                        borderWidth: 2,
-                        padding: 5,
-                        boxShadow: '#343434',
-                    }}
-                    onPress={() => handleScroll('left')} // Scroll left on button press
-                >
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: '2%', marginBottom: '3%', marginHorizontal: '4%' }}>
+                <TouchableOpacity style={{ width: 33, alignItems: 'center', height: 33, borderRadius: 18, marginRight: 30, borderColor: 'white', borderWidth: 2, padding: 5, boxShadow: '#343434', justifyContent: 'center'}} onPress={() => handleScroll('left')} >
                     <MdArrowBack  name={'arrow-back'} color='white' />
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    style={{
-                        width: 25,
-                        alignItems: 'center',
-                        height: 25,
-                        borderRadius: 13,
-                        marginRight: 15,
-                        borderColor: 'white',
-                        borderWidth: 2,
-                        padding: 5,
-                        boxShadow: '#343434',
-                    }}
-                    onPress={() => handleScroll('right')} // Scroll right on button press
-                >
+                <TouchableOpacity style={{ width: 33, alignItems: 'center', height: 33, borderRadius: 18, marginRight: 15, borderColor: 'white', borderWidth: 2, padding: 5, boxShadow: '#343434', justifyContent: 'center'}} onPress={() => handleScroll('right')}>
                     <MdArrowForward name={'arrow-forward'} color='white' />
                 </TouchableOpacity>
             </View>
 
-            {/* RowScrollProcessInvestor component with items prop */}
-            <RowScrollProcessInvestor
-                ref={scrollViewRef} // Pass the scrollViewRef to RowScrollProcessInvestor
-                items={items}// Pass this to RowScrollProcessInvestor to get content width
-            />
+            <RowScrollProcessInvestor ref={scrollViewRef}  items={items}/>
         </View>
     );
 };
@@ -75,17 +45,10 @@ const InvestorProcessScreen = ({ items ,title}) => {
 // RowScrollProcessInvestor component
 const RowScrollProcessInvestor = React.forwardRef(({ items, onContentSizeChange }, ref) => {
     return (
-        <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={{ flexDirection: 'row' }}
-            ref={ref} // Use the forwarded ref here
-            onContentSizeChange={onContentSizeChange} // Track content size change
-        >
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flexDirection: 'row' }} ref={ref} onContentSizeChange={onContentSizeChange} >
             {items.map((item, index) => (
-                <View key={index} style={{ flexDirection: 'row', paddingHorizontal: 20 }}>
-                    <View style={{ width: 350, height: 200 }}>
-                        {/* Conditionally render either Image or Icon */}
+                <View key={index} style={{ flexDirection: 'row', borderRightColor: '#FFFFFF', borderRightWidth: 1, padding: '1%' }}>
+                    <View style={{ width: 350, height: 200,}}>
                         {item.img ? (
                             <Image source={item.img} style={{ height: 60, width: 60 }} />
                         ) : item.icon ? (
@@ -95,13 +58,13 @@ const RowScrollProcessInvestor = React.forwardRef(({ items, onContentSizeChange 
                         <Text
                             style={[
                                 styles.subtitle,
-                                { fontSize: 16, textAlign: 'left', marginTop: 48, width: 250 },
+                                { fontSize: 24, textAlign: 'left', marginTop: 48, fontWeight: 400, lineHeight: 28, color: 'rgba(255, 255, 255, 1)'},
                             ]}
                         >
                             {item.text}
                         </Text>
                     </View>
-                    <View style={{ borderColor: '#FFFFFF', borderWidth: 1 }} />
+                    {/* <View style={{ borderColor: '#FFFFFF', borderWidth: 1 }} /> */}
                 </View>
             ))}
         </ScrollView>

@@ -18,20 +18,13 @@ const CatalystAdvantages = () => {
     ];
 
     return (
-        <View style={{ marginVertical: '8%', padding: '5%' }}>
+        <View style={{ marginBottom: '4%', padding: '7%', paddingTop: '4%' }}>
             <View>
-                <Text style={[styles.title, { textAlign: minWidth?"center":'left' }]}>
-                    Why Choose the {"\n"}Catalyst ?
+                <Text style={[styles.title, { textAlign: minWidth?"center":'left', fontSize: 48, fontWeight: 500 , borderBottomColor: 'rgba(214, 214, 214, 1)', borderBottomWidth: 2, marginBottom: 0, paddingBottom: '6%'}]}>
+                    Why Choose the {"\n"}The Catalyst Tree?
                 </Text>
             </View>
-            <View
-                style={{
-                    justifyContent: 'flex-start',
-                    // marginRight: width * 0.10,
-                    marginTop: 50,
-                }}
-            >
-                {/* Loop through the advantages and render the Col component for each */}
+            <View style={{justifyContent: 'flex-start',}}>
                 {advantages.map((advantage, index) => (
                     <Col key={index} no={advantage.no} text={advantage.text} />
                 ))}
@@ -45,37 +38,22 @@ const Col = ({ no, text }) => {
     const minWidth = width<600;
     return (
         <View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text
-                    style={{
-                        color: "grey",
-                        fontSize:minWidth?22: 42,
-                        fontWeight: "bold",
-                        alignContent: "center",
-                        paddingLeft: 10,
-                    }}
-                >
+            <View style={{ flexDirection: "row", justifyContent: "space-between", borderBottomColor: 'rgba(214, 214, 214, 1)', borderBottomWidth: 2, paddingVertical: '1%' }}>
+                <Text style={{ color: "grey", fontSize:minWidth?22: 42, fontWeight: 500, alignContent: "center", paddingLeft: 10}}>
                     {no}
                 </Text>
-                <Text
-                    style={{
-                        color: "white",
-                        fontSize:minWidth?18: 32,
-                        fontWeight: "400",
-                        width: width * 0.5,
-                    }}
-                >
+                <Text style={{ color: "white", fontSize:minWidth?18: 32, fontWeight: 400, width: width * 0.5}}>
                     {text}
                 </Text>
             </View>
-            <View
+            {/* <View
                 style={{
                     height: 5,
                     // width: width * 0.5,
                     backgroundColor: "grey",
                     marginVertical: 10,
                 }}
-            />
+            /> */}
         </View>
     );
 };

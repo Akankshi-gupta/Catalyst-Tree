@@ -46,7 +46,7 @@ export default function Navbar({ navigation }){
               <Text style={styles.smallText}>For Investor</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={[styles.buttonSecondary, { width: "16%" }]} onPress={() => navigation.navigate("ContactUs")}>
+          <TouchableOpacity style={[styles.buttonSecondary, { width: "16%" , borderColor: 'rgba(255, 255, 255, 1)', borderWidth: 1, borderRadius: 79, backgroundColor: 'transparent'}]} onPress={() => navigation.navigate("ContactUs")}>
               <Text style={styles.buttonText2}>Connect Us</Text>
           </TouchableOpacity>
         </View>

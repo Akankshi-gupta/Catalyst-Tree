@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet,useWindowDimensions } from "react-native";
+import { View, Text, StyleSheet,useWindowDimensions, Image } from "react-native";
 // import Icon from "react-native-vector-icons/FontAwesome"; // Ensure the icon library is imported
 import { FaCheckCircle} from 'react-icons/fa';
 
@@ -26,9 +26,9 @@ const CheckBox4 = ({title}) => {
     ];
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {marginBottom: '10%'}]}>
             <View style={styles.headerContainer}>
-                <Text style={[styles.headingText,{fontSize:minWidth?35:60}]}>{title}</Text>
+                <Text style={[styles.headingText,{fontSize:minWidth?35:48, fontWeight: 500}]}>{title}</Text>
             </View>
             {features.reduce((rows, feature, index) => {
                 const rowIndex = Math.floor(index / 2);
@@ -36,7 +36,7 @@ const CheckBox4 = ({title}) => {
                 rows[rowIndex].push(feature);
                 return rows;
             }, []).map((row, rowIndex) => (
-                <View key={rowIndex} style={styles.rowContainer}>
+                <View key={rowIndex} style={[styles.rowContainer,{width: '74%'}]}>
                     {row.map((feature, featureIndex) => (
                         <FeatureBox
                             key={featureIndex}
@@ -55,9 +55,10 @@ const FeatureBox = ({ title, description }) =>{
         const minWidth = width<600;
     return(
     <View style={styles.featureBox}>
-        <Text style={[styles.featureTitle,{fontSize:minWidth?18:25}]}>
-            <FaCheckCircle name="check-circle" size={minWidth?15:30} color="#72CE63" /> {title}
-        </Text>
+        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: '2%'}}>
+            <Image source={require('../assets/images/tickmark-img.png')} style={{height: 32, width: 32, marginRight: '2%'}}></Image>
+            <Text style={[styles.featureTitle,{fontSize:minWidth?18:25}]}>{title}</Text>
+        </View>
         <Text style={[styles.smallText, { textAlign: "start" }]}>{description}</Text>
     </View>
 );}

@@ -5,16 +5,12 @@ import { FaCheckCircle} from 'react-icons/fa';
 // import styles from "../screens/styles";
 
 const StartupServices = ({services,title}) => {
-    
     const {height,width} = useWindowDimensions();
     return (
         <View style={styles.container}>
             <View>
-                {chunkArray(services,width<600?1:3).map((row, rowIndex) => (
-                    <View
-                        key={rowIndex}
-                        style={[styles.rowContainer,{paddingTop:width<600?15:25,paddingHorizontal:width<600?5:25,}]}
-                    >
+                {chunkArray(services,width<600?1:1).map((row, rowIndex) => (
+                    <View key={rowIndex} style={[{paddingTop:width<600?15:25,paddingHorizontal:width<600?5:25,}]}>
                         {row.map((service, index) => (
                             <Box key={index} no={service.no} text={service.text} />
                         ))}
@@ -30,12 +26,10 @@ const Box = ({ no, text }) => {
     const {height,width} = useWindowDimensions();
     const minWidth = width<600;
     return(
-    <View style={[styles.box,{
-        // height:width<600?"auto":220,flexDirection:width<600?"row":"column"
-        height:minWidth?"auto":250,width:minWidth?"100%":220,flexDirection:minWidth?"row":"column",justifyContent:minWidth?"flex-start":"space-between",alignContent:minWidth?"flex-start":"stretch"
-        }]}>
-        <FaCheckCircle name={"check-circle"} size={width<600?20:30} style={{color:"#72CE63",paddingRight:minWidth?10:0}}></FaCheckCircle>
-        <Text style={[styles.boxText,{fontSize:width<600?17:18 ,textAlign:width<600?"left":"auto",flex:minWidth?6:0 }]}>{text}</Text>
+    <View style={[{flexDirection:minWidth?"column":"row", borderBottomWidth: 1, borderBottomColor: 'rgba(255, 255, 255, 0.1)', paddingBottom: '2%' }]}>
+        {/* <FaCheckCircle name={"check-circle"} size={width<600?20:30} style={{color:"#72CE63",paddingRight:minWidth?10:0, width: '10%'}}></FaCheckCircle> */}
+        <Image source={require('../assets/images/tick-logo.png')} style={{color:"#72CE63",paddingRight:minWidth?10:0, width: 30, height: 30, marginRight: '4%'}}></Image>
+        <Text style={[styles.boxText,{fontSize:width<600?17:18 ,textAlign:width<600?"left":"auto", width: '90%'}]}>{text}</Text>
     </View>
 );}
 

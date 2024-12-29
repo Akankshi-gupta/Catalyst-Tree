@@ -12,10 +12,23 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import ProductExplanation from "../components/productExplaination";
 import FounderMessage from "../components/founderMessage";
+import CustomPopup from "./Modal";
 
 export default function Debt({navigation}){
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
+    const [popupVisible, setPopupVisible] = useState(false);
+
+    useEffect(() => {
+        const checkPopupStatus = async () => {
+        const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
+        if (!hasShownPopup) {
+            setPopupVisible(true);
+            await AsyncStorage.setItem("hasShownPopup", "false");
+        }
+        };
+        checkPopupStatus();
+    }, []);
 
     const [id, setId] = useState('');
 
@@ -27,39 +40,52 @@ export default function Debt({navigation}){
             <View style={{flex: 1}}>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
                     <Defs>
-                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                            <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <RadialGradient id={`radial-gradient-${id}-1`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.5)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                         </RadialGradient>
 
-                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                            <Stop offset="0%" stopColor="  rgba(114, 206, 99, 0.2)" stopOpacity="1" />
-                            <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <RadialGradient id={`radial-gradient-${id}-2`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
+                        </RadialGradient>
+
+                        <RadialGradient id={`radial-gradient-${id}-3`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                            <Stop offset="0%" stopColor="rgba(114, 206, 99, 0.8)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
-                    {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
-                    <Ellipse cx={0} cy={'45%'} rx={'50%'} ry={"15%"} fill={`url(#radial-gradient-${id})`} />
+                    <Ellipse cx={0} cy={'35%'} rx={'60%'} ry={"30%"} fill={`url(#radial-gradient-${id}-1)`} />
 
-                    <Ellipse cx={'50%'} cy={'82%'} rx={'40%'} ry={"18%"} fill={`url(#radial-gradient-${id})`} />
+                    <Ellipse cx={'50%'} cy={'63%'} rx={'50%'} ry={"15%"} fill={`url(#radial-gradient-${id}-2)`} />
+
+                    <Ellipse cx={'50%'} cy={'86%'} rx={'65%'} ry={"20%"} fill={`url(#radial-gradient-${id}-3)`} />
                 </Svg>
+                <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/>
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%', alignItems: 'center'}}>
                     <ImageBackground source={require("../assets/images/background2.png")} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center', height: '100%', width: '100%', overflow: 'hidden'}}>
-                    {/* <ExpoLinearGradient colors={["#26976B" ,"#72CE63"]} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center'}} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1  }}> */}
                         <View style={{backgroundColor: '#FFFFFF1A', paddingVertical: '1%', paddingHorizontal: '4%', borderRadius: 66, borderColor: "#FFFFFF", borderWidth: 1, alignItems: 'center'}}>
                             <Text style={{ color: '#FFFFFF'}}>Flexible Debt Solutions for Founders</Text>
                         </View>
                         <Text style={[styles.title, {lineHeight: minWidth?44:78, textAlign: 'center', fontSize:minWidth?35 :70}]}>Fuel Growth Without {'\n'} Giving Up Equity</Text>
                         <Text style={[styles.subtitle, {marginBottom: '5%', color: '#FFFFFFCC'}]}>Tailored debt funding solutions for startups and businesses</Text>
-                        <TouchableOpacity style={styles.buttonPrimary}>
+                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => setPopupVisible(true)}>
                             <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Apply for Debt Funding</Text>
                         </TouchableOpacity>
-                    {/* </ExpoLinearGradient> */}
                     </ImageBackground>
                 </View>
-                <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%', alignItems: 'center'}}>
-                    <ProductExplanation why={'Why Debt Funding?'} img1={require("../assets/images/explanation1.png")} img2={require("../assets/images/explanation2.png")} img3={require("../assets/images/explanation3.png")} reason1={'Retain full ownership of your business.'} reason2={'Predictable repayments tailored to your cash flow.'} reason3={'Perfect for scaling operations or bridging working capital gaps.'}></ProductExplanation>
+                <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%', alignItems: 'center', flexDirection: minWidth?"column":'row', justifyContent: 'space-between'}}>
+                    <View style={{justifyContent: 'center', width: '22%'}}>
+                        <Text style={[styles.headingText,{textAlign:minWidth?"center":"left"}]}>Why Debt Funding?</Text>
+                    </View>
+                    <View style={{flexDirection: minWidth?"column":'row', justifyContent: 'space-between', width: '78%'}}>
+                        <ProductExplanation img={require("../assets/images/ownership.png")} heading={'Ownership retention'} reason={'Founders maintain full ownership and control of the business, as debt financing does not involve selling equity or diluting shares. This is particularly important for founders who want to retain decision-making power.'}></ProductExplanation>
+                        <ProductExplanation img={require("../assets/images/tax.png")} heading={'Tax advantages'} reason={'Interest payments on debt are often tax-deductible, reducing the effective cost of borrowing and providing an indirect financial benefit to the business.'}></ProductExplanation>
+                        <ProductExplanation img={require("../assets/images/no-profit.png")} heading={'No profit sharing'} reason={'Lenders are entitled only to the repayment of the principal and interest, not a share of the company’s profits. This ensures that founders and existing shareholders retain all future earnings.'}></ProductExplanation>
+                    </View>
+                    
                 </View>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%', alignItems: 'center',height:minWidth?"auto":"auto"}}>
                     <Text style={[styles.headingText,{ marginBottom: '5%'}]}>
@@ -125,7 +151,7 @@ export default function Debt({navigation}){
                     </View>
                 </View>
                 <View style={{alignItems: 'center', justifyContent: 'center', paddingHorizontal: '8%', paddingVertical: '2%'}}>
-                    <Image source={require('../assets/images/coins_graph.png')} style={{width: '100%', borderRadius: 20, aspectRatio: 1}} resizeMode="contain"></Image>
+                    <Image source={require('../assets/images/coins_graph.png')} style={{width: '100%', borderRadius: 20, height: 500}} resizeMode="contain"></Image>
                 </View>   
             </View>
             <FounderMessage message={'The Catalyst Tree made securing debt funding effortless. We were funded in just 3 weeks!'} companyName={'TechNova'} designation={'Founder'}></FounderMessage>   

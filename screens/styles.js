@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         textAlign: "left",
         marginBottom: height * 0.01, // 1% of screen height
-        fontFamily: "Inter_24pt-Light",
     },
     subtitle: {
         fontSize: width < 600 ? 14 : 18, // Responsive font size
@@ -135,7 +134,7 @@ const styles = StyleSheet.create({
     headingText: {
         color: '#FFFFFF', 
         fontWeight: 500, 
-        fontSize: width<600?20:46,
+        fontSize: width < 600 ? 20 :46,
     },
     smallText: {
         textAlign: 'center', 

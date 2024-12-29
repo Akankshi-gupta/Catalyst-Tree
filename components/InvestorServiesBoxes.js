@@ -7,8 +7,8 @@ const InvestorServices = ({services,title}) => {
     const {height,width} = useWindowDimensions();
     const minWidth = width<600;
     return (
-        <View style={[styles.container,{paddingHorizontal:minWidth?10:25}]}>
-            <Text style={[styles.title, { fontSize:minWidth?35:60,textAlign: "center" }]}>
+        <View style={[styles.container,{paddingHorizontal:minWidth?10:25, marginBottom: '6%'}]}>
+            <Text style={[styles.title, { fontSize:minWidth?35:48, textAlign: "center", fontWeight: 500 }]}>
                 {title}
             </Text> 
             <View>

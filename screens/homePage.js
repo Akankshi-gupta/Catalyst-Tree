@@ -25,27 +25,27 @@ export default function Home({navigation}){
     }, []);
     return (
         <ScrollView style={styles.container}>
-            <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
+            <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%', borderRadius: 20}}>
                 <Defs>
                     <RadialGradient id={`radial-gradient-${id}-1`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.6)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                     </RadialGradient>
 
                     <RadialGradient id={`radial-gradient-${id}-2`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.5)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                     </RadialGradient>
 
                     <RadialGradient id={`radial-gradient-${id}-3`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                        <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.5)" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                     </RadialGradient>
                 </Defs>
 
-                <Ellipse cx={'50%'} cy={'26%'} rx={'85%'} ry={"7%"} fill={`url(#radial-gradient-${id}-1)`} />
-                <Ellipse cx={'100%'} cy={'42%'} rx={'51%'} ry={"8%"} fill={`url(#radial-gradient-${id}-2)`} />
-                <Ellipse cx={0} cy={'50%'} rx={'51%'} ry={"8%"} fill={`url(#radial-gradient-${id}-3)`} />
+                <Ellipse cx={'50%'} cy={'24%'} rx={'85%'} ry={"10%"} fill={`url(#radial-gradient-${id}-1)`} />
+                <Ellipse cx={'100%'} cy={'40%'} rx={'51%'} ry={"15%"} fill={`url(#radial-gradient-${id}-2)`} />
+                <Ellipse cx={0} cy={'50%'} rx={'66%'} ry={"13%"} fill={`url(#radial-gradient-${id}-3)`} />
             </Svg>
             <View style={styles.homeSection1}>
                 <ImageBackground source={require("../assets/images/background.png")} style={[styles.backgroundImage, { width, height }]}>
@@ -222,8 +222,8 @@ export default function Home({navigation}){
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%'}}>
                     <Defs>
                         <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                            <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                            <Stop offset="0%" stopColor="rgba(114, 206, 99, 0.6)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
@@ -242,12 +242,12 @@ export default function Home({navigation}){
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center', marginRight: '5%'}}>
                                 <Svg height={70}>
                                     <Defs>
-                                        <SvgLinearGradient id="gradientText" x1="0" y1="0" x2="1" y2="0">
+                                        <SvgLinearGradient id={`gradient-text-${id}-1`} x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0%" stopColor="#72CE63" />
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill="url(#gradientText)">
+                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-1)`}>
                                         Step 1
                                     </SvgText>
                                 </Svg>
@@ -256,12 +256,12 @@ export default function Home({navigation}){
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center',  marginRight: '4%'}}>
                                 <Svg height={70}>
                                     <Defs>
-                                        <SvgLinearGradient id="gradientText" x1="0" y1="0" x2="1" y2="0">
+                                        <SvgLinearGradient id={`gradient-text-${id}-2`} x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0%" stopColor="#72CE63" />
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill="url(#gradientText)">
+                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-2)`}>
                                         Step 2
                                     </SvgText>
                                 </Svg>
@@ -270,12 +270,12 @@ export default function Home({navigation}){
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center'}}>
                                 <Svg height={70}>
                                     <Defs>
-                                        <SvgLinearGradient id="gradientText" x1="0" y1="0" x2="1" y2="0">
+                                        <SvgLinearGradient id={`gradient-text-${id}-3`} x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0%" stopColor="#72CE63" />
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill="url(#gradientText)">
+                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-3)`}>
                                         Step 3
                                     </SvgText>
                                 </Svg>
@@ -288,12 +288,12 @@ export default function Home({navigation}){
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center', marginRight: '5%'}}>
                                 <Svg height={70}>
                                     <Defs>
-                                        <SvgLinearGradient id="gradientText" x1="0" y1="0" x2="1" y2="0">
+                                        <SvgLinearGradient id={`gradient-text-${id}-4`} x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0%" stopColor="#72CE63" />
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill="url(#gradientText)">
+                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-4)`}>
                                         Step 1
                                     </SvgText>
                                 </Svg>
@@ -302,12 +302,12 @@ export default function Home({navigation}){
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center',  marginRight: '4%'}}>
                                 <Svg height={70}>
                                     <Defs>
-                                        <SvgLinearGradient id="gradientText" x1="0" y1="0" x2="1" y2="0">
+                                        <SvgLinearGradient id={`gradient-text-${id}-5`} x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0%" stopColor="#72CE63" />
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill="url(#gradientText)">
+                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-5)`}>
                                         Step 2
                                     </SvgText>
                                 </Svg>
@@ -316,12 +316,12 @@ export default function Home({navigation}){
                             <View style={{flex: 1, justifyContent: 'start', alignItems: 'center'}}>
                                 <Svg height={70}>
                                     <Defs>
-                                        <SvgLinearGradient id="gradientText" x1="0" y1="0" x2="1" y2="0">
+                                        <SvgLinearGradient id={`gradient-text-${id}-6`} x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0%" stopColor="#72CE63" />
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill="url(#gradientText)">
+                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-6)`}>
                                         Step 3
                                     </SvgText>
                                 </Svg>

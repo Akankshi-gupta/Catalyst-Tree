@@ -85,8 +85,8 @@ export default function AboutUs({navigation}){
                             </View>
                         </View>
                     </View>
-                    <View style={{alignItems: 'center', justifyContent: 'center', paddingHorizontal: '8%', paddingVertical: '2%'}}>
-                        <Image source={require('../assets/images/Frame 1.png')} style={{width: '100%', borderRadius: 20}}></Image>
+                    <View style={{alignItems: 'center', justifyContent: 'center', paddingHorizontal: '8%', paddingVertical: '2%', height: 500}}>
+                        <Image source={require('../assets/images/Frame 1.png')} style={{width: '100%', borderRadius: 20, height: '100%'}}></Image>
                     </View>
                     <Counts></Counts>
                 </View>        
@@ -100,7 +100,6 @@ export default function AboutUs({navigation}){
                         </RadialGradient>
                     </Defs>
 
-                    {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
                     <Ellipse cx={'50%'} cy={'50%'} rx={'50%'} ry={"50%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
                 <View style={{alignItems: 'center', marginBottom: '2%'}}>
@@ -129,6 +128,16 @@ export default function AboutUs({navigation}){
                 </View>
             </View>
             <View style={{paddingHorizontal: '8%', paddingVertical: '2%', marginTop: '5%', alignItems: 'center'}}>
+                <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
+                    <Defs>
+                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        </RadialGradient>
+                    </Defs>
+
+                    <Ellipse cx={'50%'} cy={'50%'} rx={'40%'} ry={"35%"} fill={`url(#radial-gradient-${id})`} />
+                </Svg>
                 <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '14%'}]}>
                     <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Product</Text>
                 </TouchableOpacity>
@@ -152,7 +161,7 @@ export default function AboutUs({navigation}){
                     </View>
                 </View>
             </View>
-            <View style={{paddingHorizontal: '8%', paddingVertical: '2%', marginVertical: '5%', alignItems: 'center'}}>
+            {/* <View style={{paddingHorizontal: '8%', paddingVertical: '2%', marginVertical: '5%', alignItems: 'center'}}>
                 <View style={{alignItems: 'flex-end',}}>
                     <View style={{width: '38%', marginBottom: '4%'}}>
                         <Text style={[styles.headingText, {textAlign: 'left'}]}>Our Leadership team</Text>
@@ -169,8 +178,8 @@ export default function AboutUs({navigation}){
                     <Image style={{flex: 1, marginHorizontal: '1%', borderRadius: 20}} source={require('../assets/images/adventure junction women.png')} resizeMode="cover"></Image>
                     <Image style={{flex: 1, marginHorizontal: '1%', borderRadius: 20}} source={require('../assets/images/adventure junction women.png')} resizeMode="cover"></Image>
                 </View>
-            </View>
-            <View style={{paddingHorizontal: '8%', paddingVertical: '2%', marginBottom: '5%'}}>
+            </View> */}
+            {/* <View style={{paddingHorizontal: '8%', paddingVertical: '2%', marginBottom: '5%'}}>
                 <Text style={[styles.headingText, {marginBottom: '4%',}]}>Frequently Asked Questions</Text>
                 <FrequentlyAsked Question='What is a Bounce?' Answer={''}></FrequentlyAsked>
                 <FrequentlyAsked Question='What is the difference between the Free and Paid versions?' Answer={'Magna nec, porttitor purus vulputate. Enim accumsan non, auctor posuere tristique aliquam tempus maecenas orci. Risus egestas sapien tincidunt nunc est malesuada magna. Fringilla porta nunc consectetur amet aliquam. Dolor tellus augue in ridiculus vulputate.'}></FrequentlyAsked>
@@ -178,7 +187,7 @@ export default function AboutUs({navigation}){
                 <FrequentlyAsked Question='How do I add personalised data to messages?' Answer={''}></FrequentlyAsked>
                 <FrequentlyAsked Question='How do I re-subscribe a contact who opted out or was accidentally removed?' Answer={''}></FrequentlyAsked>
                 <FrequentlyAsked Question='Do you plan on adding more features in the future?' Answer={''}></FrequentlyAsked>
-            </View>
+            </View> */}
             <StartFunding navigation={navigation}></StartFunding>
             <Footer navigation={navigation}></Footer>
         </ScrollView>
