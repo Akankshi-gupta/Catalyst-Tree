@@ -33,10 +33,10 @@ export default function Footer({navigation}){
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '4%'}}>
                 <View style={{marginTop: '4%'}}>
-                    <TouchableOpacity style={{ marginBottom: '8%'}}>
+                    <TouchableOpacity style={{ marginBottom: '8%'}} onPress={() => navigation.navigate("Startup")}>
                         <Text style={[footerStyles.smallText, {color: '#808080', textAlign: 'start',}]}>For Startup</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ marginBottom: '8%'}}>
+                    <TouchableOpacity style={{ marginBottom: '8%'}} onPress={() => navigation.navigate("Investor")}>
                         <Text style={[footerStyles.smallText, {color: '#808080', textAlign: 'start'}]}>For Investors</Text>
                     </TouchableOpacity>
                 </View>
@@ -44,7 +44,7 @@ export default function Footer({navigation}){
                     <TouchableOpacity style={{marginBottom: '8%'}} onPress={() => navigation.navigate("AboutUs")}>
                         <Text style={[footerStyles.smallText, {color: '#808080', textAlign: 'start',}]}>About Us</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{marginBottom: '8%'}}>
+                    <TouchableOpacity style={{marginBottom: '8%'}} onPress={() => navigation.navigate("FAQ")}>
                         <Text style={[footerStyles.smallText, {color: '#808080', textAlign: 'start',}]}>FAQ's</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{marginBottom: '8%'}}>

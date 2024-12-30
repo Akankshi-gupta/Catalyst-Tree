@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image, useWindowDimensions } from "react-native";
 import styles from "../screens/styles";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp  } from "react-native-responsive-screen";
 
 const Header = ({ title, description, buttonText, imageSource, onButtonPress }) => {
     const { width, height } = useWindowDimensions();
@@ -8,7 +9,7 @@ const Header = ({ title, description, buttonText, imageSource, onButtonPress }) 
     return (
         <View style={{ flexDirection:minWidth?"column-reverse": "row", justifyContent:minWidth?"flex-end" :"space-around", height:minWidth?"60vh":"auto", marginTop:minWidth?"10%":"2%", alignItems: 'center', marginBottom: '8%' }}>
             <View style={{ width:minWidth?"100%": width * 0.5, height:minWidth?"30%":"auto",paddingLeft: '4%', alignContent: 'center',justifyContent:"space-evenly"}}>
-                <Text style={[styles.title, {fontSize: minWidth?40:80,textAlign:minWidth?"center":"left", lineHeight: 96, fontWeight: 500}]}>{title}</Text>
+                <Text style={[styles.title, {fontSize: wp("5.2%"), textAlign:minWidth?"center":"left", lineHeight: 96, fontWeight: 500}]}>{title}</Text>
                 <Text style={{ fontSize: minWidth?18:20, color: "white", marginVertical: "2%", fontWeight: 400, lineHeight:minWidth? "auto":21.78, textAlign:minWidth?"center":"left", width: '80%'}}>
                     {description}
                 </Text>
