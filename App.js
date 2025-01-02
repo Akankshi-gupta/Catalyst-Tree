@@ -17,7 +17,7 @@ import FAQ from "./screens/faq";
 import StartupSignUp from "./screens/startupSignup";
 import InvestorSignUp from "./screens/InvestorSignUp";
 import CustomPopup from "./screens/Modal";
-import Animation from "./components/animation"
+// import Animation from "./components/animation"
 
 // Use different navigator based on platform
 const Stack = Platform.select({
@@ -33,8 +33,7 @@ export default function App() {
           prefixes: ["http://localhost:19006", "https://myapp.com"], 
           config: {
             screens: {
-              Animation: " ",
-              Home: "home",
+              Home: " ",
               AboutUs: "about",
               Debt: "debt",
               Equity: "equity",
@@ -46,13 +45,13 @@ export default function App() {
               InvestorSignUp: "investor-signup",
               ContactUs: "contact-us",
               FAQ: "faq",
-             
+              // Animation: " ",
             },
           },
         }}
       >
         <Stack.Navigator 
-          // initialRouteName="Home" 
+          initialRouteName="Home" 
           screenOptions={{ 
             headerShown: false,
             ...(Platform.OS === 'web' && {
@@ -61,7 +60,6 @@ export default function App() {
             // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         >
-          <Stack.Screen name="Animation" component={Animation} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="AboutUs" component={AboutUs} />
           <Stack.Screen name="Debt" component={Debt} />

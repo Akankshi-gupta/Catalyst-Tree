@@ -6,7 +6,4 @@ module.exports = {
         bundler: 'webpack'
       }
     },
-    presets: ['babel-preset-expo'],
-    plugins: ['react-native-reanimated/plugin'],
-
 };
