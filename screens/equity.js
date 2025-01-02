@@ -17,18 +17,18 @@ import CustomPopup from "./Modal";
 export default function Equity({navigation}){
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
-    const [popupVisible, setPopupVisible] = useState(false);
+    // const [popupVisible, setPopupVisible] = useState(false);
     
-    useEffect(() => {
-        const checkPopupStatus = async () => {
-        const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
-        if (!hasShownPopup) {
-            setPopupVisible(true);
-            await AsyncStorage.setItem("hasShownPopup", "false");
-        }
-        };
-        checkPopupStatus();
-    }, []);
+    // useEffect(() => {
+    //     const checkPopupStatus = async () => {
+    //     const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
+    //     if (!hasShownPopup) {
+    //         setPopupVisible(true);
+    //         await AsyncStorage.setItem("hasShownPopup", "false");
+    //     }
+    //     };
+    //     checkPopupStatus();
+    // }, []);
 
     const [id, setId] = useState('');
         
@@ -63,7 +63,7 @@ export default function Equity({navigation}){
 
                     <Ellipse cx={'50%'} cy={'75%'} rx={'50%'} ry={"20%"} fill={`url(#radial-gradient-${id}-3)`} />
                 </Svg>
-                <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/>
+                {/* <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/> */}
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%'}}>
                     {/* <ImageBackground source={require("../assets/images/background2.png")} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center', height: '100%', width: '100%', overflow: 'hidden'}}> */}
@@ -73,7 +73,7 @@ export default function Equity({navigation}){
                         </View>
                         <Text style={[styles.title, {lineHeight:minWidth?40: 78, textAlign: 'center', fontSize:minWidth? 35:70}]}>Connect with{'\n'} Investors Who Believe{'\n'} in Your Vision</Text>
                         <Text style={[styles.subtitle, {marginBottom: '5%', color: '#FFFFFFCC'}]}>Tailored equity funding for startups looking to scale</Text>
-                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => setPopupVisible(true)}>
+                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => navigation.navigate("Startup")}>
                             <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Start Your Equity Journey</Text>
                         </TouchableOpacity>
                     </ExpoLinearGradient>

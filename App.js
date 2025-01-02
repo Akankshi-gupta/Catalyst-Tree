@@ -25,20 +25,6 @@ const Stack = Platform.select({
 });
 
 export default function App() {
-  const [popupVisible, setPopupVisible] = useState(false);
-
-  // Ensure popup only shows once
-  useEffect(() => {
-    const checkPopupStatus = async () => {
-      const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
-      if (!hasShownPopup) {
-        setPopupVisible(true);
-        await AsyncStorage.setItem("hasShownPopup", "false");
-      }
-    };
-    checkPopupStatus();
-  }, []);
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <NavigationContainer
@@ -62,11 +48,6 @@ export default function App() {
           },
         }}
       >
-        <CustomPopup
-          visible={popupVisible}
-          onClose={() => setPopupVisible(false)}
-        />
-
         <Stack.Navigator 
           initialRouteName="Home" 
           screenOptions={{ 

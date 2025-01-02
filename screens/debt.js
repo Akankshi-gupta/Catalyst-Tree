@@ -17,19 +17,7 @@ import CustomPopup from "./Modal";
 export default function Debt({navigation}){
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
-    const [popupVisible, setPopupVisible] = useState(false);
-
-    useEffect(() => {
-        const checkPopupStatus = async () => {
-        const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
-        if (!hasShownPopup) {
-            setPopupVisible(true);
-            await AsyncStorage.setItem("hasShownPopup", "false");
-        }
-        };
-        checkPopupStatus();
-    }, []);
-
+    const [isHovered, setIsHovered] = useState(null);
     const [id, setId] = useState('');
 
     useEffect(() => {
@@ -62,7 +50,7 @@ export default function Debt({navigation}){
 
                     <Ellipse cx={'50%'} cy={'86%'} rx={'65%'} ry={"20%"} fill={`url(#radial-gradient-${id}-3)`} />
                 </Svg>
-                <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/>
+                {/* <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/> */}
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%', alignItems: 'center'}}>
                     <ImageBackground source={require("../assets/images/background2.png")} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center', height: '100%', width: '100%', overflow: 'hidden'}}>
@@ -71,7 +59,7 @@ export default function Debt({navigation}){
                         </View>
                         <Text style={[styles.title, {lineHeight: minWidth?44:78, textAlign: 'center', fontSize:minWidth?35 :70}]}>Fuel Growth Without {'\n'} Giving Up Equity</Text>
                         <Text style={[styles.subtitle, {marginBottom: '5%', color: '#FFFFFFCC'}]}>Tailored debt funding solutions for startups and businesses</Text>
-                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => setPopupVisible(true)}>
+                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => navigation.navigate("Startup")}>
                             <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Apply for Debt Funding</Text>
                         </TouchableOpacity>
                     </ImageBackground>
@@ -93,28 +81,28 @@ export default function Debt({navigation}){
                     </Text>
                     <View style={{flexDirection:minWidth?"column": 'row', width: '100%'}}>
                         <View style={{flex:minWidth?8:1 ,justifyContent: 'center'}}>
-                            <View style={{flexDirection: 'row', marginBottom: '12%'}}>
+                            <View style={{flexDirection: 'row', marginBottom: '12%', opacity: isHovered === 1 ? 1: 0.5}} onMouseEnter={() => setIsHovered(1)} onMouseLeave={() => setIsHovered(null)}>
                                 <Text style={{color: '#2CA560', fontSize:minWidth?16:32, fontWeight: 400, marginRight: '3%'}}>01</Text>
                                 <View>
                                     <Text style={{color: '#FFFFFF', fontSize:minWidth?16:32, fontWeight: 600}}>Apply</Text>
                                     <Text style={[styles.smallText,{fontSize:minWidth?14:16}]}>Submit your application with basic business details.</Text>
                                 </View>
                             </View>
-                            <View style={{flexDirection: 'row', opacity: 0.5, marginBottom: '12%'}}>
+                            <View style={{flexDirection: 'row', opacity: isHovered === 2 ? 1: 0.5, marginBottom: '12%'}} onMouseEnter={() => setIsHovered(2)} onMouseLeave={() => setIsHovered(null)}>
                                 <Text style={{color: '#2CA560', fontSize:minWidth?16:32, fontWeight: 400, marginRight: '3%'}}>02</Text>
                                 <View>
                                     <Text style={{color: '#FFFFFF', fontSize:minWidth?16:32, fontWeight: 600}}>Risk Scoring</Text>
                                     <Text style={[styles.smallText,{fontSize:minWidth?14:16}]}>Our advanced analytics assess your eligibility and suggest funding options.</Text>
                                 </View>
                             </View>
-                            <View style={{flexDirection: 'row', opacity: 0.5, marginBottom: '12%'}}>
+                            <View style={{flexDirection: 'row', opacity: isHovered === 3 ? 1: 0.5, marginBottom: '12%'}} onMouseEnter={() => setIsHovered(3)} onMouseLeave={() => setIsHovered(null)}>
                                 <Text style={{color: '#2CA560', fontSize:minWidth?16:32, fontWeight: 400, marginRight: '3%'}}>03</Text>
                                 <View>
                                     <Text style={{color: '#FFFFFF', fontSize:minWidth?16:32, fontWeight: 600}}>Matchmaking</Text>
                                     <Text style={[styles.smallText,{fontSize:minWidth?14:16}]}>Connect with our network of pre-vetted lenders.</Text>
                                 </View>
                             </View>
-                            <View style={{flexDirection: 'row', opacity: 0.5, marginBottom: '12%'}}>
+                            <View style={{flexDirection: 'row', opacity: isHovered === 4 ? 1: 0.5, marginBottom: '12%'}} onMouseEnter={() => setIsHovered(4)} onMouseLeave={() => setIsHovered(null)}>
                                 <Text style={{color: '#2CA560', fontSize:minWidth?16:32, fontWeight: 400, marginRight: '3%'}}>04</Text>
                                 <View>
                                     <Text style={{color: '#FFFFFF', fontSize:minWidth?16:32, fontWeight: 600}}>Funding Secured</Text>

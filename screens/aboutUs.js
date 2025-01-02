@@ -1,20 +1,33 @@
 import React, {useState, useEffect} from "react";
 import { v4 as uuidv4 } from 'uuid'; 
-import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image } from "react-native";
+import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image, Easing, Animated , StyleSheet} from "react-native";
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Counts from "../components/counts";
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { FaCheckCircle, FaAngleDown } from 'react-icons/fa';
-import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
+import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText, Rect, Mask, ClipPath  } from "react-native-svg";
 import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import CustomPopup from "./Modal";
 
 export default function AboutUs({navigation}){
     const { width, height } = useWindowDimensions();
     const [id, setId] = useState('');
+    const [popupVisible, setPopupVisible] = useState(false);
+
+    useEffect(() => {
+        const checkPopupStatus = async () => {
+        const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
+        if (!hasShownPopup) {
+            setPopupVisible(true);
+            await AsyncStorage.setItem("hasShownPopup", "false");
+        }
+        };
+        checkPopupStatus();
+    }, []);
     
     useEffect(() => {
         setId(uuidv4().toString());
@@ -33,13 +46,14 @@ export default function AboutUs({navigation}){
                     {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
                     <Ellipse cx={0} cy={'45%'} rx={'50%'} ry={"15%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
+                <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/>
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%',}}>
                     <ExpoLinearGradient colors={["#26976B" ,"#72CE63"]} style={{flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center'}} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1  }}>
                         <Text style={[styles.title, {lineHeight: 78, textAlign: 'center', fontSize: 70}]}>Connecting {'\n'}Innovators with the {'\n'}Capital to Grow.</Text>
                         <Text style={[styles.subtitle, {marginBottom: '5%', color: '#FFFFFFCC'}]}>Get a car wherever and whenever you need it with your iOS or Android device.</Text>
-                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => navigation.navigate("Startup")}>
-                            <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Start Funding</Text>
+                        <TouchableOpacity style={styles.buttonPrimary}  onPress={() => setPopupVisible(true)}>
+                            <Text style={[styles.buttonText1, {color: '#0E0E0E'}]}>Get Started</Text>
                         </TouchableOpacity>
                     </ExpoLinearGradient>
                 </View>
@@ -150,6 +164,8 @@ export default function AboutUs({navigation}){
                         <TouchableOpacity style={{flex: 1, margin: '2%' }} onPress={() => navigation.navigate("Equity")}>
                             <Image source={require('../assets/images/Equity Funding2.png')} style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}></Image>
                         </TouchableOpacity>
+                        {/* <ShinyImage source={require('../assets/images/Debt Funding2.png')} onPress={() => navigation.navigate("Debt")}></ShinyImage> */}
+                        {/* <ShinyImage source={require('../assets/images/Equity Funding2.png')} onPress={() => navigation.navigate("Debt")}></ShinyImage> */}
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
                         <TouchableOpacity style={{flex: 1, margin: '2%'}} onPress={() => navigation.navigate("Mergers & Acquisition")}>
@@ -194,3 +210,131 @@ export default function AboutUs({navigation}){
         
     )
 }
+
+
+
+const ShinyImage = ({ source, onPress }) => {
+    const [shineAnim] = useState(new Animated.Value(0));
+    const [id, setId] = useState('');
+    const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+    
+    useEffect(() => {
+        setId(uuidv4().toString());
+    }, []);
+  
+    const startShine = () => {
+        shineAnim.setValue(0);
+        Animated.timing(shineAnim, {
+          toValue: 1,
+          duration: 1000,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }).start();
+    };
+
+    const stopShine = () => {
+        Animated.timing(shineAnim, {
+          toValue: 0,
+          duration: 500,  // Make the shine fade out smoothly (1 second)
+          easing: Easing.ease,  // Apply easing to make it smooth
+          useNativeDriver: true,
+        }).start();
+      };
+    
+    const translate = shineAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [-1 * Math.max(imageDimensions.width, imageDimensions.height), Math.max(imageDimensions.width, imageDimensions.height)],
+    });
+    
+  
+    // const stopShine = () => {
+    //   shineAnim.stopAnimation();
+    //   shineAnim.setValue(0);
+    // };
+  
+    // const translateX = shineAnim.interpolate({
+    //   inputRange: [0, 1],
+    //   outputRange: ['-100%', '200%'],
+    // });
+  
+    return (
+      <TouchableOpacity
+        style={{flex: 1, margin: '2%', overflow: 'hidden'}}
+        onPress={onPress}
+        onMouseEnter={startShine}
+        onMouseLeave={stopShine}
+      >
+        <View
+            style={{ position: 'relative' }}
+            onLayout={(event) => {
+                const { width, height } = event.nativeEvent.layout;
+                setImageDimensions({ width, height });
+            }}
+        >
+        <Image source={source} style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }} />
+        <Animated.View
+          style={[
+            insiedestyles.shinyOverlay,
+            {
+                width: imageDimensions.width * 2,
+                height: imageDimensions.height * 2,
+
+                transform: [{ translateX: translate }, { translateY: translate }],
+                backgroundColor: 'transparent'
+            },
+          ]}
+        >
+          <Svg height="50%" width="50%">
+            <Defs>
+                <SvgLinearGradient id={`shine-${id}`} x1="0" y1="0" x2="1" y2="1">
+                    <Stop offset="43%" stopColor="rgba(255, 255, 255, 0)" />
+                    <Stop offset="50%" stopColor="rgba(255, 255, 255, 0.8)" />
+                    <Stop offset="58%" stopColor="rgba(255, 255, 255, 0)" />
+                </SvgLinearGradient>
+                <ClipPath id={`clip-${id}`}>
+                    <Rect
+                        x="0"
+                        y="0"
+                        width={imageDimensions.width}
+                        height={imageDimensions.height}
+                        rx={12} // Rounded corners
+                        ry={12}
+                    />
+                </ClipPath>
+            </Defs>
+            <Rect x="0" y="0" width="100%" height="100%" fill={`url(#shine-${id})`}  clipPath={`url(#clip-${id})`} />
+          </Svg>
+        </Animated.View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  
+
+  const insiedestyles = StyleSheet.create({
+    container: {
+      width: '50%',
+    //   flex: 1
+      alignItems: 'center',
+    },
+    imageContainer: {
+      flex: 1,
+      margin: '2%',
+      borderRadius: 12,
+      overflow: 'hidden',
+      position: 'relative',
+    },
+    image: {
+      width: '100%',
+      aspectRatio: 1,
+      borderRadius: 12,
+    },
+    shinyOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    },
+  });
+  

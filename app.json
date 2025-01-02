@@ -4,11 +4,11 @@
     "slug": "The-Catalyst-Tree",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/background.png",  
+    "icon": "./assets/images/product-logo.svg",  
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/background.png",  
+      "image": "./assets/images/product-logo.svg",  
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/background.png", 
+        "foregroundImage": "./assets/images/product-logo.svg", 
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/images/background.png"
+      "favicon": "./assets/images/product-logo.svg"
     },
     "platforms": ["ios", "android", "web"]
   }

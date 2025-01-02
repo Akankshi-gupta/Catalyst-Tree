@@ -17,18 +17,18 @@ import CustomPopup from "./Modal";
 export default function Acceleration({navigation}) {
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
-    const [popupVisible, setPopupVisible] = useState(false);
+    // const [popupVisible, setPopupVisible] = useState(false);
     
-    useEffect(() => {
-        const checkPopupStatus = async () => {
-        const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
-        if (!hasShownPopup) {
-            setPopupVisible(true);
-            await AsyncStorage.setItem("hasShownPopup", "false");
-        }
-        };
-        checkPopupStatus();
-    }, []);
+    // useEffect(() => {
+    //     const checkPopupStatus = async () => {
+    //     const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
+    //     if (!hasShownPopup) {
+    //         setPopupVisible(true);
+    //         await AsyncStorage.setItem("hasShownPopup", "false");
+    //     }
+    //     };
+    //     checkPopupStatus();
+    // }, []);
     
     const [id, setId] = useState('');
         
@@ -64,7 +64,7 @@ export default function Acceleration({navigation}) {
                         </View>
                         <Text style={[styles.title, { lineHeight: 78, textAlign: 'center', fontSize: 70 }]}>The Boost Your {'\n'} Startup Deserves.</Text>
                         <Text style={[styles.subtitle, { marginBottom: '5%', color: '#FFFFFFCC' }]}>Access funding, mentorship, and resources to grow exponentially.</Text>
-                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => setPopupVisible(true)}>
+                        <TouchableOpacity style={styles.buttonPrimary} onPress={() => navigation.navigate("Startup")}>
                             <Text style={[styles.buttonText1, { color: '#0E0E0E' }]}>Apply for Acceleration Now</Text>
                         </TouchableOpacity>
                     </ExpoLinearGradient>

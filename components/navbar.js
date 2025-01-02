@@ -23,8 +23,8 @@ export default function Navbar({ navigation }){
             </TouchableOpacity>
 
             <View style={styles.dropdownContainer}>
-              <TouchableOpacity onPress={() => setIsHovered(!isHovered)} activeOpacity={0.7} style={{flexDirection:"row",justifyContent:"center"}}>
-                  <Text style={styles.smallText}>Products</Text>
+              <TouchableOpacity onMouseEnter={() => setIsHovered(!isHovered)} onPress={() => setIsHovered(!isHovered)} activeOpacity={0.7} style={{flexDirection:"row",justifyContent:"center"}}>
+                  <Text style={[styles.smallText]}>Products</Text>
                   <FaChevronDown name={"chevron-down"} size={10} color="white"  style={{alignSelf:"center",paddingLeft:5}} ></FaChevronDown>
               </TouchableOpacity>
 

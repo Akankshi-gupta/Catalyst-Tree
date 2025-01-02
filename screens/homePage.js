@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from 'uuid'; 
-import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image } from "react-native";
+import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image, Animated, Dimensions, StyleSheet } from "react-native";
 // import { Image } from 'react-native-expo-image-cache';
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
@@ -13,6 +13,7 @@ import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+// import ParallaxScrollView from 'react-native-parallax-scroll-view';
 // import { ScrollView } from "react-native-web";
 
 export default function Home({navigation}){
@@ -84,7 +85,7 @@ export default function Home({navigation}){
                             Invest in the Future.{minWidth?" ":'\n'}Make Your Money Work {minWidth?" ":'\n'}Smarter.
                         </Text>
                         <Text style={{color: '#FFFFFF', fontWeight: 400, fontSize: 16, marginTop: '4%'}}>
-                            The Catalyst Tree offers investors access to a wide range of {minWidth?" ":'\n'} opportunities across industries and business stages. Whether you're {minWidth?" ":'\n'} seeking debt investments with steady returns or equity stakes with {minWidth?" ":'\n'} high-growth potential, we have investment opportunities to match your {minWidth?" ":'\n'} strategy and risk appetite.
+                            The Catalyst Tree offers investors access to a wide range of {minWidth?" ":'\n'}opportunities across industries and business stages. Whether you're {minWidth?" ":'\n'}seeking debt investments with steady returns or equity stakes with {minWidth?" ":'\n'}high-growth potential, we have investment opportunities to match your {minWidth?" ":'\n'}strategy and risk appetite.
                         </Text>
                         <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '50%'}]} onPress={() => navigation.navigate("Investor")}>
                             <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Start Investing Now</Text>
@@ -117,7 +118,7 @@ export default function Home({navigation}){
             </View>   
             <View>
                 <View style={[styles.overlay,{paddingHorizontal: "6%"}]}>
-                {/* <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}> */}
+                    {/* <ExpoLinearGradient colors={["black", "rgba(44, 165, 96, 0.8)","black"]} style={[styles.overlay,{paddingHorizontal: "6%"}]} start={{ x: 0, y: 1 }} end={{ x: 0.5, y: 0 }}> */}
                     <View style={{flexDirection:minWidth?"column": 'row', justifyContent: "space-between", width: "100%", alignItems: 'center'}}>
                         <Text style={[styles.headingText, {lineHeight: 58}]}>Choose the Right Funding {minWidth?" ":'\n'}for Your Business. </Text>
                         <Text style={{fontSize: 18, fontWeight: 400, lineHeight: 21, color: 'rgb(202 198 198)'}}>Not sure whether debt or equity is the right choice for {minWidth?" ":'\n'}your business? Let us guide you through the decision. </Text>
@@ -207,6 +208,7 @@ export default function Home({navigation}){
                                 </View>
                             </View>
                         </View>
+                        {/* <ParallaxExample></ParallaxExample> */}
                     </View>
                     <View style={{flexDirection:minWidth?"column":"row", width: "100%", marginTop: '5%', justifyContent: 'space-between', alignItems: 'center'}}>
                         <Text style={[styles.fundingInfoTitle, {fontSize:minWidth?18: 26,marginBottom:minWidth?30:"auto"}]}>Let us help you decide which option aligns best with your business goals.</Text>
@@ -214,28 +216,28 @@ export default function Home({navigation}){
                             <Text style={styles.buttonText1}>Get In Touch With Us</Text>
                         </TouchableOpacity>
                     </View>
-                {/* </ExpoLinearGradient>    */}
+                    {/* </ExpoLinearGradient>    */}
                 </View>
             </View>
-        <View style={{paddingVertical:minWidth?"5%":"auto",}}> 
-            <View>
-                <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%'}}>
-                    <Defs>
-                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                            <Stop offset="0%" stopColor="rgba(114, 206, 99, 0.6)" stopOpacity="1" />
-                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
-                        </RadialGradient>
-                    </Defs>
+            <View style={{paddingVertical:minWidth?"5%":"auto",}}> 
+                <View>
+                    <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%'}}>
+                        <Defs>
+                            <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                                <Stop offset="0%" stopColor="rgba(114, 206, 99, 0.6)" stopOpacity="1" />
+                                <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
+                            </RadialGradient>
+                        </Defs>
 
-                    {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
-                    <Ellipse cx={width / 2} cy={height / 2} rx={'80%'} ry={"70%"} fill={`url(#radial-gradient-${id})`} />
-                </Svg>
-                <View style={{backgroundColor: 'rgba(51 51 51 / 0.29)', borderRadius: 24, alignItems: 'center', paddingVertical: "4%", paddingHorizontal: "6%"}}>
-                    <View style={{justifyContent: 'center', alignItems: "center", borderRadius: 50, borderColor: '#FFFFFF', borderWidth: 1, width: minWidth?"60%":'30%', padding: '1%', marginBottom: '1%'}}>
-                        <Text style={{color: '#FFFFFF', fontWeight: 500, }}>How It Works</Text>
-                    </View>
-                    <Text style={[styles.headingText, {marginBottom: '1%'}]}>Simple, Transparent, Powerful.</Text>
-                    <Text style={[{width:minWidth?"80%" :'36%', marginBottom: '4%'}, styles.smallText]}>Getting started with The Catalyst Tree is easy. Here's how we connect business owners with investors:</Text>
+                        {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
+                        <Ellipse cx={width / 2} cy={height / 2} rx={'80%'} ry={"70%"} fill={`url(#radial-gradient-${id})`} />
+                    </Svg>
+                    <View style={{backgroundColor: 'rgba(51 51 51 / 0.29)', borderRadius: 24, alignItems: 'center', paddingVertical: "4%", paddingHorizontal: "6%"}}>
+                        <View style={{justifyContent: 'center', alignItems: "center", borderRadius: 50, borderColor: '#FFFFFF', borderWidth: 1, width: minWidth?"60%":'30%', padding: '1%', marginBottom: '1%'}}>
+                            <Text style={{color: '#FFFFFF', fontWeight: 500, }}>How It Works</Text>
+                        </View>
+                        <Text style={[styles.headingText, {marginBottom: '1%'}]}>Simple, Transparent, Powerful.</Text>
+                        <Text style={[{width:minWidth?"80%" :'36%', marginBottom: '4%'}, styles.smallText]}>Getting started with The Catalyst Tree is easy. Here's how we connect business owners with investors:</Text>
 
                         <Text style={[styles.headingText, {marginBottom: minWidth?"5%":'1%'}]}>For Business Owners</Text>
                         <View style={{backgroundColor: '#282B27', borderRadius: 24, flexDirection:minWidth?"column": 'row', paddingVertical: "4%" , paddingHorizontal: "6%", borderColor: '#FFFFFF00', borderWidth: 1, marginBottom: '4%'}}>
