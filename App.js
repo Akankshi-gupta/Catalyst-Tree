@@ -33,7 +33,7 @@ export default function App() {
           prefixes: ["http://localhost:19006", "https://myapp.com"], 
           config: {
             screens: {
-              Home: " ",
+              Home: "",
               AboutUs: "about",
               Debt: "debt",
               Equity: "equity",

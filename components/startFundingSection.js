@@ -4,8 +4,13 @@ import { Text, View, TouchableOpacity, Image, useWindowDimensions } from "react-
 import styles from "../screens/styles";
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
 import { useNavigation } from "@react-navigation/native";
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 export default function StartFunding(){
+    const [fontsLoaded] = useFonts({
+        'Inter-Black': require('../assets/fonts/Inter_18pt-Medium.ttf'),
+    });
     const {height,width} = useWindowDimensions();
     const minWidth = width<600;
     const navigation =useNavigation();
@@ -14,6 +19,9 @@ export default function StartFunding(){
     useEffect(() => {
         setId(uuidv4().toString());
     }, []);
+    if (!fontsLoaded) {
+        return <AppLoading/>; // Or a loading indicator
+    }
     return(
         <View style={{paddingHorizontal: minWidth?"3%":'7%',marginHorizontal:minWidth?"5%":0, paddingVertical: '5%',borderColor:"rgba(113, 206, 99, 0.7)",borderWidth:2,borderRadius:20}}>
             <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%', borderRadius:20}}>
@@ -34,7 +42,7 @@ export default function StartFunding(){
                     </SvgLinearGradient>
                 </Defs>
                 
-                <SvgText x="0%" y="50%" fontSize="50" fontWeight="500" fill={`url(#gradient-text-${id})`} style={{fontFamily: 'inter_18pt'}}>
+                <SvgText x="0%" y="50%" fontSize="50" fontFamily= 'Inter-Black' fontWeight="500" fill={`url(#gradient-text-${id})`} style={{fontFamily: 'inter_18pt'}}>
                     Let's go.
                 </SvgText>
             </Svg>

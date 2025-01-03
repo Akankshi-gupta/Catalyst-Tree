@@ -33,7 +33,7 @@ export default function Contact_Us({navigation}) {
                     <Ellipse cx={0} cy={"40%"} rx={"80%"} ry={"40%"} fill={`url(#radial-gradient-${id})`} />
                 </Svg>
                 <Navbar navigation={navigation}></Navbar>
-                <View style={{backgroundColor: "#33333399",height: height ,margin: 100,borderRadius: 24,paddingVertical: 40,paddingHorizontal: 100,}}>
+                <View style={{backgroundColor: "#33333399",height: height ,margin: 100,borderRadius: 24,paddingVertical: 40,paddingHorizontal: 100, marginTop: '1%'}}>
                     <View style={{flexDirection: "row",justifyContent: "space-between",borderBottomColor: "white",borderBottomWidth: 1,paddingBottom: 20,}}>
                         <Text style={{ color: "white", fontSize: 48, fontWeight: 500 }}>Contact Us</Text>
                         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
@@ -49,7 +49,7 @@ export default function Contact_Us({navigation}) {
                             <View style={{ width: 20 }}></View>
                             <View
                                 style={{padding: 16,backgroundColor: "#282B27",borderRadius: 12,flexDirection: "row",}}>
-                                <FaPhone name={"phone"} color={"white"} size={30} />
+                                <FaPhone name={"phone"} color={"white"} size={30} style={{ transform: 'rotate(94deg)' }}  />
                                 <View style={{paddingHorizontal: 9, justifyContent: "space-between",}}>
                                     <Text style={{color: "#FFFFFF",size: 14,fontWeight: "500",padding: 3,}}>
                                         Give Us a Call</Text>

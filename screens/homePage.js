@@ -13,17 +13,27 @@ import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 // import ParallaxScrollView from 'react-native-parallax-scroll-view';
 // import { ScrollView } from "react-native-web";
 
 export default function Home({navigation}){
+    const [fontsLoaded] = useFonts({
+        'Inter-Black': require('../assets/fonts/Inter_18pt-Medium.ttf'),
+    });
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
     const [id, setId] = useState('');
     
+    
+    
     useEffect(() => {
         setId(uuidv4().toString());
     }, []);
+    if (!fontsLoaded) {
+        return <AppLoading/>; // Or a loading indicator
+    }
     return (
         <ScrollView style={styles.container}>
             <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%', borderRadius: 20}}>
@@ -249,7 +259,7 @@ export default function Home({navigation}){
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-1)`}>
+                                    <SvgText x="35%" y="50%" fontFamily= 'Inter-Black' fontSize="36" fontWeight="500" fill={`url(#gradient-text-${id}-1)`}>
                                         Step 1
                                     </SvgText>
                                 </Svg>
@@ -263,7 +273,7 @@ export default function Home({navigation}){
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-2)`}>
+                                    <SvgText x="35%" y="50%" fontFamily='Inter-Black' fontSize="36" fontWeight="500" fill={`url(#gradient-text-${id}-2)`}>
                                         Step 2
                                     </SvgText>
                                 </Svg>
@@ -277,7 +287,7 @@ export default function Home({navigation}){
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-3)`}>
+                                    <SvgText x="35%" y="50%" fontFamily='Inter-Black' fontSize="36" fontWeight='500' fill={`url(#gradient-text-${id}-3)`}>
                                         Step 3
                                     </SvgText>
                                 </Svg>
@@ -295,7 +305,7 @@ export default function Home({navigation}){
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-4)`}>
+                                    <SvgText x="35%" y="50%" fontFamily= 'Inter-Black' fontSize="36" fontWeight="500" fill={`url(#gradient-text-${id}-4)`}>
                                         Step 1
                                     </SvgText>
                                 </Svg>
@@ -309,7 +319,7 @@ export default function Home({navigation}){
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-5)`}>
+                                    <SvgText x="35%" y="50%" fontSize="36" fontFamily= 'Inter-Black' fontWeight="500" fill={`url(#gradient-text-${id}-5)`}>
                                         Step 2
                                     </SvgText>
                                 </Svg>
@@ -323,7 +333,7 @@ export default function Home({navigation}){
                                             <Stop offset="100%" stopColor="#FFFFFF" />
                                         </SvgLinearGradient>
                                     </Defs>
-                                    <SvgText x="35%" y="50%" fontSize="36" fontWeight="bold" fill={`url(#gradient-text-${id}-6)`}>
+                                    <SvgText x="35%" y="50%" fontSize="36" fontFamily= 'Inter-Black' fontWeight="500" fill={`url(#gradient-text-${id}-6)`}>
                                         Step 3
                                     </SvgText>
                                 </Svg>

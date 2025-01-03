@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, View, Text, StyleSheet, useWindowDimensions } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet, useWindowDimensions, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { FaChevronDown } from 'react-icons/fa';
@@ -9,12 +9,18 @@ export default function Navbar({ navigation }){
     const [isHovered, setIsHovered] = useState(false);
     const { width } = useWindowDimensions();
 
-    const productOptions = ["Debt", "Equity", "Mergers & Acquisition", "Acceleration"];
+    const productOptions = [
+      {productName:"Debt", productImage: require("../assets/images/product-debt.png"), productInfo: "Whether you're a startup with a big idea or an existing business ready to scale, we're here to help."},
+      {productName:"Equity", productImage: require("../assets/images/product-equity.png"), productInfo: "Whether you're a startup with a big idea or an existing business ready to scale, we're here to help."},
+      {productName:"Mergers & Acquisition", productImage: require("../assets/images/product-ma.png"), productInfo: "Whether you're a startup with a big idea or an existing business ready to scale, we're here to help."},
+      {productName:"Acceleration", productImage: require("../assets/images/product-acceleration.png"), productInfo: "Whether you're a startup with a big idea or an existing business ready to scale, we're here to help."},
+    ];
 
     return (
         <View style={[styles.navbar, { width: width * 0.9 }]}>
-          <View>
-              <Text style={styles.logoText}>LOGO</Text>
+          <View style={{height: 40, width: 40}}>
+              {/* <Text style={styles.logoText}>LOGO</Text> */}
+              <Image source={require("../assets/images/navbarProduct-logo3.png")} style={{height: 40, width: 40}} resizeMode="contain"></Image>
           </View>
 
           <View style={styles.menu}>
@@ -29,10 +35,13 @@ export default function Navbar({ navigation }){
               </TouchableOpacity>
 
               {isHovered && (
+                
                 <View style={styles.dropdownMenu}>
-                  {productOptions.map((option, index) => (
-                    <TouchableOpacity key={index} style={styles.dropdownItem} onPress={() => { setIsHovered(false); navigation.navigate(option);}}>
-                      <Text style={styles.dropdownText}>{option}</Text>
+                  {productOptions.map((productOptions, index) => (
+                    <TouchableOpacity key={index} style={styles.dropdownItem} onPress={() => { setIsHovered(false); navigation.navigate(productOptions.productName);}}>
+                      <Image source={productOptions.productImage} style={{height: 122, width: 179, marginBottom: '6%', borderRadius: 20}}></Image>
+                      <Text style={styles.dropdownText}>{productOptions.productName}</Text>
+                      <Text style={styles.productInfo}>{productOptions.productInfo}</Text>
                     </TouchableOpacity>
                   ))}
                 </View>
@@ -103,31 +112,42 @@ const styles = StyleSheet.create({
     },
     dropdownMenu: {
       position: "absolute",
-      top: "100%",
-      left: 0,
-      backgroundColor: "#FFFFFF0D",
+      top: "198%",
+      left: -276,
+      backgroundColor: "rgba(14, 14, 14,1)",
       borderWidth: 2,
-      borderColor: "#FFFFFF1A",
-      borderRadius: 8,
+      // borderTopColor: "rgba(114, 206, 99, 1)",
+      // borderRightColor: "rgba(114, 206, 99, 1) rgba(114, 206, 99, 0)",
+      // borderLeftColor: "rgba(114, 206, 99, 1) rgba(114, 206, 99, 0)",
+      borderRadius: 20,
       zIndex: 10,
       padding: 10,
-      width: 150,
+      width: 828,
       shadowColor: "#000",
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 5,
+      flexDirection: 'row'
     },
     dropdownItem: {
       paddingVertical: 8,
       paddingHorizontal: 10,
       borderRadius: 4,
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      backgroundColor: "transparent",
       marginBottom: 4,
+      flex: 1,
     },
     dropdownText: {
-      color: "#FFFFFF",
-      fontSize: 14,
+      color: "rgba(255, 255, 255, 1)",
+      fontSize: 16,
+      fontWeight: 600,
+      marginBottom: '6%',
     },
+    productInfo:{
+      color: "rgba(255, 255, 255, 0.8)",
+      fontSize: 12, 
+      fontWeight: 400,
+    }
 });
   

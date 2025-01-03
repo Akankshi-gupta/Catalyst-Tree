@@ -54,7 +54,7 @@ export default function Acceleration({navigation}) {
                     <Ellipse cx={'5%'} cy={'40%'} rx={'80%'} ry={"18%"} fill={`url(#radial-gradient-${id}-1)`} />
                     <Ellipse cx={'50%'} cy={'69%'} rx={'50%'} ry={"10%"} fill={`url(#radial-gradient-${id}-2)`} />
                 </Svg>
-                <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/>
+                {/* <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/> */}
                 <Navbar navigation={navigation}></Navbar>
                 <View style={{ paddingHorizontal: '5%', paddingTop: '3%', paddingBottom: '5%'}}>
                     {/* <ImageBackground source={require("../assets/images/background2.png")} style={{ flex: 1, paddingHorizontal: '5%', paddingVertical: '8%', alignItems: 'center', borderRadius: 24, justifyContent: 'center', height: '100%', width: '100%', overflow: 'hidden' }}> */}
