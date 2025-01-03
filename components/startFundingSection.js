@@ -67,7 +67,7 @@ export default function StartFunding(){
                     <Text style={[styles.smallText,{fontSize:minWidth?12:16}]}>customer{minWidth?"\n":""} satisfaction</Text>
                 </View>
             </View>
-            <Image source={require('../assets/images/Div [h-full].png')} style={{position:'absolute', bottom: '0%', right: '16%',height: '13%', width: '9%'}}></Image>
+            {/* <Image source={require('../assets/images/Div [h-full].png')} style={{position:'absolute', bottom: '0%', right: '16%',height: '13%', width: '9%'}}></Image> */}
         </View>
     )
 }

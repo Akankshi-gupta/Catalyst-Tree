@@ -8,8 +8,10 @@ import { AiOutlineUpload } from 'react-icons/ai';
 import DatePicker from 'react-datepicker';
 import { Rect } from 'react-native-svg';
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText } from "react-native-svg";
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
-export default function StartupSignUp() {
+export default function StartupSignUp({navigation}) {
     const [gender, setGender] = useState('Male');
     const [country, setCountry] = useState('India');
     const [city, setCity] = useState('Bengaluru');
@@ -27,6 +29,7 @@ export default function StartupSignUp() {
     // const [isSingleFounder, setIsSingleFounder] = useState('Yes');
     return (
         <ScrollView style={styles.container}>
+            <Navbar navigation={navigation}></Navbar>
             <View style={{ flexDirection: 'row' }}>
                 <View style={{ height: 1024, width: 812, justifyContent: "center", alignContent: "center" ,flex:1,borderRadius:32,margin:15}}>
                     <Svg height="100%" width="100%" style={{position:'absolute',borderRadius:32}}>
@@ -210,6 +213,7 @@ export default function StartupSignUp() {
                     </TouchableOpacity>
                 </View>
             </View>
+            <Footer navigation={navigation}></Footer>
         </ScrollView>
     );
 }

@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { v4 as uuidv4 } from 'uuid'; 
 import { Text, View, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Image, Easing, Animated , StyleSheet} from "react-native";
 import { LinearGradient as ExpoLinearGradient } from 'expo-linear-gradient';
 import styles from "./styles";
 import Counts from "../components/counts";
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { FaCheckCircle, FaAngleDown } from 'react-icons/fa';
+import { FaCheckCircle, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import Svg, { Defs, RadialGradient, Stop, Ellipse, LinearGradient as SvgLinearGradient ,Text as SvgText, Rect, Mask, ClipPath  } from "react-native-svg";
 import FrequentlyAsked from "../components/frequentlyAskedQuestions";
 import StartFunding from "../components/startFundingSection";
@@ -18,13 +18,53 @@ export default function AboutUs({navigation}){
     const [id, setId] = useState('');
     const [popupVisible, setPopupVisible] = useState(false);
 
+    const [isExpanded1, setIsExpanded1] = useState(false);
+    const [isExpanded2, setIsExpanded2] = useState(false);
+    const [isExpanded3, setIsExpanded3] = useState(false);
+
+    const animationHeight1 = useRef(new Animated.Value(0)).current;
+    const animationHeight2 = useRef(new Animated.Value(0)).current;
+    const animationHeight3 = useRef(new Animated.Value(0)).current;
+
+    const toggleExpansion = (section) => {
+        let animationHeight;
+        let isExpandedSetter;
+    
+        switch (section) {
+          case 1:
+            animationHeight = animationHeight1;
+            isExpandedSetter = setIsExpanded1;
+            break;
+          case 2:
+            animationHeight = animationHeight2;
+            isExpandedSetter = setIsExpanded2;
+            break;
+          case 3:
+            animationHeight = animationHeight3;
+            isExpandedSetter = setIsExpanded3;
+            break;
+          default:
+            return;
+        }
+    
+        isExpandedSetter((prev) => {
+          const isExpanding = !prev;
+          Animated.timing(animationHeight, {
+            toValue: isExpanding ? 120 : 0,
+            duration: 300,
+            useNativeDriver: false,
+          }).start();
+          return isExpanding;
+        });
+    };
+
     useEffect(() => {
         const checkPopupStatus = async () => {
-        const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
-        if (!hasShownPopup) {
-            setPopupVisible(true);
-            await AsyncStorage.setItem("hasShownPopup", "false");
-        }
+            const hasShownPopup = await AsyncStorage.getItem("hasShownPopup");
+            if (!hasShownPopup) {
+                setPopupVisible(true);
+                await AsyncStorage.setItem("hasShownPopup", "false");
+            }
         };
         checkPopupStatus();
     }, []);
@@ -37,14 +77,13 @@ export default function AboutUs({navigation}){
             <View style={{flex: 1}}>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, backgroundColor: 'transparent',}}>
                     <Defs>
-                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                            <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <RadialGradient id={`radial-gradient-${id}-2`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.4)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
-                    {/* Apply Radial Gradient to an Ellipse (Oval Shape) */}
-                    <Ellipse cx={0} cy={'45%'} rx={'50%'} ry={"15%"} fill={`url(#radial-gradient-${id})`} />
+                    <Ellipse cx={0} cy={'45%'} rx={'80%'} ry={"30%"} fill={`url(#radial-gradient-${id}-2)`} />
                 </Svg>
                 <CustomPopup visible={popupVisible} onClose={() => setPopupVisible(false)}/>
                 <Navbar navigation={navigation}></Navbar>
@@ -69,7 +108,6 @@ export default function AboutUs({navigation}){
                         <Text style={{color: '#FFFFFF', fontWeight: 400, fontSize: 16, marginTop: '4%'}}>
                             We believe that great businesses deserve the right resources to succeed. Our platform provides customized solutions to match startups, small businesses, and growth-stage companies with the perfect investors who share their vision.
                         </Text>
-                        
                     </View>
                 </View>
                 <View>
@@ -79,23 +117,48 @@ export default function AboutUs({navigation}){
                             <View style={{borderBottomColor: '#D6D6D6', borderBottomWidth: 1, marginBottom: '4%'}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '2%', alignItems: "center"}}>
                                     <Text style={{color: 'white', fontSize: 24, fontWeight: 500}}>Who we are?</Text>
-                                    <FaAngleDown name="angle-down" size={24} color="white" />
+                                    <TouchableOpacity onPress={() => toggleExpansion(1)}>
+                                        {isExpanded1 ? (
+                                            <FaAngleUp name="angle-up" size={24} color="white" />
+                                        ) : (
+                                            <FaAngleDown name="angle-down" size={24} color="white" />
+                                        )}
+                                    </TouchableOpacity>
                                 </View>
-                                <Text style={[styles.smallText, {marginBottom: '3%', textAlign: 'left'}]}>Our founders Dustin Moskovitz and Justin lorem Rosenstein met while leading Engineering teams at Facebook quesi.</Text>
+                                <Animated.View style={{ height: animationHeight1 , overflow: 'hidden', }}>
+                                    <Text style={[styles.smallText, {marginBottom: '3%', textAlign: 'left'}]}>We empower startups and investors through a seamless platform that fosters collaboration, delivers data-driven insights, and unlocks unmatched growth opportunities. With tailored support, transparent processes, and access to exclusive service, we drive success for every stakeholder in the ecosystem.</Text>
+                                </Animated.View>
+                                
                             </View>
                             <View style={{borderBottomColor: '#D6D6D6', borderBottomWidth: 1, marginBottom: '4%'}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '2%', alignItems: "center"}}>
                                     <Text style={{color: 'white', fontSize: 24, fontWeight: 500}}>Our Mission</Text>
-                                    <FaAngleDown name="angle-down" size={24} color="white" />
+                                    <TouchableOpacity onPress={() => toggleExpansion(2)}>
+                                        {isExpanded2 ? (
+                                            <FaAngleUp name="angle-up" size={24} color="white" />
+                                        ) : (
+                                            <FaAngleDown name="angle-down" size={24} color="white" />
+                                        )}
+                                    </TouchableOpacity>
                                 </View>
-                                <Text style={[styles.smallText, {display: 'none', marginBottom: '3%', textAlign: 'left'}]}>Our founders Dustin Moskovitz and Justin lorem Rosenstein met while leading Engineering teams at Facebook quesi.</Text>
+                                <Animated.View style={{ height: animationHeight2 , overflow: 'hidden',}}>
+                                    <Text style={[styles.smallText, {marginBottom: '3%', textAlign: 'left'}]}>Our mission is to empower startups and investors globally by creating a transparent, collaborative, and innovative ecosystem. We aim to simplify the fundraising journey, accelerate startup growth, and enable strategic partnerships through cutting-edge technology and personalized support, driving impactful and sustainable success across industries.</Text>
+                                </Animated.View>
                             </View>
                             <View style={{borderBottomColor: '#D6D6D6', borderBottomWidth: 1, marginBottom: '4%'}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '2%', alignItems: "center"}}>
                                     <Text style={{color: 'white', fontSize: 24, fontWeight: 500}}>Our Vision</Text>
-                                    <FaAngleDown name="angle-down" size={24} color="white" />
+                                    <TouchableOpacity onPress={() => toggleExpansion(3)}>
+                                        {isExpanded3 ? (
+                                            <FaAngleUp name="angle-up" size={24} color="white" />
+                                        ) : (
+                                            <FaAngleDown name="angle-down" size={24} color="white" />
+                                        )}
+                                    </TouchableOpacity>
                                 </View>
-                                <Text style={[styles.smallText, {display: 'none', marginBottom: '3%', textAlign: 'left'}]}>Our founders Dustin Moskovitz and Justin lorem Rosenstein met while leading Engineering teams at Facebook quesi.</Text>
+                                <Animated.View style={ { height: animationHeight3, overflow: 'hidden', }}>
+                                    <Text style={[styles.smallText, {marginBottom: '3%', textAlign: 'left'}]}>To become the most trusted and comprehensive platform for startups, investors, and partners, fostering innovation, growth, and success. We envision a future where every promising idea finds the right support, every investor makes impactful decisions, and the global ecosystem thrives through seamless collaboration and technological advancement.</Text>
+                                </Animated.View>
                             </View>
                         </View>
                     </View>
@@ -144,13 +207,13 @@ export default function AboutUs({navigation}){
             <View style={{paddingHorizontal: '8%', paddingVertical: '2%', marginTop: '5%', alignItems: 'center'}}>
                 <Svg style={{position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: '100%',}}>
                     <Defs>
-                        <RadialGradient id={`radial-gradient-${id}`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
-                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.2)" stopOpacity="1" />
-                            <Stop offset="100%" stopColor="black" stopOpacity="1" />
+                        <RadialGradient id={`radial-gradient-${id}-1`} cx="50%" cy="50%" fx="50%" fy="50%" rx="90%" ry="20%">
+                            <Stop offset="0%" stopColor="rgba(44, 165, 96, 0.4)" stopOpacity="1" />
+                            <Stop offset="100%" stopColor="rgba(0, 0, 0, 0)" stopOpacity="1" />
                         </RadialGradient>
                     </Defs>
 
-                    <Ellipse cx={'50%'} cy={'50%'} rx={'40%'} ry={"35%"} fill={`url(#radial-gradient-${id})`} />
+                    <Ellipse cx={'50%'} cy={'50%'} rx={'49%'} ry={"47%"} fill={`url(#radial-gradient-${id}-1    )`} />
                 </Svg>
                 <TouchableOpacity style={[styles.buttonSecondary,{borderColor: '#2CA560', marginTop: '4%', width: '14%'}]}>
                     <Text style={[styles.buttonText1, {color: '#2CA560'}]}>Product</Text>
@@ -158,21 +221,21 @@ export default function AboutUs({navigation}){
                 <Text style={[styles.headingText, {marginBottom: '3%'}]}>Explore Our Products</Text>
                 <View style={{width: '100%', alignItems: 'center'}}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-                        <TouchableOpacity style={{flex: 1,margin: '2%'}} onPress={() => navigation.navigate("Debt")}>
-                            <Image source={require('../assets/images/Debt Funding2.png')} style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}></Image>
+                        <TouchableOpacity style={{flex: 1, margin: '2%', justifyContent: 'right', alignItems: 'flex-end'}} onPress={() => navigation.navigate("Debt")}>
+                            <Image source={require('../assets/images/Debt Funding2.png')} style={{ borderRadius: 12, height: 350, width: 350}} resizeMode="contain"></Image>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{flex: 1, margin: '2%' }} onPress={() => navigation.navigate("Equity")}>
-                            <Image source={require('../assets/images/Equity Funding2.png')} style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}></Image>
+                        <TouchableOpacity style={{flex: 1, margin: '2%', alignItems: 'flex-start' }} onPress={() => navigation.navigate("Equity")}>
+                            <Image source={require('../assets/images/Equity Funding2.png')} style={{ borderRadius: 12, height: 350, width: 350 }} resizeMode="contain"></Image>
                         </TouchableOpacity>
                         {/* <ShinyImage source={require('../assets/images/Debt Funding2.png')} onPress={() => navigation.navigate("Debt")}></ShinyImage> */}
                         {/* <ShinyImage source={require('../assets/images/Equity Funding2.png')} onPress={() => navigation.navigate("Debt")}></ShinyImage> */}
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-                        <TouchableOpacity style={{flex: 1, margin: '2%'}} onPress={() => navigation.navigate("Mergers & Acquisition")}>
-                            <Image source={require('../assets/images/Mergers2.png')} style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}></Image>
+                        <TouchableOpacity style={{flex: 1, margin: '2%', alignItems: 'flex-end'}} onPress={() => navigation.navigate("Mergers & Acquisition")}>
+                            <Image source={require('../assets/images/Mergers2.png')} style={{ borderRadius: 12, height: 350, width: 350}} resizeMode="contain"></Image>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{flex: 1, margin: '2%' }} onPress={() => navigation.navigate("Acceleration")}>
-                            <Image source={require('../assets/images/Acceleration Programs.png')} style={{ width: '100%', aspectRatio: 1, borderRadius: 12, }}></Image>
+                        <TouchableOpacity style={{flex: 1, margin: '2%', alignItems: 'flex-start' }} onPress={() => navigation.navigate("Acceleration")}>
+                            <Image source={require('../assets/images/Acceleration Programs.png')} style={{  borderRadius: 12, height: 350, width: 350, }} resizeMode="contain"></Image>
                         </TouchableOpacity>
                     </View>
                 </View>

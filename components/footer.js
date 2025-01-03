@@ -16,7 +16,7 @@ export default function Footer({navigation}){
     });
     return(
         <View style={{backgroundColor: '#0E0E0E', paddingHorizontal: '8%', paddingTop: '7%'}}>
-            <Image source={require('../assets/images/Logo.png')} style={{marginBottom: '4%'}}></Image>
+            <Image source={require('../assets/images/footer-logo.png')} style={{marginBottom: '4%', height: 120, width: 120}} resizeMode="contain"></Image>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: '4%'}}>
                 <TouchableOpacity style={{borderRadius: 8, backgroundColor: '#FFFFFF40', borderColor: '#D6D6D6', borderWidth: 1, width:minWidth?"auto" :'20%', paddingVertical: '1%',paddingHorizontal:minWidth?"1%":""}}>
                     <Text style={footerStyles.smallText}>Instagram</Text>

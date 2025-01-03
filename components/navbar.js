@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TouchableOpacity, View, Text, StyleSheet, useWindowDimensions, Image } from "react-native";
+import React, { useState, useRef } from "react";
+import { TouchableOpacity, View, Text, StyleSheet, useWindowDimensions, Image, Animated  } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { FaChevronDown } from 'react-icons/fa';
@@ -8,6 +8,23 @@ import { Hoverable } from 'react-native-gesture-handler';
 export default function Navbar({ navigation }){
     const [isHovered, setIsHovered] = useState(false);
     const { width } = useWindowDimensions();
+
+    const dropdownHeight = useRef(new Animated.Value(0)).current; // Animated height value
+    const dropdownOpacity = useRef(new Animated.Value(0)).current;
+
+    const toggleDropdown = (isHovered) => {
+      Animated.timing(dropdownHeight, {
+        toValue: isHovered ? 256 : 0, // Set the dropdown full height or collapsed
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+
+      Animated.timing(dropdownOpacity, {
+        toValue: isHovered ? 1 : 0, // Set opacity to 1 when hovered, 0 when not hovered
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    };
 
     const productOptions = [
       {productName:"Debt", productImage: require("../assets/images/product-debt.png"), productInfo: "Whether you're a startup with a big idea or an existing business ready to scale, we're here to help."},
@@ -28,15 +45,14 @@ export default function Navbar({ navigation }){
               <Text style={styles.smallText}>Home</Text>
             </TouchableOpacity>
 
-            <View style={styles.dropdownContainer}>
-              <TouchableOpacity onMouseEnter={() => setIsHovered(!isHovered)} onPress={() => setIsHovered(!isHovered)} activeOpacity={0.7} style={{flexDirection:"row",justifyContent:"center"}}>
-                  <Text style={[styles.smallText]}>Products</Text>
+            <View style={styles.dropdownContainer} onMouseEnter={() => {setIsHovered(!isHovered); toggleDropdown(true)}} onMouseLeave={() => { setIsHovered(isHovered); toggleDropdown(false)}} onPress={() => {setIsHovered(!isHovered); toggleDropdown(true);}}>
+              <TouchableOpacity  activeOpacity={0.7} style={{flexDirection:"row",justifyContent:"center", height: '100%'}}>
+                  <Text style={[styles.smallText]}>Products for Startups</Text>
                   <FaChevronDown name={"chevron-down"} size={10} color="white"  style={{alignSelf:"center",paddingLeft:5}} ></FaChevronDown>
               </TouchableOpacity>
 
-              {isHovered && (
-                
-                <View style={styles.dropdownMenu}>
+              {/* {isHovered && ( */}
+                <Animated.View style={[styles.dropdownMenu, { height: dropdownHeight, opacity: dropdownOpacity, overflow: 'hidden' }]} onMouseEnter={() => setIsHovered(!isHovered)} onMouseLeave={() => setIsHovered(isHovered)} >
                   {productOptions.map((productOptions, index) => (
                     <TouchableOpacity key={index} style={styles.dropdownItem} onPress={() => { setIsHovered(false); navigation.navigate(productOptions.productName);}}>
                       <Image source={productOptions.productImage} style={{height: 122, width: 179, marginBottom: '6%', borderRadius: 20}}></Image>
@@ -44,8 +60,9 @@ export default function Navbar({ navigation }){
                       <Text style={styles.productInfo}>{productOptions.productInfo}</Text>
                     </TouchableOpacity>
                   ))}
-                </View>
-              )}
+                </Animated.View>
+                
+              {/* )} */}
             </View>
 
             <TouchableOpacity onPress={() => navigation.navigate("Startup")}>
@@ -84,10 +101,12 @@ const styles = StyleSheet.create({
     },
     menu: {
       flexDirection: "row",
-      width: "30%",
+      width: "35%",
       justifyContent: "space-between",
       position: "relative",
       flexWrap: 'wrap',
+      height: '128%',
+      alignItems: 'center'
     },
     smallText: {
       color: "#FFFFFF",
@@ -109,10 +128,12 @@ const styles = StyleSheet.create({
     },
     dropdownContainer: {
       position: "relative",
+      height: '100%',
+      alignItems: 'center'
     },
     dropdownMenu: {
       position: "absolute",
-      top: "198%",
+      top: "105%",
       left: -276,
       backgroundColor: "rgba(14, 14, 14,1)",
       borderWidth: 2,
