@@ -34,27 +34,27 @@ export default function Navbar({ navigation }){
     ];
 
     return (
-        <View style={[styles.navbar, { width: width * 0.9 }]}>
-          <View style={{height: 40, width: 40}}>
+        <View style={[styles.navbar, { width: width * 0.9 }]} onPress={() => navigation.navigate("Home")}>
+          <TouchableOpacity style={{height: 40, width: 40}}>
               {/* <Text style={styles.logoText}>LOGO</Text> */}
               <Image source={require("../assets/images/navbarProduct-logo3.png")} style={{height: 40, width: 40}} resizeMode="contain"></Image>
-          </View>
+          </TouchableOpacity>
 
           <View style={styles.menu}>
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>
               <Text style={styles.smallText}>Home</Text>
             </TouchableOpacity>
 
-            <View style={styles.dropdownContainer} onMouseEnter={() => {setIsHovered(!isHovered); toggleDropdown(true)}} onMouseLeave={() => { setIsHovered(isHovered); toggleDropdown(false)}} onPress={() => {setIsHovered(!isHovered); toggleDropdown(true);}}>
-              <TouchableOpacity  activeOpacity={0.7} style={{flexDirection:"row",justifyContent:"center", height: '100%'}}>
+            <View style={[styles.dropdownContainer, { justifyContent: 'center'}]} onMouseEnter={() => {setIsHovered(true); toggleDropdown(true)}} onMouseLeave={() => { setIsHovered(false); toggleDropdown(false)}} onPress={() => {setIsHovered(true); toggleDropdown(true);}}>
+              <TouchableOpacity  activeOpacity={0.7} style={{flexDirection:"row",justifyContent:"center", height: '108%'}}>
                   <Text style={[styles.smallText]}>Products for Startups</Text>
                   <FaChevronDown name={"chevron-down"} size={10} color="white"  style={{alignSelf:"center",paddingLeft:5}} ></FaChevronDown>
               </TouchableOpacity>
 
               {/* {isHovered && ( */}
-                <Animated.View style={[styles.dropdownMenu, { height: dropdownHeight, opacity: dropdownOpacity, overflow: 'hidden' }]} onMouseEnter={() => setIsHovered(!isHovered)} onMouseLeave={() => setIsHovered(isHovered)} >
+                <Animated.View style={[styles.dropdownMenu, { height: dropdownHeight, opacity: dropdownOpacity, overflow: 'hidden', padding: isHovered ? 10 : 0, borderWidth: isHovered ? 2 : 0, }]}>
                   {productOptions.map((productOptions, index) => (
-                    <TouchableOpacity key={index} style={styles.dropdownItem} onPress={() => { setIsHovered(false); navigation.navigate(productOptions.productName);}}>
+                    <TouchableOpacity key={index} style={styles.dropdownItem} onPress={() => { setIsHovered(true); navigation.navigate(productOptions.productName);}}>
                       <Image source={productOptions.productImage} style={{height: 122, width: 179, marginBottom: '6%', borderRadius: 20}}></Image>
                       <Text style={styles.dropdownText}>{productOptions.productName}</Text>
                       <Text style={styles.productInfo}>{productOptions.productInfo}</Text>
@@ -133,16 +133,14 @@ const styles = StyleSheet.create({
     },
     dropdownMenu: {
       position: "absolute",
-      top: "105%",
+      top: "104%",
       left: -276,
       backgroundColor: "rgba(14, 14, 14,1)",
-      borderWidth: 2,
       // borderTopColor: "rgba(114, 206, 99, 1)",
       // borderRightColor: "rgba(114, 206, 99, 1) rgba(114, 206, 99, 0)",
       // borderLeftColor: "rgba(114, 206, 99, 1) rgba(114, 206, 99, 0)",
       borderRadius: 20,
       zIndex: 10,
-      padding: 10,
       width: 828,
       shadowColor: "#000",
       shadowOffset: { width: 0, height: 2 },
