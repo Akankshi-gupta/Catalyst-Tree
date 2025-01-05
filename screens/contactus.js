@@ -71,7 +71,7 @@ export default function Contact_Us({navigation}) {
                                     style={{paddingHorizontal: 9,justifyContent: "space-between",}}>
                                     <Text style={{color: "#FFFFFF",size: 14,fontWeight: "500",padding: 3,}}>
                                         Send Us an Email</Text>
-                                    <Text style={{color: "#FFFFFF",size: 18,fontWeight: "500",padding: 3,}}>info@wdesignkit.com</Text>
+                                    <Text style={{color: "#FFFFFF",size: 18,fontWeight: "500",padding: 3,}}>Info@thecatalysttree.com</Text>
                                 </View>
                             </View>
                             <View style={{ width: 20 }}></View>
@@ -81,7 +81,7 @@ export default function Contact_Us({navigation}) {
                                 <View style={{paddingHorizontal: 9, justifyContent: "space-between",}}>
                                     <Text style={{color: "#FFFFFF",size: 14,fontWeight: "500",padding: 3,}}>
                                         Give Us a Call</Text>
-                                    <Text style={{color: "#FFFFFF",size: 18,fontWeight: "500",padding: 3,}}>+1 800-525-54-589</Text>
+                                    <Text style={{color: "#FFFFFF",size: 18,fontWeight: "500",padding: 3,}}>+91 96505 53609</Text>
                                 </View>
                             </View>
                         </View>
