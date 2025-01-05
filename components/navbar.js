@@ -9,18 +9,19 @@ export default function Navbar({ navigation }){
     const [isHovered, setIsHovered] = useState(false);
     const { width } = useWindowDimensions();
 
-    const dropdownHeight = useRef(new Animated.Value(0)).current; // Animated height value
+    const dropdownHeight = useRef(new Animated.Value(0)).current;
     const dropdownOpacity = useRef(new Animated.Value(0)).current;
+    const [hoveredIndex, setHoveredIndex] = useState(null);
 
     const toggleDropdown = (isHovered) => {
       Animated.timing(dropdownHeight, {
-        toValue: isHovered ? 256 : 0, // Set the dropdown full height or collapsed
+        toValue: isHovered ? 256 : 0,
         duration: 300,
         useNativeDriver: false,
       }).start();
 
       Animated.timing(dropdownOpacity, {
-        toValue: isHovered ? 1 : 0, // Set opacity to 1 when hovered, 0 when not hovered
+        toValue: isHovered ? 1 : 0,
         duration: 300,
         useNativeDriver: false,
       }).start();
@@ -34,8 +35,8 @@ export default function Navbar({ navigation }){
     ];
 
     return (
-        <View style={[styles.navbar, { width: width * 0.9 }]} onPress={() => navigation.navigate("Home")}>
-          <TouchableOpacity style={{height: 40, width: 40}}>
+        <View style={[styles.navbar, { width: width * 0.9 }]}>
+          <TouchableOpacity style={{height: 40, width: 40}} onPress={() => navigation.navigate("Home")}>
               {/* <Text style={styles.logoText}>LOGO</Text> */}
               <Image source={require("../assets/images/navbarProduct-logo3.png")} style={{height: 40, width: 40}} resizeMode="contain"></Image>
           </TouchableOpacity>
@@ -54,7 +55,7 @@ export default function Navbar({ navigation }){
               {/* {isHovered && ( */}
                 <Animated.View style={[styles.dropdownMenu, { height: dropdownHeight, opacity: dropdownOpacity, overflow: 'hidden', padding: isHovered ? 10 : 0, borderWidth: isHovered ? 2 : 0, }]}>
                   {productOptions.map((productOptions, index) => (
-                    <TouchableOpacity key={index} style={styles.dropdownItem} onPress={() => { setIsHovered(true); navigation.navigate(productOptions.productName);}}>
+                    <TouchableOpacity key={index} style={[styles.dropdownItem, {borderWidth: hoveredIndex === index ? 1 : 0, borderColor: hoveredIndex === index ? "white" : "transparent", borderRadius: 8,}]} onPress={() => { setIsHovered(true); navigation.navigate(productOptions.productName);}} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
                       <Image source={productOptions.productImage} style={{height: 122, width: 179, marginBottom: '6%', borderRadius: 20}}></Image>
                       <Text style={styles.dropdownText}>{productOptions.productName}</Text>
                       <Text style={styles.productInfo}>{productOptions.productInfo}</Text>
@@ -73,7 +74,7 @@ export default function Navbar({ navigation }){
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={[styles.buttonSecondary, { width: "16%" , borderColor: 'rgba(255, 255, 255, 1)', borderWidth: 1, borderRadius: 79, backgroundColor: 'transparent'}]} onPress={() => navigation.navigate("ContactUs")}>
-              <Text style={styles.buttonText2}>Connect Us</Text>
+              <Text style={styles.buttonText2}>Contact Us</Text>
           </TouchableOpacity>
         </View>
     );

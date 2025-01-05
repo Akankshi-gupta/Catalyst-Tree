@@ -88,7 +88,7 @@ export default function Startup({navigation}) {
             <Navbar navigation={navigation}></Navbar>
             <ExpoLinearGradient colors={["rgba(44, 165, 96, 0.1)", "rgba(44, 165, 96, 0.1)", "rgba(44, 165, 96, 0.1)"]} style={{ position: "absolute", top: 0, right: 0, zIndex: -1, height: height * 0.85, width: width * 0.32, borderBottomLeftRadius: 12}} />
             {/* <View style={{ position: "absolute", top: 0, right: 0, height: height * 0.9, width: width * 0.3,}}></View> */}
-            <Header buttonText={"Signup for free"} description={"Whether you're raising debt, equity, or exploring M&A and acceleration opportunities, we've got you covered."} title={"Fuel Your Growth with the Right Funding Partners"} imageSource={require("../assets/images/startup.png")}  onButtonPress={()=> navigation.navigate("StartupSignUp")}></Header>
+            <Header buttonText={"Signup"} description={"Whether you're raising debt, equity, or exploring M&A and acceleration opportunities, we've got you covered."} title={"Fuel Your Growth with the Right Funding Partners"} imageSource={require("../assets/images/startup.png")}  onButtonPress={()=> navigation.navigate("StartupSignUp")}></Header>
             <InvestorServices services={services} title={"Why Choose \nThe Catalyst Tree?"}></InvestorServices>
             <InvestorProcessScreen items={items} title={"Our Process \nStartup"} />
             

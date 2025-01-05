@@ -14,11 +14,11 @@ export default function Counts(){
                 <Text style={styles.countsInfo}>Industry Served</Text>
             </View>
             <View style={{borderRightColor: "#D6D6D6", width: '25%', borderWidth: 1, justifyContent: "center", alignItems: "center"}}>
-                <Text style={styles.counts}>NN</Text>
+                <Text style={styles.counts}>30+</Text>
                 <Text style={styles.countsInfo}>Acceleration Partners</Text>
             </View>
             <View style={{width: '25%', justifyContent: "center", alignItems: "center"}}>
-                <Text style={styles.counts}>N</Text>
+                <Text style={styles.counts}>10+</Text>
                 <Text style={styles.countsInfo}>Startup Numbers</Text>
             </View>
         </View>

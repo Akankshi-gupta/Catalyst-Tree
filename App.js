@@ -18,6 +18,7 @@ import StartupSignUp from "./screens/startupSignup";
 import InvestorSignUp from "./screens/InvestorSignUp";
 import CustomPopup from "./screens/Modal";
 // import Animation from "./components/animation"
+import VerifyEmail from "./screens/verifyEmail";
 
 // Use different navigator based on platform
 const Stack = Platform.select({
@@ -45,6 +46,7 @@ export default function App() {
               InvestorSignUp: "investor-signup",
               ContactUs: "contact-us",
               FAQ: "faq",
+              VerifyEmail: "verify-email"
               // Animation: " ",
             },
           },
@@ -67,15 +69,13 @@ export default function App() {
           <Stack.Screen name="Startup" component={Startup} />
           <Stack.Screen name="Investor" component={Investor} />
           {/* <Stack.Screen name="Animation" component={Animation} /> */}
-          <Stack.Screen
-            name="Mergers & Acquisition"
-            component={MergersAcquisitions}
-          />
+          <Stack.Screen name="Mergers & Acquisition" component={MergersAcquisitions}/>
           <Stack.Screen name="Acceleration" component={Acceleration} />
           <Stack.Screen name="StartupSignUp" component={StartupSignUp} />
           <Stack.Screen name="InvestorSignUp" component={InvestorSignUp} />
           <Stack.Screen name="ContactUs" component={ContactUs} />
           <Stack.Screen name="FAQ" component={FAQ} />
+          <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

@@ -67,7 +67,7 @@ export default function Investor({navigation}) {
             </Svg>
             <Navbar navigation={navigation}></Navbar>
             <ExpoLinearGradient colors={["rgba(44, 165, 96, 0.1)", "rgba(44, 165, 96, 0.1)", "rgba(44, 165, 96, 0.1)"]} style={{ position: "absolute", top: 0, right: 0, zIndex: -1, height:'11.5%', width: '32%', borderBottomLeftRadius: 12}} />
-            <Header buttonText={"Signup for free"} description={"Invest smarter with detailed startup insights, risk scores, and seamless deal-making tools."} title={"Discover the Next Big Opportunity"} imageSource={require("../assets/images/investor1.png")} onButtonPress={()=>navigation.navigate("InvestorSignUp")}></Header>
+            <Header buttonText={"Signup"} description={"Invest smarter with detailed startup insights, risk scores, and seamless deal-making tools."} title={"Discover the Next Big Opportunity"} imageSource={require("../assets/images/investor1.png")} onButtonPress={()=>navigation.navigate("InvestorSignUp")}></Header>
             <CatalystAdvantages> </CatalystAdvantages>
             <InvestorProcessScreen items={items} title={"Our Process for \nInvestor"}/>
             <View style={{marginVertical: '7%'}}>
