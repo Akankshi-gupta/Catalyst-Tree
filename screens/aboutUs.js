@@ -222,20 +222,20 @@ export default function AboutUs({navigation}){
                 <View style={{width: '100%', alignItems: 'center'}}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
                         <TouchableOpacity style={{flex: 1, margin: '2%', justifyContent: 'right', alignItems: 'flex-end'}} onPress={() => navigation.navigate("Debt")}>
-                            <Image source={require('../assets/images/Debt Funding2.png')} style={{ borderRadius: 12, height: 350, width: 350}} resizeMode="contain"></Image>
+                            <Image source={require('../assets/images/Debt Funding2.png')} style={{ borderRadius: 12, height: 320, width: 544}} resizeMode="contain"></Image>
                         </TouchableOpacity>
                         <TouchableOpacity style={{flex: 1, margin: '2%', alignItems: 'flex-start' }} onPress={() => navigation.navigate("Equity")}>
-                            <Image source={require('../assets/images/Equity Funding2.png')} style={{ borderRadius: 12, height: 350, width: 350 }} resizeMode="contain"></Image>
+                            <Image source={require('../assets/images/Equity Funding2.png')} style={{ borderRadius: 12, height: 320, width: 544 }} resizeMode="contain"></Image>
                         </TouchableOpacity>
                         {/* <ShinyImage source={require('../assets/images/Debt Funding2.png')} onPress={() => navigation.navigate("Debt")}></ShinyImage> */}
                         {/* <ShinyImage source={require('../assets/images/Equity Funding2.png')} onPress={() => navigation.navigate("Debt")}></ShinyImage> */}
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
                         <TouchableOpacity style={{flex: 1, margin: '2%', alignItems: 'flex-end'}} onPress={() => navigation.navigate("Mergers & Acquisition")}>
-                            <Image source={require('../assets/images/Mergers2.png')} style={{ borderRadius: 12, height: 350, width: 350}} resizeMode="contain"></Image>
+                            <Image source={require('../assets/images/Mergers2.png')} style={{ borderRadius: 12, height: 320, width: 544}} resizeMode="contain"></Image>
                         </TouchableOpacity>
                         <TouchableOpacity style={{flex: 1, margin: '2%', alignItems: 'flex-start' }} onPress={() => navigation.navigate("Acceleration")}>
-                            <Image source={require('../assets/images/Acceleration Programs.png')} style={{  borderRadius: 12, height: 350, width: 350, }} resizeMode="contain"></Image>
+                            <Image source={require('../assets/images/Acceleration Programs.png')} style={{  borderRadius: 12, height: 320, width: 544, }} resizeMode="contain"></Image>
                         </TouchableOpacity>
                     </View>
                 </View>

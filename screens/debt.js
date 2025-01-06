@@ -17,7 +17,7 @@ import CustomPopup from "./Modal";
 export default function Debt({navigation}){
     const { width, height } = useWindowDimensions();
     const minWidth = width<600;
-    const [isHovered, setIsHovered] = useState(null);
+    const [isHovered, setIsHovered] = useState(1);
     const [id, setId] = useState('');
 
     useEffect(() => {
@@ -80,7 +80,7 @@ export default function Debt({navigation}){
                         How it <Text style={{color: '#2CA560'}}>Works</Text>
                     </Text>
                     <View style={{flexDirection:minWidth?"column": 'row', width: '100%'}}>
-                        <View style={{flex:minWidth?8:1 ,justifyContent: 'center'}}>
+                        <View style={{flex:minWidth?8:1 ,justifyContent: 'center'}} onMouseLeave={() => setIsHovered(1)}>
                             <View style={{flexDirection: 'row', marginBottom: '12%', opacity: isHovered === 1 ? 1: 0.5}} onMouseEnter={() => setIsHovered(1)} onMouseLeave={() => setIsHovered(null)}>
                                 <Text style={{color: '#2CA560', fontSize:minWidth?16:32, fontWeight: 400, marginRight: '3%'}}>01</Text>
                                 <View>
